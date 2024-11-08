@@ -1,5 +1,3 @@
-import './bootstrap';
-
 // mengatur tab aktif di navbar
 function setActiveTab() {
     // Mengambil semua elemen nav-link
