@@ -85,7 +85,7 @@
           ></textarea>
         </div>
         <div class="text-end">
-          <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
+        <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
           <button class="btn btn-primary" type="submit">Simpan Data</button>
         </div>
       </form>

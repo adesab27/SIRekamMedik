@@ -74,6 +74,27 @@ body {
     justify-content: flex-end;
 }
 
+/* tabel  */
+
+/* Add spacing to the left and right of the table */
+.table-container {
+    padding-left: 15px; /* Adjust the value as needed */
+    padding-right: 15px;
+}
+
+.table-container, 
+#paginationContainer {
+    padding-left: 15px; /* Adjust the value as needed */
+    padding-right: 15px;
+}
+
+/* Alternatively, you could add margin to the table directly */
+#dataPasienTable {
+    margin-left: 15px; /* Adjust the value as needed */
+    margin-right: 15px;
+}
+
+
 /* form 1 */
 .form-section {
     margin-bottom: 20px;

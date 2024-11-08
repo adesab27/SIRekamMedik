@@ -337,7 +337,8 @@
           </div>
         </div>
         <div class="text-end">
-          <button class="btn btn-primary" href="form2.html">Selanjutnya</button>
+          <!-- <button class="btn btn-primary" href="{{ url('/observasi/form2')}}">Selanjutnya</button> -->
+          <button class="btn btn-primary" type="button" onclick="window.location.href='{{ url('/observasi/form2') }}'">Selanjutnya</button>
         </div>
       </form>
     </div>

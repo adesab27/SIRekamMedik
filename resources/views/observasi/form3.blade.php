@@ -287,8 +287,8 @@
           <textarea class="form-control w-100" rows="4"></textarea>
         </div>
         <div class="mt-4 text-end">
-          <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
-          <button class="btn btn-primary" type="submit">Selanjutnya</button>
+        <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
+        <button class="btn btn-primary" type="button" onclick="window.location.href='{{ url('/observasi/form4') }}'">Selanjutnya</button>
         </div>
       </form>
     </div>

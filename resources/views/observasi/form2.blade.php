@@ -193,8 +193,10 @@
           ></textarea>
         </div>
         <div class="text-end">
-          <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
-          <button class="btn btn-primary" type="submit">Selanjutnya</button>
+        <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
+        <button class="btn btn-primary" type="button" onclick="window.location.href='{{ url('/observasi/form3') }}'">Selanjutnya</button>
+
+          <!-- <button class="btn btn-primary" href="{{ url('/observasi/form2')}}">Selanjutnya</button> -->
         </div>
       </form>
     </div>
