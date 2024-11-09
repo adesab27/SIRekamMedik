@@ -8,19 +8,19 @@
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/style.css"> <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js" defer></script>
 </head>
 
 <body>
     <!-- Navbar -->
     @include("header")
-    <!-- /.navbar -->
+    <!-- /.navbar -->
+    
     <div class="container mt-4">
-        <!-- container -->
         @include("container")
-        <!-- /.container-->
         <h3 class="text-center mt-4">Registrasi Pasien Baru</h3>
+        
         <form class="mt-4" action="{{ route('datapasien') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
@@ -62,21 +62,17 @@
                 <button class="btn btn-primary" type="submit">Simpan Data</button>
             </div>
         </form>
-
     </div>
+
+    <!-- Alert Script -->
     <script>
         @if (session('success'))
-                    < div class="alert alert-success" >
-                {{ session('success') }}
-            </div >
+            alert("{{ session('success') }}");
         @endif
 
         @if (session('failed'))
-                    < div class="alert alert-danger" >
-                {{ session('failed') }}
-            </div >
+            alert("{{ session('failed') }}");
         @endif
-
     </script>
 </body>
 
