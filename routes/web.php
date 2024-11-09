@@ -1,32 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminRegistrasiController;
+use App\Http\Controllers\AdminDatapasienController;
+use App\Http\Controllers\AdminForm1Controller;
+use App\Http\Controllers\AdminForm2Controller;
+use App\Http\Controllers\AdminForm3Controller;
+use App\Http\Controllers\AdminForm4Controller;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/registrasi', [AdminRegistrasiController::class,'index']);
+Route::get('/datapasien', [AdminDatapasienController::class, 'index'])->name('datapasien');
+Route::get('/observasi/form1', [AdminForm1Controller::class,'index']);
+Route::get('/observasi/form2', [AdminForm2Controller::class,'index']);
+Route::get('/observasi/form3', [AdminForm3Controller::class,'index']);
+Route::get('/observasi/form4', [AdminForm4Controller::class,'index']);
 
+// Route::get('/registrasi', [AdminRegistrasiController::class, 'index'])->name('registrasibaru');
+// Route::get('/registrasi', [AdminRegistrasiController::class, 'add'])->name('addregistrasibaru');
+// Route::post('/datapasien', [AdminRegistrasiController::class, 'create'])->name('datapasien');
+// Route::get('/datapasien', [AdminRegistrasiController::class, 'create'])->name('datapasien');
+// Route::get('/registrasi', [App\Http\Controllers\AdminRegistrasiController::class, 'add'])->name('addregistrasi');
 
-Route::get('/registrasi', function () {
-    return view('registrasi');
-});
-
-Route::get('/datapasien', function () {
-    return view('datapasien');
-});
-
-Route::get('/observasi/form1', function () {
-    return view('observasi/form1');
-});
-
-Route::get('/observasi/form2', function () {
-    return view('observasi/form2');
-});
-
-Route::get('/observasi/form3', function () {
-    return view('observasi/form3');
-});
-
-Route::get('/observasi/form4', function () {
-    return view('observasi/form4');
-});
+Route::get('/registrasi', [AdminRegistrasiController::class, 'add'])->name('addregistrasibaru');
+Route::post('/datapasien', [AdminRegistrasiController::class, 'create'])->name('datapasien');

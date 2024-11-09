@@ -8,20 +8,18 @@
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/style.css"> <!-- Link to the external CSS file -->
-    <script src="assets/script.js" defer></script>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
     <!-- Navbar -->
     @include("header")
-    <!-- /.navbar -->
+    <!-- /.navbar -->
+    
     <div class="container mt-4">
         <!-- container -->
         @include("container")
         <!-- /.container-->
-    </div>
-    <div class="container mt-4 table-container">
         <h3 class="text-center mt-4">Data Pasien</h3>
         <table class="table table-striped" id="dataPasienTable">
             <thead>
@@ -37,20 +35,33 @@
                     <th>Hasil Observasi</th>
                 </tr>
             </thead>
-            <tbody id="dataPasienBody">
-                <!-- Data pasien akan diisi di sini -->
+            <tbody>
+                @foreach ($data as $index => $d)
+                    <tr>
+                        <td>{{ $index + 1 + ($data->currentPage() - 1) * $data->perPage() }}</td>
+                        <td>{{ $d->namaPasien }}</td>
+                        <td>{{ $d->tanggalLahir }}</td>
+                        <td>{{ $d->alamatPasien }}</td>
+                        <td>{{ $d->nomorHandphone }}</td>
+                        <td>{{ $d->keluhan }}</td>
+                        <td>{{ $d->keperluan }}</td>
+                        <td>
+                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-trash-alt" onclick="deleteData({{ $index + 1 }})" style="cursor: pointer;"></i>
+                            <a href="form1.html" class="icon-link">
+                                <i class="fas fa-file-alt"></i>
+                            </a>
+                        </td>
+                        <td><i class="fas fa-info-circle"></i></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mt-3 mb-3" id="paginationContainer">
-        <p class="mb-0" id="paginationInfo"></p>
-        <nav aria-label="Page navigation">
-            <ul class="pagination pagination-rounded" id="pagination"></ul>
-        </nav>
-    </div>
-
-    </div>
+    <!-- Pagination links -->
+    <div class="d-flex justify-content-center">
+        {{ $data->links() }}
     </div>
 </body>
 
