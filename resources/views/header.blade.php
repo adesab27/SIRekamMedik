@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav" href="#">
                         <img alt="User Profile Picture" class="rounded-circle" height="50"
                             src="{{ asset('assets/img/profile-klinik.png')}}" width="50" />
                     </a>

@@ -23,6 +23,15 @@ body {
     border: 1px solid #0052cc;
     color: #0052cc;
 }
+.nav-link:hover {
+    background-color: #f0f0f0; /* Change this color as per your design */
+}
+
+.nav-link.active {
+    background-color: #007bff; /* Change active tab color */
+    color: white; /* Active tab text color */
+}
+
 .action-icons i {
     margin-right: 10px;
 }
