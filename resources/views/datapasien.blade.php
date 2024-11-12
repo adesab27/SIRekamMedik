@@ -49,7 +49,7 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-link p-0 text-danger"><i class="fas fa-trash-alt"></i></button>
               </form>
-              <a href="form1.html" class="icon-link"><i class="fas fa-file-alt"></i></a>
+              <a href="{{ route('form1') }}" class="icon-link"><i class="fas fa-file-alt"></i></a>
             </td>
             <td><i class="fas fa-info-circle"></i></td>
           </tr>
