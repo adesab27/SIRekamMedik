@@ -9,30 +9,26 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/style.css">
-    <script src="js/app.js" defer></script>
+    <script src="assets/script.js" defer></script>
 </head>
 
 <body>
-    <!-- Navbar -->
-    @include("header")
-    <!-- /.navbar -->
-
     <div class="container mt-4">
-        @include("container")
-        <h3 class="text-center mt-4">Registrasi Pasien Baru</h3>
-
-        <form class="mt-4" action="{{ route('datapasien') }}" method="POST" enctype="multipart/form-data">
+        <h3 class="text-center mt-4">Edit Data Pasien</h3>
+        <form class="mt-4" action="{{ route('updateDatapasien', $pasien->id) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
-            <div class="col-md-6">
+                <div class="col-md-6">
                     <label for="namaPasien" class="form-label">Nama Pasien</label>
                     <input name="namaPasien" class="form-control" id="namaPasien" placeholder="Masukkan Nama"
-                        type="text" required oninput="validateName(event)" />
-                    <small id="nameError" class="text-danger" style="display: none;">Hanya huruf yang diizinkan!</small>
+                        type="text" value="{{ $pasien->namaPasien }}" required oninput="validateName(event)"  />
+                        <small id="nameError" class="text-danger" style="display: none;">Hanya huruf yang diizinkan!</small>
                 </div>
                 <div class="col-md-6">
                     <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                    <input name="tanggalLahir" class="form-control" id="tanggalLahir" type="date" required
+                    <input name="tanggalLahir" class="form-control" id="tanggalLahir" type="date"
+                        value="{{ $pasien->tanggalLahir }}" equired
                         max="{{ date('Y-m-d') }}" />
                 </div>
             </div>
@@ -40,32 +36,34 @@
                 <div class="col-md-6">
                     <label for="alamatPasien" class="form-label">Alamat Pasien</label>
                     <input name="alamatPasien" class="form-control" id="alamatPasien"
-                        placeholder="Kelurahan, Kecamatan, Kabupaten" type="text" required />
+                        placeholder="Kelurahan, Kecamatan, Kabupaten" type="text" value="{{ $pasien->alamatPasien }}"
+                        required />
                 </div>
                 <div class="col-md-6">
                     <label for="nomorHandphone" class="form-label">Nomor Handphone</label>
                     <input name="nomorHandphone" class="form-control" id="nomorHandphone" placeholder="081234567890"
-                        type="tel" required oninput="validatePhoneNumber(event)" />
-                    <small id="phoneError" class="text-danger" style="display: none;">Hanya angka yang
-                        diizinkan!</small>
+                        type="tel" value="{{ $pasien->nomorHandphone }}" oninput="validatePhoneNumber(event)" />
+                    <small id="phoneError" class="text-danger" style="display: none;">Hanya angka yang diizinkan!</small>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="keluhan" class="form-label">Keluhan</label>
                     <textarea name="keluhan" class="form-control" id="keluhan"
-                        placeholder="Jelaskan keluhan yang ingin dikonsultasikan...." rows="3"></textarea>
+                        placeholder="Jelaskan keluhan yang ingin dikonsultasikan...."
+                        rows="3">{{ $pasien->keluhan }}</textarea>
                 </div>
                 <div class="col-md-6">
                     <label for="keperluan" class="form-label">Keperluan</label>
                     <textarea name="keperluan" class="form-control" id="keperluan"
-                        placeholder="Jelaskan Keperluan yang dibutuhkan..." rows="3"></textarea>
+                        placeholder="Jelaskan Keperluan yang dibutuhkan..." rows="3">{{ $pasien->keperluan }}</textarea>
                 </div>
             </div>
             <div class="text-end">
                 <button class="btn btn-primary" type="submit">Simpan Data</button>
             </div>
         </form>
+
     </div>
 
     <!-- Alert Script -->
@@ -77,6 +75,7 @@
         @if (session('failed'))
             alert("{{ session('failed') }}");
         @endif
+
         // Fungsi untuk memastikan hanya angka yang dimasukkan pada input nomor telepon
         function validatePhoneNumber(event) {
             const input = event.target; // Mendapatkan elemen input

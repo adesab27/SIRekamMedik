@@ -15,11 +15,10 @@ Route::get('/observasi/form2', [AdminForm2Controller::class,'index']);
 Route::get('/observasi/form3', [AdminForm3Controller::class,'index']);
 Route::get('/observasi/form4', [AdminForm4Controller::class,'index']);
 
-// Route::get('/registrasi', [AdminRegistrasiController::class, 'index'])->name('registrasibaru');
-// Route::get('/registrasi', [AdminRegistrasiController::class, 'add'])->name('addregistrasibaru');
-// Route::post('/datapasien', [AdminRegistrasiController::class, 'create'])->name('datapasien');
-// Route::get('/datapasien', [AdminRegistrasiController::class, 'create'])->name('datapasien');
-// Route::get('/registrasi', [App\Http\Controllers\AdminRegistrasiController::class, 'add'])->name('addregistrasi');
-
 Route::get('/registrasi', [AdminRegistrasiController::class, 'add'])->name('addregistrasibaru');
 Route::post('/datapasien', [AdminRegistrasiController::class, 'create'])->name('datapasien');
+
+
+Route::get('/datapasien/edit/{id}', [AdminDatapasienController::class, 'editDatapasien'])->name('editDatapasien');
+Route::post('/datapasien/update/{id}', [AdminDatapasienController::class, 'updateDatapasien'])->name('updateDatapasien');
+Route::delete('/datapasien/delete/{id}', [AdminDatapasienController::class, 'delete'])->name('deleteDatapasien');
