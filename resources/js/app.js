@@ -65,11 +65,11 @@ function checkPregnancyDuration() {
 function confirmDelete(event) {
     const userConfirmed = confirm("Are you sure you want to delete this data?");
     if (userConfirmed) {
-        alert("Data will be deleted."); // Show alert confirming deletion
-        return true; // Allow form submission
+        alert("Data will be deleted."); 
+        return true; 
     } else {
-        event.preventDefault(); // Prevent form submission if the user cancels
-        alert("Data deletion canceled."); // Show alert canceling deletion
+        event.preventDefault();
+        alert("Data deletion canceled."); 
         return false;
     }
 }
