@@ -14,189 +14,212 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
-    <script src="assets/script.js" defer></script>
-    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
   </head>
   <body>
     <!-- Navbar -->
     @include("header")
-    <!-- /.navbar -->
+    
     <div class="container">
-    <!-- riwayat -->
-    @include("observasi/riwayat")
-    <!-- /.riwayat-->
-      <form action="form3.html">
-        <div class="mb-3 row">
-          <div class="col-md-6">
-            <label class="form-label" for="usiaIbu">
-              Usia Ibu Ketika Hamil
-            </label>
-            <input class="form-control" id="usiaIbu" type="text" />
-          </div>
-          <div class="col-md-6">
-            <label class="form-label" for="beratBadanIbu">
-              Berat Badan Ibu Ketika Hamil
-            </label>
-            <input class="form-control" id="beratBadanIbu" type="text" />
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="hasilPemeriksaan">
-            Hasil Pemeriksaan TORSCH (Jika Ada)
-          </label>
-          <textarea
-            class="form-control"
-            id="hasilPemeriksaan"
-            rows="3"
-          ></textarea>
-        </div>
-        <div class="mb-3">
-          <label class="form-label"> Keluhan Saat Hamil (Checklist) </label>
-          <div class="form-check">
-            <input class="form-check-input" id="keluhan1" type="checkbox" />
-            <label class="form-check-label" for="keluhan1">
-              Pernah Mengalami Keguguran
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" id="keluhan2" type="checkbox" />
-            <label class="form-check-label" for="keluhan2">
-              Mengalami stress psikologis, sakit atau komplikasi
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" id="keluhan3" type="checkbox" />
-            <label class="form-check-label" for="keluhan3">
-              Mengkonsumsi obat-obatan selama kehamilan
-            </label>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Proses Persalinan</label>
-        <div class="form-check">
-            <input class="form-check-input" id="persalinan1" type="radio" name="persalinan" value="spontan" onchange="checkPregnancyDuration()" />
-            <label class="form-check-label" for="persalinan1">Spontan</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" id="persalinan2" type="radio" name="persalinan" value="forceps" onchange="checkPregnancyDuration()" />
-            <label class="form-check-label" for="persalinan2">Forceps</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" id="persalinan3" type="radio" name="persalinan" value="vacuum" onchange="checkPregnancyDuration()" />
-            <label class="form-check-label" for="persalinan3">Vacuum</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" id="persalinan4" type="radio" name="persalinan" value="c-section" onchange="checkPregnancyDuration()" />
-            <label class="form-check-label" for="persalinan4">C-Section</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" id="persalinan5" type="radio" name="persalinan" value="pre-mature" onchange="checkPregnancyDuration()" />
-            <label class="form-check-label" for="persalinan5">Pre-mature</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" id="persalinan6" type="radio" name="persalinan" value="post-mature" onchange="checkPregnancyDuration()" />
-            <label class="form-check-label" for="persalinan6">Post-mature</label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" id="persalinan7" type="radio" name="persalinan" value="full-term" onchange="checkPregnancyDuration()" />
-            <label class="form-check-label" for="persalinan7">Full-term</label>
-        </div>
-        <div class="mb-3" id="lamaKehamilanContainer" style="display: none;">
-            <label class="form-label" for="lamaKehamilan">Lama Kehamilan (dalam minggu)</label>
-            <input class="form-control" id="lamaKehamilan" type="number" min="1" />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">
-            Kondisi Lahir (isi sesuai kondisi dan centang yang diperlukan)
-          </label>
-          <div class="row">
-            <div class="col-md-3">
-              <label class="form-label" for="beratBadanLahir">
-                Berat Badan
-              </label>
-              <input
-                class="form-control"
-                id="beratBadanLahir"
-                placeholder="kg"
-                type="text"
-              />
-            </div>
-            <div class="col-md-3">
-              <label class="form-label" for="panjangBadanLahir">
-                Panjang Badan
-              </label>
-              <input
-                class="form-control"
-                id="panjangBadanLahir"
-                placeholder="cm"
-                type="text"
-              />
-            </div>
-            <div class="col-md-3">
-              <label class="form-label" for="lingkarKepalaLahir">
-                Lingkar Kepala
-              </label>
-              <input
-                class="form-control"
-                id="lingkarKepalaLahir"
-                placeholder="cm"
-                type="text"
-              />
-            </div>
-            <div class="col-md-3">
-              <label class="form-label" for="skorAPGAR"> Skor APGAR </label>
-              <input class="form-control" id="skorAPGAR" type="text" />
-            </div>
-          </div>
-        </div>
-        <div class="mb-3">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              id="kondisiLahir1"
-              type="checkbox"
-            />
-            <label class="form-check-label" for="kondisiLahir1">
-              Komplikasi / Kesulitan selama proses kelahiran
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              id="kondisiLahir2"
-              type="checkbox"
-            />
-            <label class="form-check-label" for="kondisiLahir2">
-              Langsung menangis ketika lahir
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              id="kondisiLahir3"
-              type="checkbox"
-            />
-            <label class="form-check-label" for="kondisiLahir3">
-              Memerlukan perawatan khusus setelah masa kelahiran
-            </label>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="catatanTambahan">
-            Catatan Tambahan
-          </label>
-          <textarea
-            class="form-control"
-            id="catatanTambahan"
-            rows="3"
-          ></textarea>
-        </div>
-        <div class="text-end">
-        <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
-        <button class="btn btn-primary" type="button" onclick="window.location.href='{{ url('/observasi/form3') }}'">Selanjutnya</button>
+      <!-- Riwayat -->
+      @include("observasi/riwayat")
 
-          <!-- <button class="btn btn-primary" href="{{ url('/observasi/form2')}}">Selanjutnya</button> -->
+      <!-- Form Data Tambahan -->
+      <form method="POST" action="{{ route('form2.store') }}">
+        @csrf
+        <div class="form-section">
+          <h5>Data Tambahan</h5>
+          
+          <!-- Riwayat Diagnosa -->
+          <div class="form-group">
+            <label for="riwayatDiagnosa">
+              Riwayat Diagnosa
+              <small> (apabila sudah ada diagnosa) </small>
+            </label>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="diagnosaOleh"> Diagnosa diberikan oleh : </label>
+                <input
+                  class="form-control"
+                  name="diagnosaOleh"
+                  id="diagnosaOleh"
+                  placeholder="Nama dokter atau ahli"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="diagnosaUsia">
+                  Diusia berapa diagnosa diberikan
+                </label>
+                <input
+                  class="form-control"
+                  name="diagnosaUsia"
+                  id="diagnosaUsia"
+                  placeholder="Tanggal atau umur"
+                  type="text"
+                />
+              </div>
+              <div class="col-12 form-group">
+                <label for="diagnosaDiberikan">
+                  Diagnosa yang diberikan :
+                </label>
+                <textarea
+                  class="form-control"
+                  name="diagnosaDiberikan"
+                  id="diagnosaDiberikan"
+                  placeholder="Masukkan Diagnosa yang diberikan"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Saudara Kandung -->
+          <div class="form-group">
+            <label for="saudaraKandung"> Saudara Kandung </label>
+            <div class="row">
+              <div class="col-md-3 form-group">
+                <label for="namaSaudara"> Nama </label>
+                <input
+                  class="form-control"
+                  name="namaSaudara"
+                  id="namaSaudara"
+                  placeholder="Nama saudara"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-3 form-group">
+                <label for="usiaSaudara"> Usia </label>
+                <input
+                  class="form-control"
+                  name="usiaSaudara"
+                  id="usiaSaudara"
+                  placeholder="Usia"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-3 form-group">
+                <label for="jenisKelaminSaudara"> Jenis Kelamin </label>
+                <input
+                  class="form-control"
+                  name="jenisKelaminSaudara"
+                  id="jenisKelaminSaudara"
+                  placeholder="Jenis Kelamin"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-3 form-group">
+                <label for="specialNeedSaudara"> Special Need </label>
+                <input
+                  class="form-control"
+                  name="specialNeedSaudara"
+                  id="specialNeedSaudara"
+                  placeholder="Special Need"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Sekolah -->
+          <div class="form-group">
+            <label for="sekolah"> Bila anak sudah sekolah </label>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="namaSekolah"> Nama sekolah </label>
+                <input
+                  class="form-control"
+                  name="namaSekolah"
+                  id="namaSekolah"
+                  placeholder="Nama sekolah"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="kelas"> Kelas </label>
+                <input
+                  class="form-control"
+                  name="kelas"
+                  id="kelas"
+                  placeholder="Kelas"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="namaGuru"> Nama Guru </label>
+                <input
+                  class="form-control"
+                  name="namaGuru"
+                  id="namaGuru"
+                  placeholder="Nama Guru"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="telpGuru"> Telp </label>
+                <input
+                  class="form-control"
+                  name="telpGuru"
+                  id="telpGuru"
+                  placeholder="Telp"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Terapi yang telah / sedang dilakukan -->
+          <div class="form-group">
+            <label for="terapi"> Terapi yang telah / sedang dilakukan </label>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="jenisTerapi"> Jenis Terapi </label>
+                <input
+                  class="form-control"
+                  name="jenisTerapi"
+                  id="jenisTerapi"
+                  placeholder="Jenis Terapi"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="namaTerapis"> Nama Terapis / klinik </label>
+                <input
+                  class="form-control"
+                  name="namaTerapis"
+                  id="namaTerapis"
+                  placeholder="Nama Terapis / klinik"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="durasiTerapi"> Durasi </label>
+                <input
+                  class="form-control"
+                  name="durasiTerapi"
+                  id="durasiTerapi"
+                  placeholder="Durasi"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="telpTerapis"> Telp </label>
+                <input
+                  class="form-control"
+                  name="telpTerapis"
+                  id="telpTerapis"
+                  placeholder="Telp"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Navigasi -->
+        <div class="text-end">
+          <button class="btn btn-secondary me-2" type="button" onclick="window.history.back()">Sebelumnya</button>
+          <button class="btn btn-primary" type="submit">Selanjutnya</button>
         </div>
       </form>
     </div>

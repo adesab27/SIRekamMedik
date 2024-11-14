@@ -25,322 +25,85 @@
     <!-- riwayat -->
     @include("observasi/riwayat")
     <!-- /.riwayat-->
-      <form action="form2.html">
-        <div class="form-section">
-          <h5>Data Anak</h5>
-          <div class="row">
+    <form action="{{ route('form1.store') }}" method="POST">
+    @csrf
+    <div class="form-section">
+        <h5>Data Anak</h5>
+        <div class="row">
             <div class="col-md-6 form-group">
-              <label for="namaAnak"> Nama Anak </label>
-              <input
-                class="form-control"
-                id="namaAnak"
-                placeholder="Masukkan Nama"
-                type="text"
-              />
+                <label for="namaAnak">Nama Anak</label>
+                <input class="form-control" id="namaAnak" name="nama_anak" placeholder="Masukkan Nama" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="tempatLahir"> Tempat Lahir </label>
-              <input
-                class="form-control"
-                id="tempatLahir"
-                placeholder="Tempat lahir"
-                type="text"
-              />
+                <label for="tempatLahir">Tempat Lahir</label>
+                <input class="form-control" id="tempatLahir" name="tempat_lahir" placeholder="Tempat lahir" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="namaPanggilan"> Nama Panggilan anak </label>
-              <input
-                class="form-control"
-                id="namaPanggilan"
-                placeholder="Masukkan nama panggilan anak"
-                type="text"
-              />
+                <label for="namaPanggilan">Nama Panggilan Anak</label>
+                <input class="form-control" id="namaPanggilan" name="nama_panggilan" placeholder="Masukkan nama panggilan anak" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="tanggalLahir"> Tanggal Lahir </label>
-              <input
-                class="form-control"
-                id="tanggalLahir"
-                placeholder="DD/MM/YYYY"
-                type="date"
-              />
+                <label for="tanggalLahir">Tanggal Lahir</label>
+                <input class="form-control" id="tanggalLahir" name="tanggal_lahir" placeholder="DD/MM/YYYY" type="date" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="jenisKelamin"> Jenis Kelamin </label>
-              <input
-                class="form-control"
-                id="jenisKelamin"
-                placeholder="Jenis Kelamin"
-                type="text"
-              />
+                <label for="jenisKelamin">Jenis Kelamin</label>
+                <input class="form-control" id="jenisKelamin" name="jenis_kelamin" placeholder="Jenis Kelamin" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="umurAnak"> Umur Anak </label>
-              <input
-                class="form-control"
-                id="umurAnak"
-                placeholder="Dalam Tahun dan bulan"
-                type="text"
-              />
+                <label for="umurAnak">Umur Anak</label>
+                <input class="form-control" id="umurAnak" name="umur_anak" placeholder="Dalam Tahun dan bulan" type="text" />
             </div>
-          </div>
         </div>
-        <div class="form-section">
-          <h5>Data Orang Tua</h5>
-          <div class="row">
+    </div>
+
+    <div class="form-section">
+        <h5>Data Orang Tua</h5>
+        <div class="row">
             <div class="col-md-6 form-group">
-              <label for="namaAyah"> Nama Ayah </label>
-              <input
-                class="form-control"
-                id="namaAyah"
-                placeholder="Masukkan Nama"
-                type="text"
-              />
+                <label for="namaAyah">Nama Ayah</label>
+                <input class="form-control" id="namaAyah" name="nama_ayah" placeholder="Masukkan Nama Ayah" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="namaIbu"> Nama Ibu </label>
-              <input
-                class="form-control"
-                id="namaIbu"
-                placeholder="Masukkan Nama"
-                type="text"
-              />
+                <label for="namaIbu">Nama Ibu</label>
+                <input class="form-control" id="namaIbu" name="nama_ibu" placeholder="Masukkan Nama Ibu" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="usiaAyah"> Usia Ayah </label>
-              <input
-                class="form-control"
-                id="usiaAyah"
-                placeholder="Masukkan Usia"
-                type="text"
-              />
+                <label for="usiaAyah">Usia Ayah</label>
+                <input class="form-control" id="usiaAyah" name="usia_ayah" placeholder="Masukkan Usia Ayah" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="usiaIbu"> Usia Ibu </label>
-              <input
-                class="form-control"
-                id="usiaIbu"
-                placeholder="Masukkan Usia"
-                type="text"
-              />
+                <label for="usiaIbu">Usia Ibu</label>
+                <input class="form-control" id="usiaIbu" name="usia_ibu" placeholder="Masukkan Usia Ibu" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="agamaAyah"> Agama </label>
-              <input
-                class="form-control"
-                id="agamaAyah"
-                placeholder="Masukkan Agama"
-                type="text"
-              />
+                <label for="agamaAyah">Agama Ayah</label>
+                <input class="form-control" id="agamaAyah" name="agama_ayah" placeholder="Masukkan Agama Ayah" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="agamaIbu"> Agama </label>
-              <input
-                class="form-control"
-                id="agamaIbu"
-                placeholder="Masukkan Agama"
-                type="text"
-              />
+                <label for="agamaIbu">Agama Ibu</label>
+                <input class="form-control" id="agamaIbu" name="agama_ibu" placeholder="Masukkan Agama Ibu" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="pekerjaanAyah"> Pekerjaan </label>
-              <input
-                class="form-control"
-                id="pekerjaanAyah"
-                placeholder="Masukkan Pekerjaan Ayah"
-                type="text"
-              />
+                <label for="pekerjaanAyah">Pekerjaan Ayah</label>
+                <input class="form-control" id="pekerjaanAyah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" type="text" />
             </div>
             <div class="col-md-6 form-group">
-              <label for="pekerjaanIbu"> Pekerjaan </label>
-              <input
-                class="form-control"
-                id="pekerjaanIbu"
-                placeholder="Masukkan Pekerjaan Ibu"
-                type="text"
-              />
+                <label for="pekerjaanIbu">Pekerjaan Ibu</label>
+                <input class="form-control" id="pekerjaanIbu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" type="text" />
             </div>
             <div class="col-12 form-group">
-              <label for="alamatLengkap"> Alamat lengkap </label>
-              <textarea
-                class="form-control"
-                id="alamatLengkap"
-                placeholder="Masukkan Alamat lengkap"
-                rows="3"
-              ></textarea>
+                <label for="alamatLengkap">Alamat Lengkap</label>
+                <textarea class="form-control" id="alamatLengkap" name="alamat_lengkap" placeholder="Masukkan Alamat lengkap" rows="3"></textarea>
             </div>
-          </div>
         </div>
-        <div class="form-section">
-          <h5>Data Tambahan</h5>
-          <div class="form-group">
-            <label for="riwayatDiagnosa">
-              Riwayat Diagnosa
-              <small> (apabila sudah ada diagnosa) </small>
-            </label>
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <label for="diagnosaOleh"> Diagnosa diberikan oleh : </label>
-                <input
-                  class="form-control"
-                  id="diagnosaOleh"
-                  placeholder="Nama dokter atau ahli"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="diagnosaUsia">
-                  Diusia berapa diagnosa diberikan
-                </label>
-                <input
-                  class="form-control"
-                  id="diagnosaUsia"
-                  placeholder="Tanggal atau umur"
-                  type="text"
-                />
-              </div>
-              <div class="col-12 form-group">
-                <label for="diagnosaDiberikan">
-                  Diagnosa yang diberikan :
-                </label>
-                <textarea
-                  class="form-control"
-                  id="diagnosaDiberikan"
-                  placeholder="Masukkan Diagnosa yang diberikan"
-                  rows="3"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="saudaraKandung"> Saudara Kandung </label>
-            <div class="row">
-              <div class="col-md-3 form-group">
-                <label for="namaSaudara"> Nama </label>
-                <input
-                  class="form-control"
-                  id="namaSaudara"
-                  placeholder="Nama saudara"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-3 form-group">
-                <label for="usiaSaudara"> Usia </label>
-                <input
-                  class="form-control"
-                  id="usiaSaudara"
-                  placeholder="Usia"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-3 form-group">
-                <label for="jenisKelaminSaudara"> Jenis Kelamin </label>
-                <input
-                  class="form-control"
-                  id="jenisKelaminSaudara"
-                  placeholder="Jenis Kelamin"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-3 form-group">
-                <label for="specialNeedSaudara"> Special Need </label>
-                <input
-                  class="form-control"
-                  id="specialNeedSaudara"
-                  placeholder="Special Need"
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="sekolah"> Bila anak sudah sekolah </label>
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <label for="namaSekolah"> Nama sekolah </label>
-                <input
-                  class="form-control"
-                  id="namaSekolah"
-                  placeholder="Nama sekolah"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="kelas"> Kelas </label>
-                <input
-                  class="form-control"
-                  id="kelas"
-                  placeholder="Kelas"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="namaGuru"> Nama Guru </label>
-                <input
-                  class="form-control"
-                  id="namaGuru"
-                  placeholder="Nama Guru"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="telpGuru"> Telp </label>
-                <input
-                  class="form-control"
-                  id="telpGuru"
-                  placeholder="Telp"
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="terapi"> Terapi yang telah / sedang dilakukan </label>
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <label for="jenisTerapi"> Jenis Terapi </label>
-                <input
-                  class="form-control"
-                  id="jenisTerapi"
-                  placeholder="Jenis Terapi"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="namaTerapis"> Nama Terapis / klinik </label>
-                <input
-                  class="form-control"
-                  id="namaTerapis"
-                  placeholder="Nama Terapis / klinik"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="durasiTerapi"> Durasi </label>
-                <input
-                  class="form-control"
-                  id="durasiTerapi"
-                  placeholder="Durasi"
-                  type="text"
-                />
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="telpTerapis"> Telp </label>
-                <input
-                  class="form-control"
-                  id="telpTerapis"
-                  placeholder="Telp"
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-end">
-          <!-- <button class="btn btn-primary" href="{{ url('/observasi/form2')}}">Selanjutnya</button> -->
-          <button class="btn btn-primary" type="button" onclick="window.location.href='{{ url('/observasi/form2') }}'">Selanjutnya</button>
-        </div>
-      </form>
+    </div>
+
+    <div class="text-end">
+        <button class="btn btn-primary" type="submit">Selanjutnya</button>
+    </div>
+</form>
+
     </div>
   </body>
 </html>

@@ -4,6 +4,9 @@
         <h3 class="nav-link "> Data Anak </h3>
     </li>
     <li class="nav-item">
+        <h3 class="nav-link "> Data Tambahan </h3>
+    </li>
+    <li class="nav-item">
         <h3 class="nav-link"> Riwayat Kehamilan dan Kelahiran </h3>
     </li>
     <li class="nav-item">
