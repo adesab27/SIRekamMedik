@@ -21,10 +21,11 @@
         @include("container")
         <h3 class="text-center mt-4">Registrasi Pasien Baru</h3>
 
-        <form class="mt-4" action="{{ route('datapasien') }}" method="POST" enctype="multipart/form-data">
+        <!-- <form action="{{ route('datapasien') }}" method="POST"> -->
+        <form action="{{ route('registrasi.create') }}" method="POST">
             @csrf
             <div class="row mb-3">
-            <div class="col-md-6">
+                <div class="col-md-6">
                     <label for="namaPasien" class="form-label">Nama Pasien</label>
                     <input name="namaPasien" class="form-control" id="namaPasien" placeholder="Masukkan Nama"
                         type="text" required oninput="validateName(event)" />

@@ -9,8 +9,7 @@ class AdminForm3Controller extends Controller
 {
     public function index()
     {
-        // Menampilkan halaman form atau daftar data (sesuai kebutuhan Anda)
-        return view('observasi.form3.index'); // Sesuaikan dengan view yang benar
+        return view('observasi.form3.index'); 
     }
 
     public function store(Request $request)
