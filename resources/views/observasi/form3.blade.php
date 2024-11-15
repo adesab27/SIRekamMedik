@@ -12,7 +12,7 @@
     />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
-    <<script src="{{ asset('assets/script.js') }}" defer></script>
+
 
 </head>
 <body>
@@ -24,7 +24,7 @@
         @include("observasi/riwayat")
         <!-- /.riwayat-->
         
-        <form action="{{ route('observasi.form3.store') }}" method="POST">
+        <form action="form3.html" method="POST">
             @csrf
             <div class="mb-3 row">
                 <div class="col-md-6">
