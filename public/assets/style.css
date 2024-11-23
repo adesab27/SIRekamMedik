@@ -20,12 +20,12 @@ body {
     color: #0052cc;
 }
 .nav-link:hover {
-    background-color: #f0f0f0; /* Change this color as per your design */
+    background-color: #f0f0f0; 
 }
 
 .nav-link.active {
-    background-color: #007bff; /* Change active tab color */
-    color: white; /* Active tab text color */
+    background-color: #007bff; 
+    color: white; 
 }
 
 
@@ -83,33 +83,30 @@ body {
 
 /* tabel  */
 
-/* Add spacing to the left and right of the table */
 .table-container {
-    padding-left: 15px; /* Adjust the value as needed */
+    padding-left: 15px; 
     padding-right: 15px;
 }
 
 .table-container, 
 #paginationContainer {
-    padding-left: 15px; /* Adjust the value as needed */
+    padding-left: 15px; 
     padding-right: 15px;
 }
 
-/* Alternatively, you could add margin to the table directly */
 #dataPasienTable {
-    margin-left: 15px; /* Adjust the value as needed */
+    margin-left: 15px; 
     margin-right: 15px;
 }
-/* Membuat tabel scrollable pada layar kecil */
+
 .table-responsive {
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-    -webkit-overflow-scrolling: touch; /* Membuat scroll lebih mulus pada perangkat sentuh */
-    width: 100%; /* Pastikan tabel menyesuaikan lebar layar */
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+    width: 100%; 
 }
 
-/* Memastikan tabel tidak melebihi lebar layar */
 #dataPasienTable {
-    min-width: 1000px; /* Atur lebar minimum tabel jika dibutuhkan */
+    min-width: 1000px; 
 }
 
 
@@ -152,52 +149,49 @@ body {
 
 @media (max-width: 768px) {
     .navbar-collapse {
-        text-align: center; /* Navbar links akan diratakan di tengah */
+        text-align: center; 
     }
 
     .navbar-nav {
-        flex-direction: column; /* Mengatur item navbar menjadi vertikal */
-        margin-top: 10px; /* Memberikan sedikit jarak di atas */
+        flex-direction: column; 
+        margin-top: 10px; 
     }
 
     .navbar-nav .nav-item {
-        margin-bottom: 10px; /* Memberikan jarak antara item navbar */
+        margin-bottom: 10px; 
     }
 
     .navbar-toggler {
-        border-color: #fff; /* Mengubah warna border tombol navbar */
+        border-color: #fff; 
     }
 
     .navbar-toggler-icon {
-        background-color: #fff; /* Mengubah warna icon hamburger menjadi putih */
+        background-color: #fff; 
     }
 
-    /* Navbar links yang telah di-collapse akan muncul di atas navbar */
+    
     .navbar-collapse.collapse {
-        display: block !important; /* Memastikan navbar selalu tampil di perangkat kecil */
-    }
+        display: block !important; 
 
     .navbar-nav .nav-link {
-        font-size: 16px; /* Ukuran font lebih kecil untuk perangkat kecil */
-    }
+        font-size: 16px;
     body {
-        font-size: 12px; /* Ukuran font lebih kecil untuk layar ponsel */
+        font-size: 12px; 
     }
 
     .table th, .table td {
-        font-size: 11px; /* Ukuran font tabel lebih kecil untuk layar ponsel */
+        font-size: 11px; 
     }
 
     .navbar-brand img {
-        height: 35px; /* Logo lebih kecil pada layar ponsel */
+        height: 35px;
     }
 
     .navbar-nav .nav-link {
-        font-size: 12px; /* Ukuran font navbar lebih kecil */
+        font-size: 12px; 
     }
 }
 
-/* Menyembunyikan logo pada layar lebih kecil dari 992px (laptop ke bawah) */
 @media (max-width: 991px) {
     .navbar-brand img {
         display: none;
@@ -206,18 +200,18 @@ body {
 
 @media (max-width: 1024px) {
     body {
-        font-size: 14px; /* Ukuran font lebih kecil untuk layar tablet */
+        font-size: 14px; 
     }
 
     .table th, .table td {
-        font-size: 12px; /* Ukuran font tabel lebih kecil untuk layar tablet */
+        font-size: 12px; 
     }
 
     .navbar-brand img {
-        height: 40px; /* Logo lebih kecil pada layar tablet */
+        height: 40px; 
     }
 
     .navbar-nav .nav-link {
-        font-size: 14px; /* Ukuran font menu navbar lebih kecil */
+        font-size: 14px; 
     }
 }
