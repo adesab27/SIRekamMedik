@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminRegistrasiController extends Controller
 {
     public function index()
     {
-        return view('registrasi'); // Tampilkan halaman registrasi
+        if (Auth::check()) {
+            $username = Auth::user()->name;
+            return view('registrasi', ['username' => $username]);
+        }else {
+        return redirect()->route('indexLogin')->with('error', 'Silahkan Login'); 
+        }
     }
 
     public function add()
@@ -39,7 +45,7 @@ class AdminRegistrasiController extends Controller
 
         // Pastikan menggunakan nama rute yang benar
         return $add
-            ? redirect()->route('addregistrasibaru')->with('success', 'Data pasien berhasil ditambahkan!')
-            : redirect()->route('addregistrasibaru')->with('failed', 'Data pasien gagal ditambahkan!');
+            ? redirect()->route('indexRegistrasi')->with('success', 'Data pasien berhasil ditambahkan!')
+            : redirect()->route('indexRegistrasi')->with('failed', 'Data pasien gagal ditambahkan!');
     }
 }
