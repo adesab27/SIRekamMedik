@@ -6,10 +6,6 @@ body {
     background-color: #0052cc;
 }
 
-.navbar-brand img {
-    height: 50px;
-}
-
 .navbar-nav .nav-link {
     color: #ffffff;
 }
@@ -31,6 +27,8 @@ body {
     background-color: #007bff; /* Change active tab color */
     color: white; /* Active tab text color */
 }
+
+
 
 .action-icons i {
     margin-right: 10px;
@@ -102,6 +100,17 @@ body {
     margin-left: 15px; /* Adjust the value as needed */
     margin-right: 15px;
 }
+/* Membuat tabel scrollable pada layar kecil */
+.table-responsive {
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* Membuat scroll lebih mulus pada perangkat sentuh */
+    width: 100%; /* Pastikan tabel menyesuaikan lebar layar */
+}
+
+/* Memastikan tabel tidak melebihi lebar layar */
+#dataPasienTable {
+    min-width: 1000px; /* Atur lebar minimum tabel jika dibutuhkan */
+}
 
 
 /* form 1 */
@@ -139,4 +148,76 @@ body {
 }
 .form-check-label {
     font-weight: normal;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        text-align: center; /* Navbar links akan diratakan di tengah */
+    }
+
+    .navbar-nav {
+        flex-direction: column; /* Mengatur item navbar menjadi vertikal */
+        margin-top: 10px; /* Memberikan sedikit jarak di atas */
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px; /* Memberikan jarak antara item navbar */
+    }
+
+    .navbar-toggler {
+        border-color: #fff; /* Mengubah warna border tombol navbar */
+    }
+
+    .navbar-toggler-icon {
+        background-color: #fff; /* Mengubah warna icon hamburger menjadi putih */
+    }
+
+    /* Navbar links yang telah di-collapse akan muncul di atas navbar */
+    .navbar-collapse.collapse {
+        display: block !important; /* Memastikan navbar selalu tampil di perangkat kecil */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px; /* Ukuran font lebih kecil untuk perangkat kecil */
+    }
+    body {
+        font-size: 12px; /* Ukuran font lebih kecil untuk layar ponsel */
+    }
+
+    .table th, .table td {
+        font-size: 11px; /* Ukuran font tabel lebih kecil untuk layar ponsel */
+    }
+
+    .navbar-brand img {
+        height: 35px; /* Logo lebih kecil pada layar ponsel */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 12px; /* Ukuran font navbar lebih kecil */
+    }
+}
+
+/* Menyembunyikan logo pada layar lebih kecil dari 992px (laptop ke bawah) */
+@media (max-width: 991px) {
+    .navbar-brand img {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    body {
+        font-size: 14px; /* Ukuran font lebih kecil untuk layar tablet */
+    }
+
+    .table th, .table td {
+        font-size: 12px; /* Ukuran font tabel lebih kecil untuk layar tablet */
+    }
+
+    .navbar-brand img {
+        height: 40px; /* Logo lebih kecil pada layar tablet */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px; /* Ukuran font menu navbar lebih kecil */
+    }
 }
