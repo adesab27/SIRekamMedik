@@ -17,10 +17,10 @@
         <div class="mb-3">
             <label class="form-label">Keluhan Saat Hamil (Checklist)</label>
             @foreach ($form3 as $f)
-            <div class="form-check">
-                <input class="form-check-input" id="keluhan1" name="{{$f->name}}" type="checkbox"/>
-                <label class="form-check-label" for="keluhan1">{{$f->value}}</label>
-            </div>  
+                <div class="form-check">
+                    <input class="form-check-input" id="keluhan1" name="{{$f->name}}" type="checkbox" />
+                    <label class="form-check-label" for="keluhan1">{{$f->value}}</label>
+                </div>
             @endforeach
         </div>
         <div class="mb-3">
@@ -44,10 +44,25 @@
                     value="c-section" />
                 <label class="form-check-label" for="persalinan4">C-Section</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" id="persalinan5" name="proses_persalinan" type="radio"
+                    value="pre-mature" />
+                <label class="form-check-label" for="persalinan5">Pre-mature</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="persalinan6" name="proses_persalinan" type="radio"
+                    value="post-mature" />
+                <label class="form-check-label" for="persalinan6">Post-mature</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="persalinan7" name="proses_persalinan" type="radio"
+                    value="full-term" />
+                <label class="form-check-label" for="persalinan7">Full-term</label>
+            </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="lamaKehamilan">Lama Kehamilan (dalam minggu)</label>
-            <input class="form-control" id="lamaKehamilan" name="lama_kehamilan" type="number" min="1" required/>
+            <input class="form-control" id="lamaKehamilan" name="lama_kehamilan" type="number" min="1" required />
         </div>
         <div class="mb-3">
             <label class="form-label">Kondisi Lahir</label>
@@ -55,21 +70,21 @@
                 <div class="col-md-3">
                     <label class="form-label" for="beratBadanLahir">Berat Badan</label>
                     <input class="form-control" id="beratBadanLahir" name="berat_badan_lahir" type="text"
-                        placeholder="kg" required/>
+                        placeholder="kg" required />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="panjangBadanLahir">Panjang Badan</label>
                     <input class="form-control" id="panjangBadanLahir" name="panjang_badan_lahir" type="text"
-                        placeholder="cm" required/>
+                        placeholder="cm" required />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="lingkarKepalaLahir">Lingkar Kepala</label>
                     <input class="form-control" id="lingkarKepalaLahir" name="lingkar_kepala_lahir" type="text"
-                        placeholder="cm" required/>
+                        placeholder="cm" required />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="skorAPGAR">Skor APGAR</label>
-                    <input class="form-control" id="skorAPGAR" name="skor_apgar" type="text" required/>
+                    <input class="form-control" id="skorAPGAR" name="skor_apgar" type="text" required />
                 </div>
             </div>
         </div>

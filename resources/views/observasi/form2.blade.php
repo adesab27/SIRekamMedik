@@ -108,6 +108,6 @@
   </div>
   <div class="text-end">
     <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>
-    <button class="btn btn-primary" onclick="nextStep()">Selanjutnya</button>
+    <button type="button" class="btn btn-primary" onclick="nextStep()">Selanjutnya</button>
   </div>
 </div>

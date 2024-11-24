@@ -5,14 +5,14 @@
         Apakah anak memiliki gangguan pola tidur? Jam berapa anak tidur
         malam? Jelaskan!
       </label>
-      <textarea class="form-control" id="sleepPattern" rows="3"></textarea>
+      <textarea class="form-control" id="sleepPattern" rows="3" required></textarea>
     </div>
     <div class="mb-3">
       <label class="form-label" for="wakeUpPattern">
         Berapa kali dalam semalam anak terbangun? Apa yang anak kerjakan
         ketika terbangun? Jelaskan!
       </label>
-      <textarea class="form-control" id="wakeUpPattern" rows="3"></textarea>
+      <textarea class="form-control" id="wakeUpPattern" rows="3" required></textarea>
     </div>
     <div class="mb-3">
       <label class="form-label">
@@ -34,11 +34,15 @@
           (Berikan penjelasan terkait pernyataan diatas)
         </span>
       </label>
-      <textarea class="form-control" id="additionalNotes" rows="3"></textarea>
+      <textarea name="catatan_tambahan"
+        class="form-control"
+        id="additionalNotes"
+        rows="3" required></textarea>
+    </div>
     </div>
     <div class="text-end">
-      <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>
-      <button class="btn btn-primary" type="submit">Simpan Data</button>
-    </div>
+    <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>
+    <button class="btn btn-primary" type="submit">Simpan Data</button>
+  </div>
   </div>
 </div>

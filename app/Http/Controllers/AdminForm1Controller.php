@@ -13,44 +13,21 @@ use Illuminate\Support\Facades\DB;
 
 class AdminForm1Controller extends Controller
 {
-    public function index($id) {
+    public function index($id) 
+    {
         if (Auth::check()) {
-            $cekdata = DB::table('infoanak')
-                ->where('pasien_id', $id)->get();
-            if ($cekdata->count() == 0) {
-                $username = Auth::user()->name;
-                $data = DB::table('registrasi')->where('id', $id)->first();
-                $form3 = DB::table('masterdata_checklist')->where('form', 3)->get();
-                $form4 = DB::table('masterdata_checklist')->where('form', 4)->get();
-                $form5 = DB::table('masterdata_checklist')->where('form', 5)->get();
-                return view('observasi/form1', ['data' => $data, 'form3' => $form3, 'form4' => $form4, 'form5' => $form5, 'pasien_id' => $id, 'username' => $username]);
-            } else {
-                return redirect()->route('datapasien')->with('error', 'Sudah ada data');
-            }
-        } else{
-            return redirect()->route('indexLogin')->with('error', 'Silahkan login');
+            $username = Auth::user()->name;
+            $data = DB::table('registrasi')->where('id', $id)->first();
+            $form3 = DB::table('masterdata_checklist')->where('form', 3)->get();
+            $form4 = DB::table('masterdata_checklist')->where('form', 4)->get();
+            $form5 = DB::table('masterdata_checklist')->where('form', 5)->get();
+            return view('observasi/form1', ['data'=>$data, 'form3'=>$form3, 'form4'=>$form4, 'form5'=>$form5, 'pasien_id' => $id, 'username' => $username]);
+        } else {
+            return redirect()->route('indexLogin')->with('error', 'Silahkan Login');
         }
     }
 
     public function store(Request $request) {
-        // $request->validate([
-        //     'nama_anak' => 'required|string|max:255',
-        //     'tempat_lahir' => 'required|string|max:255',
-        //     'nama_panggilan' => 'required|string|max:255',
-        //     'tanggal_lahir' => 'required|date',
-        //     'jenis_kelamin' => 'required|string|max:50',
-        //     'umur_anak' => 'required|string|max:50',
-        //     'nama_ayah' => 'required|string|max:255',
-        //     'nama_ibu' => 'required|string|max:255',
-        //     'usia_ayah' => 'required|string|max:50',
-        //     'usia_ibu' => 'required|string|max:50',
-        //     'agama_ayah' => 'required|string|max:50',
-        //     'agama_ibu' => 'required|string|max:50',
-        //     'pekerjaan_ayah' => 'required|string|max:255',
-        //     'pekerjaan_ibu' => 'required|string|max:255',
-        //     'alamat_lengkap' => 'required|string',
-        // ]);
-
         // Menyimpan data ke database
         try {
             $result = DB::transaction(function () use ($request){
@@ -155,8 +132,9 @@ class AdminForm1Controller extends Controller
             
 
         return redirect()->route('datapasien')->with('success', 'Data berhasil disimpan.');
-    // } catch (\Exception $e) {
-    //     dd($e->getMessage());
+    } catch (\Exception $e) {
+        //return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        dd($e->getMessage());
     }
 }
 }

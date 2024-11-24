@@ -1,9 +1,14 @@
 body {
     background-color: #ffffff;
 }
+/* nav tabs */
 
 .navbar {
     background-color: #0052cc;
+}
+
+.navbar-brand img {
+    height: 50px;
 }
 
 .navbar-nav .nav-link {
@@ -19,16 +24,86 @@ body {
     border: 1px solid #0052cc;
     color: #0052cc;
 }
-.nav-link:hover {
-    background-color: #f0f0f0; 
+
+/* navbar */
+
+/* Navbar background color */
+.container-fluid {
+    background-color: rgba(0, 82, 204, 1); 
+    padding: -5px;
 }
 
-.nav-link.active {
-    background-color: #007bff;
-    color: white; 
+.navbar-expand-lg{
+    background-color: rgba(0, 82, 204, 1);
+}
+/* Navbar Toggler */
+.navbar-toggler {
+    border: 0 !important;
+    background-color: rgba(0, 82, 204, 1); /* Mengatur warna latar belakang tombol toggler */
 }
 
+/* Navbar Toggler focus and active state */
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
 
+/* Navbar Toggler icon */
+.toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff; /* Warna merah pada toggler icon */
+    display: block;
+    transition: all 0.2s;
+}
+
+/* Adds space between the lines */
+.middle-bar {
+    margin: 5px auto;
+}
+
+/* Navbar opened state */
+.navbar-toggler .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+    opacity: 0;
+}
+
+.navbar-toggler .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+}
+
+/* Navbar collapsed state */
+.navbar-toggler.collapsed .top-bar {
+    transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+    opacity: 1;
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+    transform: rotate(0);
+}
+
+/* Color of Toggler when collapsed */
+.navbar-toggler.collapsed .toggler-icon {
+    background-color: #ffffff; /* Warna toggler saat collapsed */
+}
+
+/* Dropdown Menu background and text color */
+
+
+.nav-item .dropdown-item:hover {
+    background-color: rgba(0, 82, 204, 0.8); /* Memberikan efek hover pada item dropdown */
+}
 
 .action-icons i {
     margin-right: 10px;
@@ -136,34 +211,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .navbar-collapse {
-        text-align: center; 
-    }
-
-    .navbar-nav {
-        flex-direction: column; 
-        margin-top: 10px; 
-    }
-
-    .navbar-nav .nav-item {
-        margin-bottom: 10px; 
-    }
-
-    .navbar-toggler {
-        border-color: #fff; 
-    }
-
-    .navbar-toggler-icon {
-        background-color: #fff; 
-    }
-
-    .navbar-collapse.collapse {
-        display: block !important; 
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 16px; 
-    }
     body {
         font-size: 12px; 
     }
@@ -171,24 +218,8 @@ body {
     .table th, .table td {
         font-size: 11px; 
     }
-
-    .navbar-brand img {
-        height: 35px;
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 12px; 
-    }
-
     .text-center{
         font-size: 15px
-    }
-}
-
-
-@media (max-width: 991px) {
-    .navbar-brand img {
-        display: none;
     }
 }
 
@@ -199,14 +230,6 @@ body {
 
     .table th, .table td {
         font-size: 12px; 
-    }
-
-    .navbar-brand img {
-        height: 40px; 
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 14px; 
     }
     .text-center{
         font-size: 15px
