@@ -58,7 +58,7 @@
                     placeholder="Jelaskan Keperluan yang dibutuhkan..." rows="3" ></textarea>
             </div>
             <div class="text-end">
-                <button class="btn btn-primary" type="submit">Simpan Data</button>
+                <button class="btn btn-primary mb-3" type="submit">Simpan Data</button>
             </div>
         </form>
 
