@@ -106,8 +106,8 @@
       </div>
     </div>
   </div>
-  <div class="text-end">
-    <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>
+  <div class="text-end d-flex justify-content-end gap-2 mt-4">
+    <button class="btn btn-secondary" type="button" onclick="stepper.previous()">Sebelumnya</button>
     <button type="button" class="btn btn-primary" onclick="nextStep()">Selanjutnya</button>
   </div>
 </div>

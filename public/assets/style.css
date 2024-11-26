@@ -235,3 +235,124 @@ body {
         font-size: 15px
     }
 }
+
+/* stepper  */
+/* Default styling for stepper */
+.bs-stepper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bs-stepper .bs-stepper-header {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem; /* Adjust spacing below stepper */
+}
+.bs-stepper-header {
+    display: flex;
+    justify-content: center; /* Memusatkan konten secara horizontal */
+    gap: 1rem;              /* Memberikan jarak antar langkah (step) */
+    padding: 1rem 0;        /* Padding untuk memberikan ruang */
+}
+
+.bs-stepper .step {
+    text-align: center;       /* Menjaga teks step tetap di tengah */
+    flex: 1;                  /* Memastikan semua step memiliki ukuran sama */
+    max-width: 150px;  
+}
+
+.bs-stepper .step .step-trigger {
+    display: flex;
+    flex-direction: column;   /* Susun lingkaran dan teks secara vertikal */
+    align-items: center;      /* Pastikan konten step tetap berada di tengah */
+    justify-content: center;  /* Pastikan step trigger berada di tengah */
+    text-align: center; 
+}
+
+.bs-stepper .step .bs-stepper-circle {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: #007bff;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem; /* Adjust circle font size */
+    margin: 0 auto;
+}
+
+.bs-stepper .step .bs-stepper-label {
+    max-width: 6rem; /* Limit label width */
+    font-size: 0.85rem; /* Adjust label font size */
+    line-height: 1.2rem; /* Set line height for multiline text */
+    text-align: center;
+    word-wrap: break-word;
+    white-space: normal; /* Allow text wrapping */
+}
+
+
+/* Responsive styling for tablet (768px and below) */
+@media (max-width: 768px) {
+    .bs-stepper .step .bs-stepper-circle {
+        width: 1.8rem;
+        height: 1.8rem;
+        font-size: 0.75rem;
+    }
+
+    .bs-stepper .step .step-trigger {
+        font-size: 0.75rem;
+    }
+
+    .bs-stepper .step .bs-stepper-label {
+        max-width: 4rem; /* Smaller label width for tablets */
+        font-size: 0.75rem;
+    }
+}
+
+/* Responsive styling for mobile (576px and below) */
+@media (max-width: 576px) {
+    .bs-stepper {
+        flex-direction: column; /* Stepper tetap dalam satu arah */
+        padding: 1rem; /* Berikan ruang di sekitar stepper */
+        overflow-x: auto; /* Tambahkan scrollbar horizontal jika perlu */
+    }
+
+    .bs-stepper .bs-stepper-header {
+        flex-wrap: nowrap; /* Pastikan langkah tidak terbungkus ke baris berikutnya */
+        gap: 0.5rem; /* Kurangi jarak antar langkah */
+        display: flex;
+        justify-content: flex-start; /* Biarkan langkah mulai dari kiri */
+        align-items: center;
+        overflow-x: auto; /* Scroll jika langkah terlalu panjang */
+        white-space: nowrap; /* Hindari pemotongan teks */
+        padding: 0.5rem;
+    }
+
+    .bs-stepper .step {
+        flex: 0 0 auto; /* Ukuran tetap untuk setiap langkah */
+        text-align: center;
+        max-width: 80px; /* Batasi lebar tiap langkah */
+    }
+
+    .bs-stepper .step .bs-stepper-circle {
+        width: 1.5rem; /* Ukuran lingkaran lebih kecil */
+        height: 1.5rem;
+        font-size: 0.7rem; /* Font di dalam lingkaran lebih kecil */
+    }
+
+    .bs-stepper .step .bs-stepper-label {
+        font-size: 0.65rem; /* Ukuran font label kecil */
+        max-width: 5rem; /* Batasi lebar teks label */
+        line-height: 1rem; /* Pastikan teks tetap rapi */
+        white-space: normal; /* Teks dapat membungkus jika terlalu panjang */
+        text-align: center;
+        margin-top: 0.25rem;
+    }
+}
+

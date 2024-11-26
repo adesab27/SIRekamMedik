@@ -10,6 +10,7 @@
         rel="stylesheet" />
     <link href="https: //cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo-klinik.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
     <!-- Link to the external CSS file -->
@@ -25,10 +26,9 @@
                 <div class="step" data-target="#dataanak-part">
                     <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
                         <span class="bs-stepper-circle">1</span>
-                        <span class="bs-stepper-label">Data Anak</span>
+                        <span class="bs-stepper-label">Data Info Anak</span>
                     </button>
                 </div>
-                <div class="line"></div>
                 <div class="step" data-target="#datatambahan-part">
                     <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
                         <span class="bs-stepper-circle">2</span>
@@ -38,19 +38,19 @@
                 <div class="step" data-target="#datariwayat-part">
                     <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
                         <span class="bs-stepper-circle">3</span>
-                        <span class="bs-stepper-label">Riwayat Kehamilan dan Kelahiran</span>
+                        <span class="bs-stepper-label">Data Riwayat 1</span>
                     </button>
                 </div>
                 <div class="step" data-target="#datakesehatan-part">
                     <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
                         <span class="bs-stepper-circle">4</span>
-                        <span class="bs-stepper-label">Kesehatan dan Perkembangan</span>
+                        <span class="bs-stepper-label">Data Riwayat 2</span>
                     </button>
                 </div>
                 <div class="step" data-target="#datapola-part">
                     <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
                         <span class="bs-stepper-circle">5</span>
-                        <span class="bs-stepper-label">Pola Kebiasaan Anak</span>
+                        <span class="bs-stepper-label">Data Riwayat 3</span>
                     </button>
                 </div>
             </div>
@@ -111,71 +111,68 @@
                         <div class="form-section">
                             <h5>Data Orang Tua</h5>
                             <div class="row">
-                                <div class="col-md-6 form-group">
+                                <!-- Data Ayah -->
+                                <div class="col-md-6 order-md-1 order-1 form-group">
                                     <label for="namaAyah">Nama Ayah</label>
                                     <input class="form-control" id="namaAyah" name="nama_ayah" placeholder="Masukkan Nama Ayah" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="namaIbu">Nama Ibu</label>
-                                    <input class="form-control" id="namaIbu" name="nama_ibu" placeholder="Masukkan Nama Ibu" type="text" required />
-                                    <div class="invalid-feedback">
-                                        Please input data.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-6 order-md-1 order-2 form-group">
                                     <label for="usiaAyah">Usia Ayah</label>
                                     <input class="form-control" id="usiaAyah" name="usia_ayah" placeholder="Masukkan Usia Ayah" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="usiaIbu">Usia Ibu</label>
-                                    <input class="form-control" id="usiaIbu" name="usia_ibu" placeholder="Masukkan Usia Ibu" type="text" required />
-                                    <div class="invalid-feedback">
-                                        Please input data.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-6 order-md-1 order-3 form-group">
                                     <label for="agamaAyah">Agama Ayah</label>
                                     <input class="form-control" id="agamaAyah" name="agama_ayah" placeholder="Masukkan Agama Ayah" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="agamaIbu">Agama Ibu</label>
-                                    <input class="form-control" id="agamaIbu" name="agama_ibu" placeholder="Masukkan Agama Ibu" type="text" required />
-                                    <div class="invalid-feedback">
-                                        Please input data.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-6 order-md-1 order-4 form-group">
                                     <label for="pekerjaanAyah">Pekerjaan Ayah</label>
                                     <input class="form-control" id="pekerjaanAyah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 form-group">
+
+                                <!-- Data Ibu -->
+                                <div class="col-md-6 order-md-2 order-5 form-group">
+                                    <label for="namaIbu">Nama Ibu</label>
+                                    <input class="form-control" id="namaIbu" name="nama_ibu" placeholder="Masukkan Nama Ibu" type="text" required />
+                                    <div class="invalid-feedback">
+                                        Please input data.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 order-md-2 order-6 form-group">
+                                    <label for="usiaIbu">Usia Ibu</label>
+                                    <input class="form-control" id="usiaIbu" name="usia_ibu" placeholder="Masukkan Usia Ibu" type="text" required />
+                                    <div class="invalid-feedback">
+                                        Please input data.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 order-md-2 order-7 form-group">
+                                    <label for="agamaIbu">Agama Ibu</label>
+                                    <input class="form-control" id="agamaIbu" name="agama_ibu" placeholder="Masukkan Agama Ibu" type="text" required />
+                                    <div class="invalid-feedback">
+                                        Please input data.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 order-md-2 order-8 form-group">
                                     <label for="pekerjaanIbu">Pekerjaan Ibu</label>
                                     <input class="form-control" id="pekerjaanIbu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-12 form-group">
-                                    <label for="alamatLengkap">Alamat Lengkap</label>
-                                    <textarea class="form-control" id="alamatLengkap" name="alamat_lengkap" placeholder="Masukkan Alamat lengkap" rows="3" required>{{$data->alamatPasien}}</textarea>
-                                    <div class="invalid-feedback">
-                                        Please input data.
-                                    </div>
-                                </div>
                             </div>
                         </div>
+
 
                         <div class="text-end">
                             <button type="button" class="btn btn-primary" onclick="nextStep()">Selanjutnya</button>
@@ -203,15 +200,21 @@
     var stepper = new Stepper(document.querySelector('.bs-stepper'));
 
     function nextStep() {
-        const currentStep = stepper._currentIndex;
-        const currentContent = document.querySelectorAll('.bs-stepper-content .content')[currentStep];
-        // stepper.next();
-        if (currentContent.querySelectorAll('input:invalid').length > 0) {
-           currentContent.querySelector('input:invalid').focus();
-        } else {
-           stepper.next();
-        }
+    const currentStep = stepper._currentIndex;
+    const currentContent = document.querySelectorAll('.bs-stepper-content .content')[currentStep];
+    
+    if (currentContent.querySelectorAll('input:invalid').length > 0) {
+        currentContent.querySelector('input:invalid').focus();
+    } else {
+        stepper.next();
+        // Scroll ke atas halaman
+        window.scrollTo({
+            top: 0,        // Posisi paling atas
+            behavior: 'smooth' // Gulir halus
+        });
     }
+}
+
     // Update review section
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

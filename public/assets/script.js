@@ -29,3 +29,11 @@ function validateName(event) {
         errorMessage.style.display = 'none';
     }
 }
+
+// delete 
+function confirmDelete(event) {
+    event.preventDefault(); // Mencegah form terkirim langsung
+    if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+        event.target.submit(); // Kirim form jika pengguna menekan OK
+    }
+}

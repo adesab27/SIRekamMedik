@@ -342,9 +342,9 @@
                     <p class="m-2">Keluhan Saat Hamil</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->keluhan_keguguran == 0 ? '' : 'Pernah Mengalami Keguguran'}}</p>
-                    <p class="m-2">{{$riwhamillahir->keluhan_stress == 0 ? '' : 'Mengalami stress psikologis, sakit atau komplikasi'}}</p>
-                    <p class="m-2">{{$riwhamillahir->keluhan_obat == 0 ? '' : 'Mengkonsumsi obat-obatan selama kehamilan'}}</p>
+                    {!!$riwhamillahir->keluhan_keguguran == 0 ? '' : 'Pernah Mengalami Keguguran <br>'!!}
+                    {!!$riwhamillahir->keluhan_stress == 0 ? '' : 'Mengalami stress psikologis, sakit atau komplikasi <br>'!!}
+                    {!!$riwhamillahir->keluhan_obat == 0 ? '' : 'Mengkonsumsi obat-obatan selama kehamilan <br>'!!}
                 </td>
             </tr>
             <tr>
@@ -400,9 +400,9 @@
                     <p class="m-2">Kondisi Lahir</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->komplikasi_kelahiran == 0 ? '' : 'Komplikasi / Kesulitan selama proses kelahiran'}}</p>
-                    <p class="m-2">{{$riwhamillahir->menangis_lahir == 0 ? '' : 'Langsung menangis ketika lahir'}}</p>
-                    <p class="m-2">{{$riwhamillahir->perawatan_khusus == 0 ? '' : 'Memerlukan perawatan khusus setelah masa kelahiran'}}</p>
+                    {!!$riwhamillahir->komplikasi_kelahiran == 0 ? '' : 'Komplikasi / Kesulitan selama proses kelahiran <br>'!!}
+                    {!!$riwhamillahir->menangis_lahir == 0 ? '' : 'Langsung menangis ketika lahir <br>'!!}
+                    {!!$riwhamillahir->perawatan_khusus == 0 ? '' : 'Memerlukan perawatan khusus setelah masa kelahiran <br>'!!}
                 </td>
             </tr>
             <tr>
@@ -435,23 +435,21 @@
                     <p class="m-2">Status Kesehatan Anak</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->penyakit_serius == 0 ? '' : 'Penyakit Serius'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->benturan_kepala == 0 ? '' : 'Benturan Di kepala'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->dirawat_rs == 0 ? '' : 'Dirawat di RS'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->pengobatan_jangka_panjang == 0 ? '' : 'Pernah atau sedang mendapat pengobatan jangka panjang'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->riwayat_kejang == 0 ? '' : 'Memiliki riwayat kejang'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->riwayat_flu == 0 ? '' : 'Memiliki riwayat Flu'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->riwayat_pneumonia == 0 ? '' : 'Memiliki riwayat pneumonia'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->masalah_perkembangan == 0 ? '' : 'Masalah perkembangan pada pada usia 0 - 2 tahun'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->riwayat_alergi == 0 ? '' : 'Riwayat alergi'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->riwayat_alergi == 0 ? '' : 'Riwayat alergi'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->infeksi_telinga == 0 ? '' : 'Infeksi telinga'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->diet_suplemen == 0 ? '' : 'Melakukan diet / suplemen tertentu'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->menggunakan_kacamata == 0 ? '' : 'Menggunakan kacamata'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->riwayat_asma == 0 ? '' : 'Memiliki riwayat Asma'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->riwayat_sinusitis == 0 ? '' : 'Memiliki riwayat sinusitis'}}</p>
-                    <p class="m-2">{{$riwsehatperkembangan->tes_pendengaran_penglihatan == 0 ? '' : 'Melakukan tes (pendengaran / penglihatan)'}}</p>
-
+                    {!!$riwsehatperkembangan->penyakit_serius == 0 ? '' : 'Penyakit Serius <br>'!!}
+                    {!!$riwsehatperkembangan->benturan_kepala == 0 ? '' : 'Benturan Di kepala <br>'!!}
+                    {!!$riwsehatperkembangan->dirawat_rs == 0 ? '' : 'Dirawat di RS <br>'!!}
+                    {!!$riwsehatperkembangan->pengobatan_jangka_panjang == 0 ? '' : 'Pernah atau sedang mendapat pengobatan jangka panjang <br>'!!}
+                    {!!$riwsehatperkembangan->riwayat_kejang == 0 ? '' : 'Memiliki riwayat kejang <br>'!!}
+                    {!!$riwsehatperkembangan->riwayat_flu == 0 ? '' : 'Memiliki riwayat Flu <br>'!!}
+                    {!!$riwsehatperkembangan->riwayat_pneumonia == 0 ? '' : 'Memiliki riwayat pneumonia <br>'!!}
+                    {!!$riwsehatperkembangan->masalah_perkembangan == 0 ? '' : 'Masalah perkembangan pada pada usia 0 - 2 tahun <br>'!!}
+                    {!!$riwsehatperkembangan->riwayat_alergi == 0 ? '' : 'Riwayat alergi <br>'!!}
+                    {!!$riwsehatperkembangan->infeksi_telinga == 0 ? '' : 'Infeksi telinga <br>'!!}
+                    {!!$riwsehatperkembangan->diet_suplemen == 0 ? '' : 'Melakukan diet / suplemen tertentu <br>'!!}
+                    {!!$riwsehatperkembangan->menggunakan_kacamata == 0 ? '' : 'Menggunakan kacamata <br>'!!}
+                    {!!$riwsehatperkembangan->riwayat_asma == 0 ? '' : 'Memiliki riwayat Asma <br>'!!}
+                    {!!$riwsehatperkembangan->riwayat_sinusitis == 0 ? '' : 'Memiliki riwayat sinusitis <br>'!!}
+                    {!!$riwsehatperkembangan->tes_pendengaran_penglihatan == 0 ? '' : 'Melakukan tes (pendengaran / penglihatan) <br>'!!}
                 </td>
             </tr>
         </table>
@@ -597,11 +595,10 @@
                     <p class="m-2">Kebiasaan yang dimiliki anak</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwpolakebiasaan->kemampuan_sedot_kuat == 0 ? '' : 'Kemampuan sedot yang kuat di masa bayi'}}</p>
-                    <p class="m-2">{{$riwpolakebiasaan->riwayat_reflux == 0 ? '' : 'Memiliki riwayat sering muntah, tersedak (reflux) '}}</p>
-                    <p class="m-2">{{$riwpolakebiasaan->masalah_nafsu_makan == 0 ? '' : 'Memiliki riwayat masalah nafsu makan atau sulit menaikkan Berat badan'}}</p>
-                    <p class="m-2">{{$riwpolakebiasaan->menghindari_pemilihan_makanan == 0 ? '' : 'Memiliki kecenderungan menghindari / memilih makanan berdasarkan karakteristik tertentu'}}</p>
-
+                    {!!$riwpolakebiasaan->kemampuan_sedot_kuat == 0 ? '' : 'Kemampuan sedot yang kuat di masa bayi <br>'!!}
+                    {!!$riwpolakebiasaan->riwayat_reflux == 0 ? '' : 'Memiliki riwayat sering muntah, tersedak (reflux) <br>'!!}
+                    {!!$riwpolakebiasaan->masalah_nafsu_makan == 0 ? '' : 'Memiliki riwayat masalah nafsu makan atau sulit menaikkan Berat badan <br>'!!}
+                    {!!$riwpolakebiasaan->menghindari_pemilihan_makanan == 0 ? '' : 'Memiliki kecenderungan menghindari / memilih makanan berdasarkan karakteristik tertentu <br>'!!}
                 </td>
             </tr>
             <tr>
