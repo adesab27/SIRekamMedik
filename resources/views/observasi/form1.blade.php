@@ -93,11 +93,16 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="jenisKelamin">Jenis Kelamin</label>
-                                    <input class="form-control" id="jenisKelamin" name="jenis_kelamin" placeholder="Jenis Kelamin" type="text" required />
+                                    <select class="form-control" id="jenisKelamin" name="jenis_kelamin" required>
+                                        <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
                                     <div class="invalid-feedback">
-                                        Please input data.
+                                        Silakan pilih jenis kelamin.
                                     </div>
                                 </div>
+
                                 <div class="col-md-6 form-group">
                                     <label for="umurAnak">Umur Anak</label>
                                     <input class="form-control" id="umurAnak" name="umur_anak" placeholder="Dalam Tahun dan bulan" type="text" required />
@@ -112,66 +117,83 @@
                             <h5>Data Orang Tua</h5>
                             <div class="row">
                                 <!-- Data Ayah -->
-                                <div class="col-md-6 order-md-1 order-1 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="namaAyah">Nama Ayah</label>
                                     <input class="form-control" id="namaAyah" name="nama_ayah" placeholder="Masukkan Nama Ayah" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 order-md-1 order-2 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="usiaAyah">Usia Ayah</label>
                                     <input class="form-control" id="usiaAyah" name="usia_ayah" placeholder="Masukkan Usia Ayah" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 order-md-1 order-3 form-group">
-                                    <label for="agamaAyah">Agama Ayah</label>
-                                    <input class="form-control" id="agamaAyah" name="agama_ayah" placeholder="Masukkan Agama Ayah" type="text" required />
-                                    <div class="invalid-feedback">
-                                        Please input data.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 order-md-1 order-4 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="pekerjaanAyah">Pekerjaan Ayah</label>
                                     <input class="form-control" id="pekerjaanAyah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="agamaAyah">Agama Ayah</label>
+                                    <select class="form-control" id="agamaAyah" name="agama_ayah" required>
+                                        <option value="" disabled selected>Pilih Agama</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Kristen Protestan">Kristen Protestan</option>
+                                        <option value="Katolik">Katolik</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Buddha">Buddha</option>
+                                        <option value="Konghucu">Konghucu</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Silakan pilih agama.
+                                    </div>
+                                </div>
 
                                 <!-- Data Ibu -->
-                                <div class="col-md-6 order-md-2 order-5 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="namaIbu">Nama Ibu</label>
                                     <input class="form-control" id="namaIbu" name="nama_ibu" placeholder="Masukkan Nama Ibu" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 order-md-2 order-6 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="usiaIbu">Usia Ibu</label>
                                     <input class="form-control" id="usiaIbu" name="usia_ibu" placeholder="Masukkan Usia Ibu" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
-                                <div class="col-md-6 order-md-2 order-7 form-group">
-                                    <label for="agamaIbu">Agama Ibu</label>
-                                    <input class="form-control" id="agamaIbu" name="agama_ibu" placeholder="Masukkan Agama Ibu" type="text" required />
-                                    <div class="invalid-feedback">
-                                        Please input data.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 order-md-2 order-8 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="pekerjaanIbu">Pekerjaan Ibu</label>
                                     <input class="form-control" id="pekerjaanIbu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" type="text" required />
                                     <div class="invalid-feedback">
                                         Please input data.
                                     </div>
                                 </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="agamaIbu">Agama Ibu</label>
+                                    <select class="form-control" id="agamaIbu" name="agama_ibu" required>
+                                        <option value="" disabled selected>Pilih Agama</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Kristen Protestan">Kristen Protestan</option>
+                                        <option value="Katolik">Katolik</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Buddha">Buddha</option>
+                                        <option value="Konghucu">Konghucu</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Silakan pilih agama.
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
 
 
                         <div class="text-end">
