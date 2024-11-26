@@ -46,8 +46,11 @@
         </div>
         <div class="col-md-3 form-group">
           <label for="jenisKelaminSaudara"> Jenis Kelamin </label>
-          <input class="form-control" name="jenisKelaminSaudara" id="jenisKelaminSaudara" placeholder="Jenis Kelamin"
-            type="text" required />
+          <select class="form-control" name="jenisKelaminSaudara" id="jenisKelaminSaudara" required>
+            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
         </div>
         <div class="col-md-3 form-group">
           <label for="specialNeedSaudara"> Special Need </label>

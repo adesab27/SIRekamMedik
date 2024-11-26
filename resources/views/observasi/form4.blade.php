@@ -44,14 +44,15 @@
         </div>
       </div>
     </div>
+
     <div class="mt-4">
       <h5>Perkembangan Anak</h5>
       <div class="row">
         <div class="col-md-12">
           <h6>Riwayat Perkembangan Motorik</h6>
-          <div class="d-flex justify-content-between">
-            <div>
-              <label for="tengkurap"> Tengkurap </label>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-2">
+              <label for="tengkurap">Tengkurap</label>
               <input
                 name="tengkurap"
                 class="form-control"
@@ -59,8 +60,8 @@
                 placeholder="Bulan"
                 type="text" required />
             </div>
-            <div>
-              <label for="duduk"> Duduk </label>
+            <div class="col-12 col-sm-6 col-md-2">
+              <label for="duduk">Duduk</label>
               <input
                 name="duduk"
                 class="form-control"
@@ -68,8 +69,8 @@
                 placeholder="Bulan"
                 type="text" required />
             </div>
-            <div>
-              <label for="merangkak"> Merangkak </label>
+            <div class="col-12 col-sm-6 col-md-2">
+              <label for="merangkak">Merangkak</label>
               <input
                 name="merangkak"
                 class="form-control"
@@ -77,8 +78,8 @@
                 placeholder="Bulan"
                 type="text" required />
             </div>
-            <div>
-              <label for="berdiri"> Berdiri </label>
+            <div class="col-12 col-sm-6 col-md-2">
+              <label for="berdiri">Berdiri</label>
               <input
                 name="berdiri"
                 class="form-control"
@@ -86,8 +87,8 @@
                 placeholder="Bulan"
                 type="text" required />
             </div>
-            <div>
-              <label for="berjalan"> Berjalan </label>
+            <div class="col-12 col-sm-6 col-md-2">
+              <label for="berjalan">Berjalan</label>
               <input
                 name="berjalan"
                 class="form-control"
@@ -99,9 +100,9 @@
         </div>
         <div class="col-md-12 mt-4">
           <h6>Riwayat Perkembangan Bahasa</h6>
-          <div class="d-flex justify-content-between">
-            <div>
-              <label for="bubbling"> Bubbling </label>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <label for="bubbling">Bubbling</label>
               <input
                 name="bubbling"
                 class="form-control"
@@ -109,8 +110,8 @@
                 placeholder="Bulan"
                 type="text" required />
             </div>
-            <div>
-              <label for="kataPertama"> Kata Pertama </label>
+            <div class="col-12 col-sm-6 col-md-3">
+              <label for="kataPertama">Kata Pertama</label>
               <input
                 name="kata_pertama"
                 class="form-control"
@@ -118,8 +119,8 @@
                 placeholder="Bulan"
                 type="text" required />
             </div>
-            <div>
-              <label for="mengulangKata"> Mengulang kata </label>
+            <div class="col-12 col-sm-6 col-md-3">
+              <label for="mengulangKata">Mengulang kata</label>
               <input
                 name="mengulang_kata"
                 class="form-control"
@@ -127,8 +128,8 @@
                 placeholder="Bulan"
                 type="text" required />
             </div>
-            <div>
-              <label for="kalimatPertama"> Kalimat pertama </label>
+            <div class="col-12 col-sm-6 col-md-3">
+              <label for="kalimatPertama">Kalimat pertama</label>
               <input
                 name="kalimat_pertama"
                 class="form-control"
@@ -140,11 +141,13 @@
         </div>
       </div>
     </div>
+
     <div class="mt-4 mb-3">
       <h5>Catatan Tambahan</h5>
       <textarea class="form-control w-100" rows="4" required></textarea>
     </div>
-    <div class="text-end">
+
+    <div class="text-end d-flex justify-content-end gap-2 mt-4">
       <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>
       <button class="btn btn-primary" type="button" onclick="nextStep()">Selanjutnya</button>
     </div>

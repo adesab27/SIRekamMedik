@@ -97,7 +97,7 @@
             <label class="form-label" for="catatanTambahan">Catatan Tambahan</label>
             <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan" rows="3" required></textarea>
         </div>
-        <div class="text-end">
+        <div class="text-end d-flex justify-content-end gap-2 mt-4">
             <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>
             <button class="btn btn-primary" type="button" onclick="nextStep()">Selanjutnya</button>
         </div>
