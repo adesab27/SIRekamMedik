@@ -74,6 +74,14 @@ class AdminDatapasienController extends Controller
                 ->where('pasien_id', $id)->first();
             $riwpolakebiasaan = DB::table('riwpolakebiasaan')
                 ->where('pasien_id', $id)->first();
+
+            // return view('cetak-hasil', [
+            //     'infoanak' => $infoanak,
+            //     'datatambahan' => $datatambahan,
+            //     'riwhamillahir' => $riwhamillahir,
+            //     'riwsehatperkembangan' => $riwsehatperkembangan,
+            //     'riwpolakebiasaan' => $riwpolakebiasaan
+            // ]);
             $pdf = app('dompdf.wrapper');
             $pdf->loadview('cetak-hasil', [
                 'infoanak' => $infoanak,
@@ -82,7 +90,7 @@ class AdminDatapasienController extends Controller
                 'riwsehatperkembangan' => $riwsehatperkembangan,
                 'riwpolakebiasaan' => $riwpolakebiasaan
             ]);
-            return $pdf->download('laporan_observasi.pdf');
+            return $pdf->download('laporan_observasi-'.$infoanak->nama_anak.'.pdf');
         } catch (\Throwable $th) {
             return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
         }
