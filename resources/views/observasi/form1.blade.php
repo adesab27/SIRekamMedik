@@ -10,19 +10,15 @@
         rel="stylesheet" />
     <link href="https: //cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/style.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
     <!-- Link to the external CSS file -->
 </head>
 
 <body>
-    <!-- Navbar -->
-    @include("header")
     <!-- /.navbar -->
     <div class="container">
-        <!-- riwayat -->
-        @include("observasi/riwayat")
-        <!-- /.riwayat-->
+        <h3 class="text-center my-4">Observasi Kebutuhan Terapi</h3>
         <div class="bs-stepper">
             <div class="bs-stepper-header" role="tablist">
                 <!-- your steps here -->
@@ -204,24 +200,14 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
 <script>
-    // BS-Stepper Init
-    //document.addEventListener('DOMContentLoaded', function() {
-    //    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-    //});
-    // Initialize the stepper
     var stepper = new Stepper(document.querySelector('.bs-stepper'));
 
     function nextStep() {
         const currentStep = stepper._currentIndex;
         const currentContent = document.querySelectorAll('.bs-stepper-content .content')[currentStep];
         stepper.next();
-        //if (currentContent.querySelectorAll('input:invalid').length > 0) {
-        //    currentContent.querySelector('input:invalid').focus();
-        //} else {
-        //    stepper.next();
-        //}
     }
-    // Update review section
+
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

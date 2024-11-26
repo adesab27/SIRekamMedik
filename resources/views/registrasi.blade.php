@@ -21,62 +21,57 @@
         @include("container")
         <h3 class="text-center mt-4">Registrasi Pasien Baru</h3>
 
-        <!-- <form action="{{ route('datapasien') }}" method="POST"> -->
         <form action="{{ route('registrasi.create') }}" method="POST">
             @csrf
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="namaPasien" class="form-label">Nama Pasien</label>
-                    <input name="namaPasien" class="form-control" id="namaPasien" placeholder="Masukkan Nama"
-                        type="text" required oninput="validateName(event)" />
-                    <small id="nameError" class="text-danger" style="display: none;">Hanya huruf yang diizinkan!</small>
-                </div>
-                <div class="col-md-6">
-                    <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
-                    <input name="tanggalLahir" class="form-control" id="tanggalLahir" type="date" required
-                        max="{{ date('Y-m-d') }}" />
-                </div>
+            <div class="mb-3">
+                <label for="namaPasien" class="form-label">Nama Pasien</label>
+                <input name="namaPasien" class="form-control" id="namaPasien" placeholder="Masukkan Nama" type="text"
+                    required oninput="validateName(event)" style="text-transform: capitalize;" />
+                <small id="nameError" class="text-danger" style="display: none;">Hanya huruf yang diizinkan!</small>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="alamatPasien" class="form-label">Alamat Pasien</label>
-                    <input name="alamatPasien" class="form-control" id="alamatPasien"
-                        placeholder="Kelurahan, Kecamatan, Kabupaten" type="text" required />
-                </div>
-                <div class="col-md-6">
-                    <label for="nomorHandphone" class="form-label">Nomor Handphone</label>
-                    <input name="nomorHandphone" class="form-control" id="nomorHandphone" placeholder="081234567890"
-                        type="tel" required oninput="validatePhoneNumber(event)" />
-                    <small id="phoneError" class="text-danger" style="display: none;">Hanya angka yang
-                        diizinkan!</small>
-                </div>
+            <div class="mb-3">
+                <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
+                <input name="tanggalLahir" class="form-control" id="tanggalLahir" type="date" required
+                    max="{{ date('Y-m-d') }}" />
             </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="keluhan" class="form-label">Keluhan</label>
-                    <textarea name="keluhan" class="form-control" id="keluhan"
-                        placeholder="Jelaskan keluhan yang ingin dikonsultasikan...." rows="3"></textarea>
-                </div>
-                <div class="col-md-6">
-                    <label for="keperluan" class="form-label">Keperluan</label>
-                    <textarea name="keperluan" class="form-control" id="keperluan"
-                        placeholder="Jelaskan Keperluan yang dibutuhkan..." rows="3"></textarea>
-                </div>
+            <div class="mb-3">
+                <label for="alamatPasien" class="form-label">Alamat Pasien</label>
+                <input name="alamatPasien" class="form-control" id="alamatPasien"
+                    placeholder="Kelurahan, Kecamatan, Kabupaten" type="text" required
+                    style="text-transform: capitalize;" />
+            </div>
+            <div class="mb-3">
+                <label for="nomorHandphone" class="form-label">Nomor Handphone</label>
+                <input name="nomorHandphone" class="form-control" id="nomorHandphone" placeholder="081234567890"
+                    type="tel" required oninput="validatePhoneNumber(event)" />
+                <small id="phoneError" class="text-danger" style="display: none;">Hanya angka yang diizinkan!</small>
+            </div>
+            <div class="mb-3">
+                <label for="keluhan" class="form-label">Keluhan</label>
+                <textarea name="keluhan" class="form-control" id="keluhan"
+                    placeholder="Jelaskan keluhan yang ingin dikonsultasikan...." rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="keperluan" class="form-label">Keperluan</label>
+                <textarea name="keperluan" class="form-control" id="keperluan"
+                    placeholder="Jelaskan Keperluan yang dibutuhkan..." rows="3" ></textarea>
             </div>
             <div class="text-end">
                 <button class="btn btn-primary" type="submit">Simpan Data</button>
             </div>
         </form>
+
+
     </div>
 
     <!-- Alert Script -->
     <script>
         @if(session('success'))
-        alert("{{ session('success') }}");
+            alert("{{ session('success') }}");
         @endif
 
         @if(session('failed'))
-        alert("{{ session('failed') }}");
+            alert("{{ session('failed') }}");
         @endif
         // Fungsi untuk memastikan hanya angka yang dimasukkan pada input nomor telepon
         function validatePhoneNumber(event) {
@@ -109,8 +104,13 @@
             }
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
