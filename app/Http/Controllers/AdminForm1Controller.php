@@ -47,6 +47,7 @@ class AdminForm1Controller extends Controller
                     'pekerjaan_ayah' => $request->pekerjaan_ayah,
                     'pekerjaan_ibu' => $request->pekerjaan_ibu,
                     'alamat_lengkap' => $request->alamat_lengkap,
+                    'pasien_id' => $request->pasien_id
                 ]);
                 DataTambahan::create([
                     'diagnosaOleh' => $request->diagnosaOleh,
