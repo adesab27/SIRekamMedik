@@ -36,7 +36,7 @@
             <th>Keluhan</th>
             <th>Keperluan</th>
             <th>Aksi</th>
-            <th>Hasil Observasi</th>
+            <th>Print PDF</th>
           </tr>
         </thead>
         <tbody>

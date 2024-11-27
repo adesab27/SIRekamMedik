@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo-klinik.png') }}">
 
     <link rel="stylesheet" href="{{asset('assets/login/style.css')}}">
 </head>
@@ -15,14 +16,14 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">Login SiRekamMedik</h2>
+                    <h2 class="heading-section">Login SIRekamMedik</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
                     <div class="login-wrap p-4 p-md-5">
                         <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="fa fa-user-o"></span>
+                            <img src="/assets/img/logo-klinik.png" alt="Logo" style="max-width: 100%; height: auto;">
                         </div>
                         <h3 class="text-center mb-4">SIRekamMedik</h3>
                         <form method="POST" action="{{route('postLogin')}}" class="login-form">
@@ -43,10 +44,6 @@
         </div>
     </section>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
 
 </body>
 </html>

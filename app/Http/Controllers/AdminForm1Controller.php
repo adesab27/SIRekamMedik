@@ -134,7 +134,7 @@ class AdminForm1Controller extends Controller
 
         return redirect()->route('datapasien')->with('success', 'Data berhasil disimpan.');
     } catch (\Exception $e) {
-        dd($e->getMessage());
+        // dd($e->getMessage());
     }
 }
 }
