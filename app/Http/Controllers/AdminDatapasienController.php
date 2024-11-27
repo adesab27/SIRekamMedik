@@ -44,19 +44,23 @@ class AdminDatapasienController extends Controller
             ]);
         return redirect()->route('datapasien')->with('success', 'Data pasien berhasil diupdate');
     }
-
     public function delete($id)
     {
+        // Ambil data dari tabel registrasi berdasarkan ID
         $ambildata = DB::table('registrasi')->where('id', $id)->first();
+    
+        // Jika data tidak ditemukan, kembalikan respons JSON dengan status 404
         if (!$ambildata) {
-            return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
+            return response()->json(['message' => 'Data tidak ditemukan!'], 404);
         }
-
-        // Menghapus data dari tabel registrasi
+    
+        // Hapus data dari tabel registrasi
         DB::table('registrasi')->where('id', $id)->delete();
-
-        return redirect()->route('datapasien')->with('success', 'Data berhasil dihapus!');
+    
+        // Kembalikan respons JSON dengan status 200
+        return response()->json(['message' => 'Data berhasil dihapus!'], 200);
     }
+    
 
     public function export_pdf($id)
     {

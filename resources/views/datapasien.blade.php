@@ -52,19 +52,19 @@
         <td>{{ $d->keperluan }}</td>
         <td>
           <a href="{{ route('editDatapasien', $d->id) }}" class="text-primary"><i class="fas fa-edit"></i></a>
-          <form action="{{ route('deleteDatapasien', $d->id) }}" method="POST" style="display: inline;"
-          onsubmit="return confirmDelete(event)">
-          @csrf
-          @method('DELETE')
-          <button type="submit" class="btn btn-link p-0 text-danger">
-            <i class="fas fa-trash-alt"></i>
-          </button>
+          <form id="delete-form-{{ $d->id }}" style="display: inline;">
+              @csrf
+              @method('DELETE')
+              <a href="#" onclick="deleteData(event, {{ $d->id }})" class="text-danger" title="Delete">
+                  <i class="fas fa-trash-alt"></i> <!-- Ikon tempat sampah -->
+              </a>
           </form>
+
           @if (isset($cekdata[$cek]) ? $cekdata[$cek]->pasien_id == $d->id : '')
         <?php    $cek++; ?>
-      @else
-      <a href="{{ route('form1', $d->id) }}" class="icon-link"><i class="fas fa-file-alt"></i></a>
-    @endif
+        @else
+          <a href="{{ route('form1', $d->id) }}" class="icon-link"><i class="fas fa-file-alt"></i></a>
+        @endif
         </td>
         <td>
           <a href="{{ route('export_pdf', $d->id) }}" class="icon-link">

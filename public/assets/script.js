@@ -31,9 +31,38 @@ function validateName(event) {
 }
 
 // delete 
-function confirmDelete(event) {
-    event.preventDefault(); // Mencegah form terkirim langsung
-    if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-        event.target.submit(); // Kirim form jika pengguna menekan OK
+function deleteData(event, id) {
+    event.preventDefault(); // Mencegah link membuka URL
+
+    // Tampilkan konfirmasi penghapusan
+    if (confirm('Are you sure you want to delete this data?')) {
+        // URL untuk menghapus data
+        const url = `/datapasien/delete/${id}`;
+
+        // Kirim permintaan DELETE menggunakan fetch
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, // Ambil token CSRF
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Jika berhasil, tampilkan alert dan refresh halaman
+                alert('Data berhasil dihapus!');
+                location.reload();
+            } else {
+                // Jika gagal, tampilkan pesan error
+                return response.json().then(data => {
+                    alert('Gagal menghapus data: ' + (data.message || 'Unknown error'));
+                });
+            }
+        })
+        .catch(error => {
+            // Tangani error jaringan atau server
+            console.error('Error:', error);
+            alert('An error occurred while deleting the data.');
+        });
     }
 }
