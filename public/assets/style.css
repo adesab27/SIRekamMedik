@@ -156,7 +156,11 @@ body {
 .pagination {
     justify-content: flex-end;
 }
-
+.icon-link {
+    font-size: 1.2rem;
+    margin: 0 5px; /* Opsional untuk jarak tambahan antarikon */
+  }
+  
 /* tabel  */
 
 .table-container {

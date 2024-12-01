@@ -27,15 +27,15 @@
       <table class="table table-striped" id="dataPasienTable">
         <thead>
           <tr>
-            <th>No</th>
-            <th>Nama Pasien</th>
-            <th>Tanggal Lahir</th>
-            <th>Alamat</th>
-            <th>No. Telp</th>
-            <th>Keluhan</th>
-            <th>Keperluan</th>
-            <th>Aksi</th>
-            <th>Print PDF</th>
+            <th class="text-start">No</th>
+            <th class="text-start">Nama Pasien</th>
+            <th class="text-start">Tanggal Lahir</th>
+            <th class="text-start">Alamat</th>
+            <th class="text-start">No. Telp</th>
+            <th class="text-start">Keluhan</th>
+            <th class="text-start">Keperluan</th>
+            <th class="text-start">Aksi</th>
+            <th class="text-start">Print PDF</th>
           </tr>
         </thead>
         <tbody>
@@ -46,25 +46,36 @@
         <td>{{ $d->namaPasien }}</td>
         <td>{{ $d->tanggalLahir }}</td>
         <td>{{ $d->alamatPasien }}</td>
-        <td>{{ $d->nomorHandphone }}</td>
+        <td class="text-start">{{ $d->nomorHandphone }}</td>
         <td>{{ $d->keluhan }}</td>
         <td>{{ $d->keperluan }}</td>
         <td>
-          <a href="{{ route('editDatapasien', $d->id) }}" class="text-primary"><i class="fas fa-edit"></i></a>
-          <form id="delete-form-{{ $d->id }}" style="display: inline;">
+          <div class="d-flex justify-content-start align-items-center gap-2">
+            <!-- Ikon Edit -->
+            <a href="{{ route('editDatapasien', $d->id) }}" class="text-primary">
+              <i class="fas fa-edit"></i>
+            </a>
+
+            <!-- Ikon Delete -->
+            <form id="delete-form-{{ $d->id }}" style="display: inline;">
               @csrf
               @method('DELETE')
               <a href="#" onclick="deleteData(event, {{ $d->id }})" class="text-danger" title="Delete">
-                  <i class="fas fa-trash-alt"></i> <!-- Ikon tempat sampah -->
+                <i class="fas fa-trash-alt"></i>
               </a>
-          </form>
+            </form>
 
-          @if (isset($cekdata[$cek]) ? $cekdata[$cek]->pasien_id == $d->id : '')
-        <?php    $cek++; ?>
-        @else
-          <a href="{{ route('form1', $d->id) }}" class="icon-link"><i class="fas fa-file-alt"></i></a>
-        @endif
+            <!-- Ikon Form 1 -->
+            @if (isset($cekdata[$cek]) ? $cekdata[$cek]->pasien_id == $d->id : '')
+              <?php $cek++; ?>
+            @else
+              <a href="{{ route('form1', $d->id) }}" class="text-success">
+                <i class="fas fa-file-alt"></i>
+              </a>
+            @endif
+          </div>
         </td>
+
         <td>
           <a href="{{ route('export_pdf', $d->id) }}" class="icon-link">
           <i class="fas fa-info-circle"></i></a>
