@@ -82,7 +82,7 @@
                     (Tulis lama kehamilan apabila memilih Pre-mature atau Post-Mature)
                 </span>
             </label>
-            <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan" rows="3" required></textarea>
+            <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan_form3" rows="3" required></textarea>
         </div>
         <div class="text-end d-flex justify-content-end gap-2 mt-4">
             <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>

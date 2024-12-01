@@ -84,7 +84,7 @@ class AdminForm1Controller extends Controller
                     'komplikasi_kelahiran' => $request->komplikasi_kelahiran != 'on' ? 0 : 1,
                     'menangis_lahir' => $request->menangis_lahir != 'on' ? 0 : 1,
                     'perawatan_khusus' => $request->perawatan_khusus != 'on' ? 0 : 1,
-                    'catatan_tambahan' => $request->catatan_tambahan,
+                    'catatan_tambahan' => $request->catatan_tambahan_form3,
                     'pasien_id' => $request->pasien_id
                 ]);
 
@@ -113,7 +113,7 @@ class AdminForm1Controller extends Controller
                     'kata_pertama' => $request->kata_pertama,
                     'mengulang_kata' => $request->mengulang_kata,
                     'kalimat_pertama' => $request->kalimat_pertama,
-                    'catatan_tambahan' => $request->catatan_tambahan,
+                    'catatan_tambahan' => $request->catatan_tambahan_form4,
                     'pasien_id' => $request->pasien_id,
                 ]);
 
@@ -124,7 +124,7 @@ class AdminForm1Controller extends Controller
                     'riwayat_reflux' => $request->riwayat_reflux != 'on' ? 0 : 1,
                     'masalah_nafsu_makan' => $request->masalah_nafsu_makan != 'on' ? 0 : 1,
                     'menghindari_pemilihan_makanan' => $request->menghindari_pemilihan_makanan != 'on' ? 0 : 1,
-                    'catatan_tambahan' => $request->catatan_tambahan,
+                    'catatan_tambahan' => $request->catatan_tambahan_form5,
                     'pasien_id' => $request->pasien_id,
                 ]);
             

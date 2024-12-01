@@ -144,7 +144,7 @@
 
     <div class="mt-4 mb-3">
       <h5>Catatan Tambahan</h5>
-      <textarea class="form-control w-100" rows="4" required></textarea>
+      <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan_form4" rows="3" required></textarea>
     </div>
 
     <div class="text-end d-flex justify-content-end gap-2 mt-4">

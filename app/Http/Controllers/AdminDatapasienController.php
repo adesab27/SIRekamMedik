@@ -12,16 +12,16 @@ class AdminDatapasienController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $data = DB::table('registrasi')->paginate(10);
+            $data = DB::table('registrasi')->get();
             $cekdata = DB::table('registrasi')
                 ->join('infoanak', 'registrasi.id', '=', 'infoanak.pasien_id')
                 ->get();
+            //dd($cekdata);
             $username = Auth::user()->name;
             return view('datapasien', compact('data', 'username', 'cekdata'));
         } else {
-            return redirect()->route('indexLogin')->with('error', 'Silahkan Login');
+            return redirect()->route('indexLogin')->with('error', 'Silakan Login');
         }
-
     }
 
     public function editDatapasien($id)

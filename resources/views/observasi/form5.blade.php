@@ -34,10 +34,7 @@
           (Berikan penjelasan terkait pernyataan diatas)
         </span>
       </label>
-      <textarea name="catatan_tambahan"
-        class="form-control"
-        id="additionalNotes"
-        rows="3" required></textarea>
+      <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan_form5" rows="3" required></textarea>
     </div>
     </div>
     <div class="text-end d-flex justify-content-end gap-2 mt-4">

@@ -23,7 +23,6 @@
   <div class="container mt-4">
     @include("container")
     <h3 class="text-center mt-4">Data Pasien</h3>
-    <!-- Tambahkan div dengan class 'table-responsive' -->
     <div class="table-responsive">
       <table class="table table-striped" id="dataPasienTable">
         <thead>
@@ -43,7 +42,7 @@
           <?php $cek = 0; ?>
           @foreach ($data as $index => $d)
         <tr data-index="{{ $index }}">
-        <td>{{ $index + 1 + ($data->currentPage() - 1) * $data->perPage() }}</td>
+        <td>{{ $loop->iteration }}</td>
         <td>{{ $d->namaPasien }}</td>
         <td>{{ $d->tanggalLahir }}</td>
         <td>{{ $d->alamatPasien }}</td>
@@ -76,9 +75,7 @@
       </table>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
-    {{ $data->links() }}
-  </div>
+
 
 
 
