@@ -50,6 +50,7 @@
             <option value="" disabled selected>Pilih Jenis Kelamin</option>
             <option value="Laki-laki">Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
+            <option value="Perempuan">Tidak ada</option>
           </select>
         </div>
         <div class="col-md-3 form-group">

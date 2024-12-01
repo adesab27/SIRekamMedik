@@ -21,7 +21,6 @@ Route::post('/registrasi', [AdminRegistrasiController::class, 'create'])->name('
 Route::get('/datapasien', [AdminDatapasienController::class, 'index'])->name('datapasien');
 Route::get('/datapasien/edit/{id}', [AdminDatapasienController::class, 'editDatapasien'])->name('editDatapasien');
 Route::post('/datapasien/update/{id}', [AdminDatapasienController::class, 'updateDatapasien'])->name('updateDatapasien');
-// Route::delete('/datapasien/delete/{id}', [AdminDatapasienController::class, 'delete'])->name('deleteDatapasien');
 Route::delete('/datapasien/delete/{id}', [AdminDatapasienController::class, 'delete'])->name('deleteDatapasien');
 
 Route::get('/datapasien/observasi/export/{id}', [AdminDatapasienController::class, 'export_pdf'])->name('export_pdf');

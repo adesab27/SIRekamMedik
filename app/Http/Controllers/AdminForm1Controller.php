@@ -77,7 +77,6 @@ class AdminForm1Controller extends Controller
                     'keluhan_stress' => $request->keluhan_stress != 'on' ? 0 : 1,
                     'keluhan_obat' => $request->keluhan_obat != 'on' ? 0 : 1,
                     'proses_persalinan' => $request->proses_persalinan,
-                    'lama_kehamilan' => $request->lama_kehamilan,
                     'berat_badan_lahir' => $request->berat_badan_lahir,
                     'panjang_badan_lahir' => $request->panjang_badan_lahir,
                     'lingkar_kepala_lahir' => $request->lingkar_kepala_lahir,

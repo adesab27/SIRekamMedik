@@ -7,7 +7,7 @@
         <div class="col-md-6">
           <?php $count = 0; ?>
           @foreach ($form4 as $fo)
-          @if($count == 8)
+          @if($count == 9)
           @break
           @else
           <div class="form-check">
@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-6">
           @foreach ($form4 as $fo)
-          @if ($loop->iteration > 8)
+          @if ($loop->iteration > 9)
           <div class="form-check">
             <input
               class="form-check-input"
