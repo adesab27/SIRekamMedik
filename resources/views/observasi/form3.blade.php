@@ -75,13 +75,13 @@
                 <label class="form-check-label" for="kondisiLahir3">Memerlukan perawatan khusus setelah masa
                     kelahiran</label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" id="kondisiLahir4" name="perawatan_khusus" type="checkbox" />
-                <label class="form-check-label" for="kondisiLahir4">Tidak ada</label>
-            </div>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="catatanTambahan">Catatan Tambahan</label>
+            <label class="form-label" for="catatanTambahan">Catatan Tambahan
+                <span class="text-muted">
+                    (Tulis lama kehamilan apabila memilih Pre-mature atau Post-Mature)
+                </span>
+            </label>
             <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan" rows="3" required></textarea>
         </div>
         <div class="text-end d-flex justify-content-end gap-2 mt-4">

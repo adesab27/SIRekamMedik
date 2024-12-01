@@ -191,6 +191,13 @@
                                         Silakan pilih agama.
                                     </div>
                                 </div>
+                                <div class="col-12 form-group">
+                                    <label for="alamatLengkap">Alamat Lengkap</label>
+                                    <textarea class="form-control" id="alamatLengkap" name="alamat_lengkap" placeholder="Masukkan Alamat lengkap" rows="3" required>{{$data->alamatPasien}}</textarea>
+                                    <div class="invalid-feedback">
+                                        Please input data.
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
