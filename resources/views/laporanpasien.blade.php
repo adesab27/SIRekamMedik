@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Laporan Pasien</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo-klinik.png') }}">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="{{ asset('admin-laporan') }}/dist/css/adminlte.min.css">
+
+</head>
+
+<body>
+@include("header")
+<div class="container mt-4">
+@include("container")
+    <h1 class="text-center mt-4">Data Laporan Pasien</h1>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="minDate" class="form-label">Tanggal Mulai:</label>
+            <input type="date" id="minDate" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="maxDate" class="form-label">Tanggal Akhir:</label>
+            <input type="date" id="maxDate" class="form-control">
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button id="applyFilter" class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Keperluan</th>
+                    <th>Tanggal Registrasi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($dataRegistrasi as $registrasi)
+                <tr>
+                    <td>{{ $registrasi->namaPasien }}</td>
+                    <td>{{ $registrasi->alamatPasien }}</td>
+                    <td>{{ $registrasi->keperluan }}</td>
+                    <td>{{ $registrasi->created_at->format('Y-m-d') }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Inisialisasi DataTable
+            var table = $('#dataTable').DataTable();
+
+            // Custom filter untuk rentang tanggal
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var min = $('#minDate').val();
+                    var max = $('#maxDate').val();
+                    var date = data[3]; // Kolom ke-4 (Tanggal Registrasi)
+
+                    // Jika tidak ada input tanggal, tampilkan semua data
+                    if ((min === "" && max === "") || 
+                        (min === "" && date <= max) || 
+                        (min <= date && max === "") || 
+                        (min <= date && date <= max)) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+
+            // Event listener untuk tombol filter
+            $('#applyFilter').on('click', function() {
+                table.draw();
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        // Ambil elemen input tanggal
+        var minDateInput = document.getElementById('minDate');
+        var maxDateInput = document.getElementById('maxDate');
+
+        // Dapatkan tanggal hari ini dalam format YYYY-MM-DD
+        var today = new Date();
+        var yyyy = today.getFullYear();
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // Bulan ditambah 1 karena dimulai dari 0
+        var dd = String(today.getDate()).padStart(2, '0');
+
+        var maxDate = `${yyyy}-${mm}-${dd}`;
+
+        // Tetapkan atribut max ke input tanggal
+        minDateInput.setAttribute('max', maxDate);
+        maxDateInput.setAttribute('max', maxDate);
+    });
+
+    </script>
+
+
+</body>
+
+</html>

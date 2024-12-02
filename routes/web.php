@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminRegistrasiController;
 use App\Http\Controllers\AdminDatapasienController;
+use App\Http\Controllers\AdminLaporanController;
 use App\Http\Controllers\AdminForm1Controller;
 use App\Http\Controllers\AuthController;
 
@@ -22,8 +23,11 @@ Route::get('/datapasien', [AdminDatapasienController::class, 'index'])->name('da
 Route::get('/datapasien/edit/{id}', [AdminDatapasienController::class, 'editDatapasien'])->name('editDatapasien');
 Route::post('/datapasien/update/{id}', [AdminDatapasienController::class, 'updateDatapasien'])->name('updateDatapasien');
 Route::delete('/datapasien/delete/{id}', [AdminDatapasienController::class, 'delete'])->name('deleteDatapasien');
-
 Route::get('/datapasien/observasi/export/{id}', [AdminDatapasienController::class, 'export_pdf'])->name('export_pdf');
+
+// Laporan
+Route::get('/laporanpasien', [AdminLaporanController::class, 'index'])->name('laporanpasien');
+// Route::get('/laporanregistrasi', [AdminLaporanController::class, 'index'])->name('laporanregistrasi');
 
 // Form Observasi
 Route::get('/observasi/form1/{id}', [AdminForm1Controller::class, 'index'])->name('form1');

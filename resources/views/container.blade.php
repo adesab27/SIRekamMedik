@@ -5,6 +5,9 @@
     <li class="nav-item">
         <a class="nav-link {{ Request::is('datapasien') ? 'active' : '' }}" href="{{ url('/datapasien') }}">Data Pasien</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::is('laporanpasien') ? 'active' : '' }}" href="{{ url('/laporanpasien') }}">Laporan</a>
+    </li>
 </ul>
 
 <script>
