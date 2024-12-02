@@ -9,7 +9,7 @@ class AdminLaporanController extends Controller
 {
     public function index()
     {
-        $dataRegistrasi = Registrasi::all();
+        $dataRegistrasi = Registrasi::orderBy('created_at', 'asc')->get(); // Urutkan berdasarkan tanggal (ascending)
         $username = Auth::user()->name; // Ambil nama user yang sedang login
         return view('laporanpasien', compact('dataRegistrasi', 'username'));
     }
