@@ -583,7 +583,8 @@
             </tr>
             <tr>
                 <td style="width: 20%;">
-                    <p class="m-2">Berapa kali dalam semalam anak terbangun? Apa yang anak kerjakan ketika terbangun?</p>
+                    <p class="m-2">Berapa kali dalam semalam anak terbangun? Apa yang anak kerjakan ketika terbangun?
+                    </p>
                 </td>
                 <td style="width: 50%;">
                     <p class="m-2">{{$riwpolakebiasaan->terbangun_malam}}</p>
