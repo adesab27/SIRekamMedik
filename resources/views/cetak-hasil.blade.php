@@ -610,6 +610,14 @@
                 </td>
             </tr>
         </table>
+        <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+            <div style="text-align: right;">
+                <p>Banjarnegara, {{ now()->format('d F Y') }}</p>
+            </div>
+            <div style="text-align: right;">
+                <p>Kepala Klinik Rumah Terapi Pelangi Insan</p>
+            </div>
+        </div>
 </body>
 
 </html>
