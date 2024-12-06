@@ -64,26 +64,48 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="namaAnak">Nama Anak</label>
-                                    <input class="form-control" id="namaAnak" name="nama_anak" placeholder="Masukkan Nama" type="text" value="{{$data->namaPasien}}" required />
-                                    <input class="form-control" id="pasien_id" name="pasien_id" type="hidden" value="{{$pasien_id}}" />
+                                    <input 
+                                        class="form-control" 
+                                        id="namaAnak" 
+                                        name="nama_anak" 
+                                        placeholder="Masukkan Nama" 
+                                        type="text" 
+                                        value="{{$data->namaPasien}}" 
+                                        required 
+                                        pattern="[A-Za-z\s]+" 
+                                        title="Hanya boleh huruf dan spasi"
+                                        oninput="validateInput(this)" />
+                                    <input 
+                                        class="form-control" 
+                                        id="pasien_id" 
+                                        name="pasien_id" 
+                                        type="hidden" 
+                                        value="{{$pasien_id}}" />
                                     <div class="invalid-feedback">
-                                        Please input data.
+                                        Harap masukkan hanya huruf.
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="tempatLahir">Tempat Lahir</label>
-                                    <input class="form-control" id="tempatLahir" name="tempat_lahir" placeholder="Tempat lahir" type="text" required />
+                                    <input class="form-control" id="tempatLahir" name="tempat_lahir" placeholder="Tempat lahir" type="text" required 
+                                        pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                     <div class="invalid-feedback">
-                                        Please input data.
+                                        Please input data
                                     </div>
                                 </div>
+
                                 <div class="col-md-6 form-group">
                                     <label for="namaPanggilan">Nama Panggilan Anak</label>
-                                    <input class="form-control" id="namaPanggilan" name="nama_panggilan" placeholder="Masukkan nama panggilan anak" type="text" value="{{$data->namaPasien}}" required />
+                                    <input class="form-control" id="namaPanggilan" name="nama_panggilan" placeholder="Masukkan nama panggilan anak" 
+                                        type="text" required 
+                                        pattern="[A-Za-z\s]+" 
+                                        title="Hanya boleh huruf dan spasi" 
+                                        oninput="validateInput(this)" />
                                     <div class="invalid-feedback">
-                                        Please input data.
+                                        Please input data
                                     </div>
                                 </div>
+
                                 <div class="col-md-6 form-group">
                                     <label for="tanggalLahir">Tanggal Lahir</label>
                                     <input class="form-control" id="tanggalLahir" name="tanggal_lahir" placeholder="DD/MM/YYYY" type="date" value="{{$data->tanggalLahir}}" required />
@@ -120,7 +142,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="namaAyah">Nama Ayah</label>
-                                        <input class="form-control" id="namaAyah" name="nama_ayah" placeholder="Masukkan Nama Ayah" type="text" required />
+                                        <input class="form-control" id="namaAyah" name="nama_ayah" placeholder="Masukkan Nama Ayah" type="text" 
+                                            required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                         <div class="invalid-feedback">
                                             Please input data.
                                         </div>
@@ -134,9 +157,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaanAyah">Pekerjaan Ayah</label>
-                                        <input class="form-control" id="pekerjaanAyah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" type="text" required />
+                                        <input class="form-control" id="pekerjaanAyah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" type="text" 
+                                            required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                         <div class="invalid-feedback">
-                                            Please input data.
+                                            Please input data
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -158,13 +182,14 @@
 
                                 <!-- Kolom Data Ibu -->
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="namaIbu">Nama Ibu</label>
-                                        <input class="form-control" id="namaIbu" name="nama_ibu" placeholder="Masukkan Nama Ibu" type="text" required />
-                                        <div class="invalid-feedback">
-                                            Please input data.
-                                        </div>
+                                <div class="form-group">
+                                    <label for="namaIbu">Nama Ibu</label>
+                                    <input class="form-control" id="namaIbu" name="nama_ibu" placeholder="Masukkan Nama Ibu" type="text" 
+                                        required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
+                                    <div class="invalid-feedback">
+                                        Please input data.
                                     </div>
+                                </div>
                                     <div class="form-group">
                                         <label for="usiaIbu">Usia Ibu</label>
                                         <input class="form-control" id="usiaIbu" name="usia_ibu" placeholder="Masukkan Usia Ibu" type="text" required />
@@ -174,7 +199,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaanIbu">Pekerjaan Ibu</label>
-                                        <input class="form-control" id="pekerjaanIbu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" type="text" required />
+                                        <input class="form-control" id="pekerjaanIbu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" type="text" 
+                                            required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                         <div class="invalid-feedback">
                                             Please input data.
                                         </div>
@@ -229,8 +255,39 @@
 
 
 
-</body>
+
 <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+<script>
+// Fungsi untuk memastikan input hanya huruf dan spasi
+function validateInput(inputElement) {
+    // Hapus semua karakter yang tidak diizinkan (selain huruf dan spasi)
+    inputElement.value = inputElement.value.replace(/[^A-Za-z\s]/g, '');
+
+    // Periksa validitas input dan aktifkan/nonaktifkan tombol submit
+    const form = inputElement.closest('form');
+    const submitButton = form.querySelector('button[type="submit"]');
+    
+    // Cek validitas form, jika valid tombol submit diaktifkan, jika tidak dinonaktifkan
+    if (form.checkValidity()) {
+        submitButton.disabled = false;  // Aktifkan tombol submit jika form valid
+    } else {
+        submitButton.disabled = true;   // Nonaktifkan tombol submit jika form tidak valid
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Nonaktifkan tombol submit di awal
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) {
+            submitButton.disabled = true; // Nonaktifkan tombol submit saat halaman dimuat
+        }
+    });
+});
+
+</script>
+
 <script>
     var stepper = new Stepper(document.querySelector('.bs-stepper'));
 
@@ -254,4 +311,5 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 </html>
