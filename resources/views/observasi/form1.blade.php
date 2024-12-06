@@ -258,56 +258,53 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
 <script>
-// Fungsi untuk memastikan input hanya huruf dan spasi
-function validateInput(inputElement) {
-    // Hapus semua karakter yang tidak diizinkan (selain huruf dan spasi)
-    inputElement.value = inputElement.value.replace(/[^A-Za-z\s]/g, '');
+var stepper = new Stepper(document.querySelector('.bs-stepper'));
 
-    // Periksa validitas input dan aktifkan/nonaktifkan tombol submit
-    const form = inputElement.closest('form');
-    const submitButton = form.querySelector('button[type="submit"]');
-    
-    // Cek validitas form, jika valid tombol submit diaktifkan, jika tidak dinonaktifkan
-    if (form.checkValidity()) {
-        submitButton.disabled = false;  // Aktifkan tombol submit jika form valid
-    } else {
-        submitButton.disabled = true;   // Nonaktifkan tombol submit jika form tidak valid
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Nonaktifkan tombol submit di awal
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        const submitButton = form.querySelector('button[type="submit"]');
-        if (submitButton) {
-            submitButton.disabled = true; // Nonaktifkan tombol submit saat halaman dimuat
-        }
-    });
-});
-
-</script>
-
-<script>
-    var stepper = new Stepper(document.querySelector('.bs-stepper'));
-
-    function nextStep() {
+function nextStep() {
     const currentStep = stepper._currentIndex;
     const currentContent = document.querySelectorAll('.bs-stepper-content .content')[currentStep];
     
-    if (currentContent.querySelectorAll('input:invalid').length > 0) {
-        currentContent.querySelector('input:invalid').focus();
-    } else {
+    // Validasi elemen di langkah saat ini
+    const inputs = currentContent.querySelectorAll('input, select, textarea');
+    let isValid = true;
+
+    // Periksa apakah semua elemen yang required sudah terisi
+    inputs.forEach(function(input) {
+        if (input.hasAttribute('required') && !input.value.trim()) {
+            isValid = false;
+            input.classList.add('is-invalid'); // Menambahkan kelas invalid untuk menunjukkan kesalahan
+        } else {
+            input.classList.remove('is-invalid'); // Menghapus kelas invalid jika valid
+        }
+    });
+
+    if (isValid) {
+        // Pindah ke langkah berikutnya jika valid
         stepper.next();
         // Scroll ke atas halaman
         window.scrollTo({
             top: 0,        // Posisi paling atas
             behavior: 'smooth' // Gulir halus
         });
+    } else {
+        // Fokus pada input pertama yang invalid
+        const firstInvalidInput = currentContent.querySelector('.is-invalid');
+        if (firstInvalidInput) {
+            firstInvalidInput.focus();
+        }
     }
 }
 
-    // Update review section
+// Tambahkan event listener untuk memeriksa form sebelum pengiriman
+document.querySelector('form').addEventListener('submit', function(event) {
+    // Jika ada input yang tidak valid, cegah pengiriman form
+    const form = event.target;
+    if (!form.checkValidity()) {
+        event.preventDefault(); // Mencegah form dikirim jika tidak valid
+        alert('Silakan lengkapi semua data yang diperlukan!');
+    }
+});
+
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
