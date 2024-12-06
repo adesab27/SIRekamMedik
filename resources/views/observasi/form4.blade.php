@@ -7,40 +7,32 @@
         <div class="col-md-6">
           <?php $count = 0; ?>
           @foreach ($form4 as $fo)
-          @if($count == 9)
-          @break
-          @else
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              id="{{$fo->name}}"
-              name="{{$fo->name}}"
-              type="checkbox" />
-            <label class="form-check-label" for="{{$fo->name}}">
-              {{$fo->value}}
-            </label>
-          </div>
-          @endif
-          <?php $count++; ?>
-          @endforeach
+        @if($count == 9)
+      @break
+    @else
+    <div class="form-check">
+    <input class="form-check-input" id="{{$fo->name}}" name="{{$fo->name}}" type="checkbox" />
+    <label class="form-check-label" for="{{$fo->name}}">
+      {{$fo->value}}
+    </label>
+    </div>
+  @endif
+        <?php  $count++; ?>
+      @endforeach
         </div>
         <div class="col-md-6">
           @foreach ($form4 as $fo)
-          @if ($loop->iteration > 9)
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              id="{{$fo->name}}"
-              name="{{$fo->name}}"
-              type="checkbox" />
-            <label class="form-check-label" for="{{$fo->name}}">
-              {{$fo->value}}
-            </label>
-          </div>
-          @else
-          @continue
-          @endif
-          @endforeach
+        @if ($loop->iteration > 9)
+      <div class="form-check">
+      <input class="form-check-input" id="{{$fo->name}}" name="{{$fo->name}}" type="checkbox" />
+      <label class="form-check-label" for="{{$fo->name}}">
+        {{$fo->value}}
+      </label>
+      </div>
+    @else
+    @continue
+  @endif
+      @endforeach
         </div>
       </div>
     </div>
@@ -53,89 +45,54 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-2">
               <label for="tengkurap">Tengkurap</label>
-              <input
-                name="tengkurap"
-                class="form-control"
-                id="tengkurap"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="tengkurap" class="form-control" id="tengkurap" type="number" placeholder="bulan" required
+                min="0" step="1" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="duduk">Duduk</label>
-              <input
-                name="duduk"
-                class="form-control"
-                id="duduk"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="duduk" class="form-control" id="duduk" type="number" placeholder="bulan" required min="0"
+                step="1" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="merangkak">Merangkak</label>
-              <input
-                name="merangkak"
-                class="form-control"
-                id="merangkak"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="merangkak" class="form-control" id="merangkak" type="number" placeholder="bulan" required
+                min="0" step="1" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="berdiri">Berdiri</label>
-              <input
-                name="berdiri"
-                class="form-control"
-                id="berdiri"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="berdiri" class="form-control" id="berdiri" type="number" placeholder="bulan" required min="0"
+                step="1" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="berjalan">Berjalan</label>
-              <input
-                name="berjalan"
-                class="form-control"
-                id="berjalan"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="berjalan" class="form-control" id="berjalan" type="number" placeholder="bulan" required
+                min="0" step="1" />
             </div>
           </div>
         </div>
+
         <div class="col-md-12 mt-4">
           <h6>Riwayat Perkembangan Bahasa</h6>
           <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
               <label for="bubbling">Bubbling</label>
-              <input
-                name="bubbling"
-                class="form-control"
-                id="bubbling"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="bubbling" class="form-control" id="bubbling" type="number" placeholder="bulan" required
+                min="0" step="1" />
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <label for="kataPertama">Kata Pertama</label>
-              <input
-                name="kata_pertama"
-                class="form-control"
-                id="kataPertama"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="kata_pertama" class="form-control" id="kataPertama" type="number" placeholder="bulan"
+                required min="0" step="1" />
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <label for="mengulangKata">Mengulang kata</label>
-              <input
-                name="mengulang_kata"
-                class="form-control"
-                id="mengulangKata"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="mengulang_kata" class="form-control" id="mengulangKata" type="number" placeholder="bulan"
+                required min="0" step="1" />
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <label for="kalimatPertama">Kalimat pertama</label>
-              <input
-                name="kalimat_pertama"
-                class="form-control"
-                id="kalimatPertama"
-                placeholder="Bulan"
-                type="text" required />
+              <input name="kalimat_pertama" class="form-control" id="kalimatPertama" type="number" placeholder="bulan"
+                required min="0" step="1" />
             </div>
           </div>
         </div>
