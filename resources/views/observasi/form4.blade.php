@@ -45,28 +45,28 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-2">
               <label for="tengkurap">Tengkurap</label>
-              <input name="tengkurap" class="form-control" id="tengkurap" type="number" placeholder="bulan" required
-                min="0" step="1" />
+              <input name="tengkurap" class="form-control" id="tengkurap" type="text" placeholder="bulan" required
+                pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="duduk">Duduk</label>
-              <input name="duduk" class="form-control" id="duduk" type="number" placeholder="bulan" required min="0"
-                step="1" />
+              <input name="duduk" class="form-control" id="duduk" type="text" placeholder="bulan" required
+                pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="merangkak">Merangkak</label>
-              <input name="merangkak" class="form-control" id="merangkak" type="number" placeholder="bulan" required
-                min="0" step="1" />
+              <input name="merangkak" class="form-control" id="merangkak" type="text" placeholder="bulan" required
+                pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="berdiri">Berdiri</label>
-              <input name="berdiri" class="form-control" id="berdiri" type="number" placeholder="bulan" required min="0"
-                step="1" />
+              <input name="berdiri" class="form-control" id="berdiri" type="text" placeholder="bulan" required
+                pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
             <div class="col-12 col-sm-6 col-md-2">
               <label for="berjalan">Berjalan</label>
-              <input name="berjalan" class="form-control" id="berjalan" type="number" placeholder="bulan" required
-                min="0" step="1" />
+              <input name="berjalan" class="form-control" id="berjalan" type="text" placeholder="bulan" required
+                pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
           </div>
         </div>
@@ -76,28 +76,29 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
               <label for="bubbling">Bubbling</label>
-              <input name="bubbling" class="form-control" id="bubbling" type="number" placeholder="bulan" required
-                min="0" step="1" />
+              <input name="bubbling" class="form-control" id="bubbling" type="text" placeholder="bulan" required
+                pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <label for="kataPertama">Kata Pertama</label>
-              <input name="kata_pertama" class="form-control" id="kataPertama" type="number" placeholder="bulan"
-                required min="0" step="1" />
+              <input name="kata_pertama" class="form-control" id="kataPertama" type="text" placeholder="bulan" required
+                pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <label for="mengulangKata">Mengulang kata</label>
-              <input name="mengulang_kata" class="form-control" id="mengulangKata" type="number" placeholder="bulan"
-                required min="0" step="1" />
+              <input name="mengulang_kata" class="form-control" id="mengulangKata" type="text" placeholder="bulan"
+                required pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
             <div class="col-12 col-sm-6 col-md-3">
               <label for="kalimatPertama">Kalimat pertama</label>
-              <input name="kalimat_pertama" class="form-control" id="kalimatPertama" type="number" placeholder="bulan"
-                required min="0" step="1" />
+              <input name="kalimat_pertama" class="form-control" id="kalimatPertama" type="text" placeholder="bulan"
+                required pattern="^-?\d*$" title="Hanya angka dan tanda minus yang diperbolehkan" />
             </div>
           </div>
         </div>
       </div>
     </div>
+
 
     <div class="mt-4 mb-3">
       <h5>Catatan Tambahan</h5>

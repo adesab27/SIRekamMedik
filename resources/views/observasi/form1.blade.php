@@ -90,7 +90,7 @@
                                     <input class="form-control" id="tempatLahir" name="tempat_lahir" placeholder="Tempat lahir" type="text" required 
                                         pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                     <div class="invalid-feedback">
-                                        Please input data
+                                        Harap masukkan hanya huruf.
                                     </div>
                                 </div>
 
@@ -150,11 +150,20 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="usiaAyah">Usia Ayah</label>
-                                        <input class="form-control" id="usiaAyah" name="usia_ayah" placeholder="Masukkan Usia Ayah" type="text" required />
+                                        <input 
+                                            class="form-control" 
+                                            id="usiaAyah" 
+                                            name="usia_ayah" 
+                                            placeholder="Masukkan Usia Ayah" 
+                                            type="number" 
+                                            min="0" 
+                                            max="120" 
+                                            required />
                                         <div class="invalid-feedback">
-                                            Please input data.
+                                            Harap masukkan usia dalam bentuk angka.
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="pekerjaanAyah">Pekerjaan Ayah</label>
                                         <input class="form-control" id="pekerjaanAyah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" type="text" 
@@ -190,11 +199,19 @@
                                         Please input data.
                                     </div>
                                 </div>
-                                    <div class="form-group">
-                                        <label for="usiaIbu">Usia Ibu</label>
-                                        <input class="form-control" id="usiaIbu" name="usia_ibu" placeholder="Masukkan Usia Ibu" type="text" required />
+                                <div class="form-group">
+                                        <label for="usiaAyah">Usia Ibu</label>
+                                        <input 
+                                            class="form-control" 
+                                            id="usiaAyah" 
+                                            name="usia_ayah" 
+                                            placeholder="Masukkan Usia Ayah" 
+                                            type="number" 
+                                            min="0" 
+                                            max="120" 
+                                            required />
                                         <div class="invalid-feedback">
-                                            Please input data.
+                                            Harap masukkan usia dalam bentuk angka.
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -261,49 +278,50 @@
 var stepper = new Stepper(document.querySelector('.bs-stepper'));
 
 function nextStep() {
-    const currentStep = stepper._currentIndex;
+    const currentStep = stepper._currentIndex; // Dapatkan indeks langkah saat ini
     const currentContent = document.querySelectorAll('.bs-stepper-content .content')[currentStep];
-    
+
     // Validasi elemen di langkah saat ini
     const inputs = currentContent.querySelectorAll('input, select, textarea');
     let isValid = true;
 
-    // Periksa apakah semua elemen yang required sudah terisi
     inputs.forEach(function(input) {
-        if (input.hasAttribute('required') && !input.value.trim()) {
+        if (!input.checkValidity()) { 
             isValid = false;
-            input.classList.add('is-invalid'); // Menambahkan kelas invalid untuk menunjukkan kesalahan
+            input.classList.add('is-invalid'); // Tambahkan kelas invalid
+            input.classList.remove('is-valid');
         } else {
-            input.classList.remove('is-invalid'); // Menghapus kelas invalid jika valid
+            input.classList.add('is-valid'); // Tambahkan kelas valid
+            input.classList.remove('is-invalid');
         }
     });
 
     if (isValid) {
-        // Pindah ke langkah berikutnya jika valid
+        // Pindah ke langkah berikutnya jika semua input valid
         stepper.next();
-        // Scroll ke atas halaman
         window.scrollTo({
-            top: 0,        // Posisi paling atas
-            behavior: 'smooth' // Gulir halus
+            top: 0,
+            behavior: 'smooth'
         });
     } else {
-        // Fokus pada input pertama yang invalid
+        // Fokus ke input pertama yang tidak valid
         const firstInvalidInput = currentContent.querySelector('.is-invalid');
         if (firstInvalidInput) {
             firstInvalidInput.focus();
         }
+        alert('Silakan lengkapi semua data dengan benar pada langkah ini sebelum melanjutkan.');
     }
 }
 
-// Tambahkan event listener untuk memeriksa form sebelum pengiriman
+// Tambahkan event listener untuk validasi akhir saat form dikirim
 document.querySelector('form').addEventListener('submit', function(event) {
-    // Jika ada input yang tidak valid, cegah pengiriman form
     const form = event.target;
     if (!form.checkValidity()) {
-        event.preventDefault(); // Mencegah form dikirim jika tidak valid
-        alert('Silakan lengkapi semua data yang diperlukan!');
+        event.preventDefault();
+        alert('Silakan lengkapi semua data dengan benar sebelum menyimpan data.');
     }
 });
+
 
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

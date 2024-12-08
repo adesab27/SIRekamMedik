@@ -78,9 +78,9 @@
             <div class="col-md-3 align-self-end">
                 <button id="applyFilter" class="btn btn-primary">Filter</button>
             </div>
-            <div class="col-md-3 align-self-end text-end">
+            <!-- <div class="col-md-3 align-self-end text-end">
                 <button id="printTable" class="btn btn-success">Cetak Laporan</button>
-            </div>
+            </div> -->
         </div>
 
 
@@ -181,7 +181,7 @@
         });
 
     </script>
-    <script>
+    <!-- <script>
         document.getElementById('printTable').addEventListener('click', function () {
             var tableContent = document.querySelector('.table-responsive').innerHTML; // Ambil isi tabel
             var newWindow = window.open('', '', 'width=800,height=600'); // Buka jendela baru
@@ -194,7 +194,7 @@
             newWindow.document.close();
             newWindow.print(); // Cetak halaman
         });
-    </script>
+    </script> -->
 
 </body>
 

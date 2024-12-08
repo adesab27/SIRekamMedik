@@ -120,7 +120,7 @@
                     <p class="m-2">Usia Ayah</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->usia_ayah}}</p>
+                    <p class="m-2">{{$infoanak->usia_ayah}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -128,7 +128,7 @@
                     <p class="m-2">Usia Ibu</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->usia_ibu}}</p>
+                    <p class="m-2">{{$infoanak->usia_ibu}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -219,7 +219,7 @@
                     <p class="m-2">Usia Saudara Kandung</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->usiaSaudara}}</p>
+                    <p class="m-2">{{$datatambahan->usiaSaudara}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -318,7 +318,7 @@
                     <p class="m-2">Usia Ibu Ketika Hamil</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->usia_ibu}}</p>
+                    <p class="m-2">{{$riwhamillahir->usia_ibu}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -326,7 +326,7 @@
                     <p class="m-2">Berat Badan Ibu Ketika Hamil</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->berat_badan_ibu}}</p>
+                    <p class="m-2">{{$riwhamillahir->berat_badan_ibu}} Kg</p>
                 </td>
             </tr>
             <tr>
@@ -355,20 +355,20 @@
                     <p class="m-2">{{$riwhamillahir->proses_persalinan}}</p>
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td style="width: 20%;">
                     <p class="m-2">Lama Kehamilan (dalam minggu)</p>
                 </td>
                 <td style="width: 50%;">
                     <p class="m-2">{{$riwhamillahir->lama_kehamilan}}</p>
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td style="width: 20%;">
                     <p class="m-2">Berat Badan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->berat_badan_lahir}}</p>
+                    <p class="m-2">{{$riwhamillahir->berat_badan_lahir}} Kg</p>
                 </td>
             </tr>
             <tr>
@@ -376,7 +376,7 @@
                     <p class="m-2">Panjang Badan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->panjang_badan_lahir}}</p>
+                    <p class="m-2">{{$riwhamillahir->panjang_badan_lahir}} Cm</p>
                 </td>
             </tr>
             <tr>
@@ -384,7 +384,7 @@
                     <p class="m-2">Lingkar Kepala</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->lingkar_kepala_lahir}}</p>
+                    <p class="m-2">{{$riwhamillahir->lingkar_kepala_lahir}} Cm</p>
                 </td>
             </tr>
             <tr>
@@ -473,7 +473,7 @@
                     <p class="m-2">Tengkurap</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->tengkurap}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->tengkurap}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -481,7 +481,7 @@
                     <p class="m-2">Duduk</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->duduk}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->duduk}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -489,7 +489,7 @@
                     <p class="m-2">Merangkak</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->merangkak}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->merangkak}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -497,7 +497,7 @@
                     <p class="m-2">Berdiri</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->berdiri}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->berdiri}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -505,7 +505,7 @@
                     <p class="m-2">Berjalan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->berjalan}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->berjalan}} Bulan</p>
                 </td>
             </tr>
         </table>
@@ -524,7 +524,7 @@
                     <p class="m-2">Bubbling</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->bubbling}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->bubbling}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -532,7 +532,7 @@
                     <p class="m-2">Kata Pertama</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->kata_pertama}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->kata_pertama}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -540,7 +540,7 @@
                     <p class="m-2">Mengulang kata</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->mengulang_kata}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->mengulang_kata}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -548,7 +548,7 @@
                     <p class="m-2">Kalimat pertama</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->kalimat_pertama}}</p>
+                    <p class="m-2">{{$riwsehatperkembangan->kalimat_pertama}} Bulan</p>
                 </td>
             </tr>
         </table>
