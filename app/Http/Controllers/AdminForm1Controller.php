@@ -21,11 +21,30 @@ class AdminForm1Controller extends Controller
             $form3 = DB::table('masterdata_checklist')->where('form', 3)->get();
             $form4 = DB::table('masterdata_checklist')->where('form', 4)->get();
             $form5 = DB::table('masterdata_checklist')->where('form', 5)->get();
-            return view('observasi/form1', ['data'=>$data, 'form3'=>$form3, 'form4'=>$form4, 'form5'=>$form5, 'pasien_id' => $id, 'username' => $username]);
+
+            // Menghitung usia anak
+            $umurAnak = '';
+            if ($data && $data->tanggalLahir) {
+                $tanggalLahir = new \DateTime($data->tanggalLahir); // Konversi ke DateTime
+                $sekarang = new \DateTime(); // Tanggal hari ini
+                $interval = $sekarang->diff($tanggalLahir); // Selisih tanggal
+                $umurAnak = $interval->y . ' tahun ' . $interval->m . ' bulan';
+            }
+
+            return view('observasi/form1', [
+                'data' => $data, 
+                'form3' => $form3, 
+                'form4' => $form4, 
+                'form5' => $form5, 
+                'pasien_id' => $id, 
+                'username' => $username,
+                'umurAnak' => $umurAnak // Kirim hasil usia ke view
+            ]);
         } else {
             return redirect()->route('indexLogin')->with('error', 'Silahkan Login');
         }
     }
+
 
     public function store(Request $request) {
         // Menyimpan data ke database
