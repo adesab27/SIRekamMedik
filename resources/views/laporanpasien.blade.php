@@ -2,52 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Registrasi</title>
 
-    <title>Laporan Pasien</title>
-    <!-- Custom styles for this page -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo-klinik.png') }}">
-    <link rel="stylesheet" href="assets/style.css">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-        @media print {
-            body {
-                font-size: 12px;
-            }
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+  
+  <link rel="icon" type="image/png" href="{{ asset('assets/img/logo-klinik.png') }}">
+  <link rel="stylesheet" href="assets/style.css">
 
-            .btn,
-            .form-label,
-            #minDate,
-            #maxDate,
-            #applyFilter,
-            #printReport {
-                display: none;
-                /* Sembunyikan elemen yang tidak diperlukan saat cetak */
-            }
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-
-            table th,
-            table td {
-                border: 1px solid #000;
-                padding: 8px;
-            }
-
-            .table-responsive {
-                overflow: visible;
-                /* Pastikan tabel tetap terlihat */
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -94,10 +62,16 @@
         </div>
     </div>
 
-    <script src="assets/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    
+  <script src="assets/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
