@@ -78,9 +78,6 @@
             <div class="col-md-3 align-self-end">
                 <button id="applyFilter" class="btn btn-primary">Filter</button>
             </div>
-            <!-- <div class="col-md-3 align-self-end text-end">
-                <button id="printTable" class="btn btn-success">Cetak Laporan</button>
-            </div> -->
         </div>
 
 
@@ -161,40 +158,31 @@
             });
         });
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Ambil elemen input tanggal
-            var minDateInput = document.getElementById('minDate');
-            var maxDateInput = document.getElementById('maxDate');
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Ambil elemen input tanggal
+        var minDateInput = document.getElementById('minDate');
+        var maxDateInput = document.getElementById('maxDate');
 
-            // Dapatkan tanggal hari ini dalam format YYYY-MM-DD
-            var today = new Date();
-            var yyyy = today.getFullYear();
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); // Bulan ditambah 1 karena dimulai dari 0
-            var dd = String(today.getDate()).padStart(2, '0');
+        // Dapatkan tanggal hari ini dalam format YYYY-MM-DD
+        var today = new Date();
+        var yyyy = today.getFullYear();
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // Bulan ditambah 1 karena dimulai dari 0
+        var dd = String(today.getDate()).padStart(2, '0');
 
-            var maxDate = `${yyyy}-${mm}-${dd}`;
+        var maxDate = `${yyyy}-${mm}-${dd}`;
 
-            // Tetapkan atribut max ke input tanggal
-            minDateInput.setAttribute('max', maxDate);
-            maxDateInput.setAttribute('max', maxDate);
+        // Tetapkan atribut max ke input tanggal
+        minDateInput.setAttribute('max', maxDate);
+        maxDateInput.setAttribute('max', maxDate);
+
+        // Set filter untuk tanggal akhir agar tidak lebih kecil dari tanggal mulai
+        minDateInput.addEventListener('change', function() {
+            var minDateValue = minDateInput.value;
+            maxDateInput.setAttribute('min', minDateValue); // Set the min value for maxDate
         });
-
-    </script>
-    <!-- <script>
-        document.getElementById('printTable').addEventListener('click', function () {
-            var tableContent = document.querySelector('.table-responsive').innerHTML; // Ambil isi tabel
-            var newWindow = window.open('', '', 'width=800,height=600'); // Buka jendela baru
-            newWindow.document.write('<html><head><title>Cetak Laporan</title>');
-            newWindow.document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">'); // Tambahkan style jika diperlukan
-            newWindow.document.write('<style>table { width: 100%; border-collapse: collapse; } table, th, td { border: 1px solid black; padding: 8px; }</style>');
-            newWindow.document.write('</head><body>');
-            newWindow.document.write(tableContent); // Tambahkan konten tabel
-            newWindow.document.write('</body></html>');
-            newWindow.document.close();
-            newWindow.print(); // Cetak halaman
-        });
-    </script> -->
+    });
+</script>
 
 </body>
 

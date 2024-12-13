@@ -26,6 +26,20 @@
                             <img src="/assets/img/logo-klinik.png" alt="Logo" style="max-width: 100%; height: auto;">
                         </div>
                         <h3 class="text-center mb-4">SIRekamMedik</h3>
+                        
+                        <!-- Alert Section -->
+                        @if(session('error'))
+                        <div class="alert alert-danger" style="margin-bottom: 15px; padding: 10px; border-radius: 5px; background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7;">
+                            {{ session('error') }}
+                        </div>
+                        @endif
+                        
+                        @if(session('success'))
+                        <div class="alert alert-success" style="margin-bottom: 15px; padding: 10px; border-radius: 5px; background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc;">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+
                         <form method="POST" action="{{route('postLogin')}}" class="login-form">
                             @csrf
                             <div class="form-group">
@@ -43,7 +57,5 @@
             </div>
         </div>
     </section>
-
-
 </body>
 </html>

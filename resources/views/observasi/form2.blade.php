@@ -17,10 +17,16 @@
         <div class="col-md-6 form-group">
           <label for="diagnosaUsia">Diusia berapa diagnosa diberikan</label>
           <input class="form-control" name="diagnosaUsia" id="diagnosaUsia" placeholder="Tanggal atau umur" type="text" required />
+          <div class="invalid-feedback">
+          Harap masukkan data yang sesuai
+          </div>
         </div>
         <div class="col-12 form-group">
           <label for="diagnosaDiberikan">Diagnosa yang diberikan:</label>
           <textarea class="form-control" name="diagnosaDiberikan" id="diagnosaDiberikan" placeholder="Masukkan Diagnosa yang diberikan" rows="3" required></textarea>
+          <div class="invalid-feedback">
+          Harap masukkan data yang sesuai
+          </div>
         </div>
       </div>
     </div>
@@ -41,7 +47,7 @@
           <label for="usiaSaudara">Usia</label>
           <input class="form-control" name="usiaSaudara" id="usiaSaudara" placeholder="Usia" type="text" required pattern="^-?\d*$" title="Harap masukkan angka atau tanda minus." />
           <div class="invalid-feedback">
-            Harap masukkan angka atau tanda minus.
+          Harap masukkan data yang sesuai
           </div>
         </div>
         <div class="col-md-3 form-group">
@@ -122,7 +128,7 @@
           <label for="telpTerapis">Telp</label>
             <input class="form-control" name="telpTerapis" id="telpTerapis" placeholder="Telp" type="text" required pattern="^-?\d*$" title="Harap masukkan angka atau tanda minus." />
           <div class="invalid-feedback">
-            Harap masukkan hanya angka.
+          Harap masukkan data yang sesuai
           </div>
         </div>
       </div>

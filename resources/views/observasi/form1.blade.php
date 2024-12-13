@@ -82,7 +82,7 @@
                                         type="hidden" 
                                         value="{{$pasien_id}}" />
                                     <div class="invalid-feedback">
-                                        Harap masukkan hanya huruf.
+                                    Harap masukkan data yang sesuai
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
@@ -90,7 +90,7 @@
                                     <input class="form-control" id="tempatLahir" name="tempat_lahir" placeholder="Tempat lahir" type="text" required 
                                         pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                     <div class="invalid-feedback">
-                                        Harap masukkan hanya huruf.
+                                    Harap masukkan data yang sesuai
                                     </div>
                                 </div>
 
@@ -102,7 +102,7 @@
                                         title="Hanya boleh huruf dan spasi" 
                                         oninput="validateInput(this)" />
                                     <div class="invalid-feedback">
-                                        Please input data
+                                    Harap masukkan data yang sesuai
                                     </div>
                                 </div>
 
@@ -110,7 +110,7 @@
                                     <label for="tanggalLahir">Tanggal Lahir</label>
                                     <input class="form-control" id="tanggalLahir" name="tanggal_lahir" placeholder="DD/MM/YYYY" type="date" value="{{$data->tanggalLahir}}" required />
                                     <div class="invalid-feedback">
-                                        Please input data.
+                                    Harap masukkan data yang sesuai
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
@@ -126,12 +126,16 @@
                                 </div>
 
                                 <div class="col-md-6 form-group">
-                                    <label for="umurAnak">Umur Anak</label>
-                                    <input class="form-control" id="umurAnak" name="umur_anak" placeholder="Dalam Tahun dan bulan" type="text" required />
-                                    <div class="invalid-feedback">
-                                        Please input data.
-                                    </div>
-                                </div>
+                                <label for="umurAnak">Umur Anak</label>
+                                <input 
+                                    class="form-control" 
+                                    id="umurAnak" 
+                                    name="umur_anak" 
+                                    type="text" 
+                                    value="{{ $umurAnak ?? '' }}" 
+                                    readonly />
+                            </div>
+
                             </div>
                         </div>
 
@@ -145,7 +149,7 @@
                                         <input class="form-control" id="namaAyah" name="nama_ayah" placeholder="Masukkan Nama Ayah" type="text" 
                                             required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                         <div class="invalid-feedback">
-                                            Please input data.
+                                        Harap masukkan data yang sesuai
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -155,12 +159,13 @@
                                             id="usiaAyah" 
                                             name="usia_ayah" 
                                             placeholder="Masukkan Usia Ayah" 
-                                            type="number" 
+                                            type="text" 
+                                            pattern="^-?\d*$" 
                                             min="0" 
                                             max="120" 
                                             required />
                                         <div class="invalid-feedback">
-                                            Harap masukkan usia dalam bentuk angka.
+                                        Harap masukkan data yang sesuai
                                         </div>
                                     </div>
 
@@ -169,7 +174,7 @@
                                         <input class="form-control" id="pekerjaanAyah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" type="text" 
                                             required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                         <div class="invalid-feedback">
-                                            Please input data
+                                        Harap masukkan data yang sesuai
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -196,7 +201,7 @@
                                     <input class="form-control" id="namaIbu" name="nama_ibu" placeholder="Masukkan Nama Ibu" type="text" 
                                         required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                     <div class="invalid-feedback">
-                                        Please input data.
+                                    Harap masukkan data yang sesuai
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -206,12 +211,13 @@
                                             id="usiaAyah" 
                                             name="usia_ayah" 
                                             placeholder="Masukkan Usia Ayah" 
-                                            type="number" 
+                                            type="text" 
+                                            pattern="^-?\d*$" 
                                             min="0" 
                                             max="120" 
                                             required />
                                         <div class="invalid-feedback">
-                                            Harap masukkan usia dalam bentuk angka.
+                                        Harap masukkan data yang sesuai
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -219,7 +225,7 @@
                                         <input class="form-control" id="pekerjaanIbu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" type="text" 
                                             required pattern="[A-Za-z\s]+" title="Hanya boleh huruf dan spasi" oninput="validateInput(this)" />
                                         <div class="invalid-feedback">
-                                            Please input data.
+                                        Harap masukkan data yang sesuai
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -245,7 +251,7 @@
                                 <label for="alamatLengkap">Alamat Lengkap</label>
                                 <textarea class="form-control" id="alamatLengkap" name="alamat_lengkap" placeholder="Masukkan Alamat Lengkap" rows="3" required>{{$data->alamatPasien}}</textarea>
                                 <div class="invalid-feedback">
-                                    Please input data.
+                                Harap masukkan data yang sesuai
                                 </div>
                             </div>
                         </div>

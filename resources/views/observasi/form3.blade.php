@@ -4,12 +4,12 @@
             <div class="col-md-6">
                 <label class="form-label" for="usiaIbu">Usia Ibu Ketika Hamil</label>
                 <input class="form-control" id="usiaIbu" name="usia_ibu" type="number" placeholder="Tahun" required min="0" />
-                <div class="invalid-feedback">Harap masukkan angka bulat saja.</div>
+                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="beratBadanIbu">Berat Badan Ibu Ketika Hamil</label>
                 <input class="form-control" id="beratBadanIbu" name="berat_badan_ibu" type="number" placeholder="kg" required min="0" step="0.01" />
-                <div class="invalid-feedback">Harap masukkan angka bulat saja.</div>
+                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
             </div>
         </div>  
 
@@ -46,21 +46,21 @@
                 <label class="form-label" for="beratBadanLahir">Berat Badan</label>
                 <input class="form-control" id="beratBadanLahir" name="berat_badan_lahir" type="number" 
                     placeholder="kg" required min="0" step="1" />
-                <div class="invalid-feedback">Harap masukkan angka bulat saja.</div>
+                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
             </div>
             
             <div class="col-md-3">
                 <label class="form-label" for="panjangBadanLahir">Panjang Badan</label>
                 <input class="form-control" id="panjangBadanLahir" name="panjang_badan_lahir" type="number" 
                     placeholder="cm" required min="0" step="1" />
-                <div class="invalid-feedback">Harap masukkan angka bulat saja.</div>
+                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
             </div>
             
             <div class="col-md-3">
                 <label class="form-label" for="lingkarKepalaLahir">Lingkar Kepala</label>
                 <input class="form-control" id="lingkarKepalaLahir" name="lingkar_kepala_lahir" type="number" 
                     placeholder="cm" required min="0" step="1" />
-                <div class="invalid-feedback">Harap masukkan angka bulat saja.</div>
+                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
             </div>
             
             <div class="col-md-3">
