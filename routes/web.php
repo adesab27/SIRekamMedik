@@ -28,6 +28,7 @@ Route::get('/datapasien/observasi/export/{id}', [AdminDatapasienController::clas
 // Laporan
 Route::get('/laporanpasien', [AdminLaporanController::class, 'index'])->name('laporanpasien');
 
+
 // Form Observasi
 Route::get('/observasi/form1/{id}', [AdminForm1Controller::class, 'index'])->name('form1');
 Route::post('/observasi/form1', [AdminForm1Controller::class, 'store'])->name('form1.store');
