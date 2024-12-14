@@ -31,19 +31,46 @@ class AdminDatapasienController extends Controller
     }
 
     public function updateDatapasien(Request $request, $id)
+    
     {
-        DB::table('registrasi')
-            ->where('id', $id)
-            ->update([
-                'namaPasien' => $request->namaPasien,
-                'tanggalLahir' => $request->tanggalLahir,
-                'alamatPasien' => $request->alamatPasien,
-                'nomorHandphone' => $request->nomorHandphone,
-                'keluhan' => $request->keluhan,
-                'keperluan' => $request->keperluan,
-            ]);
-        return redirect()->route('datapasien')->with('success', 'Data pasien berhasil diupdate');
+        // dd($request->all());
+        try {
+            // Perbarui data di tabel registrasi
+            DB::table('registrasi')
+                ->where('id', $id)
+                ->update([
+                    'namaPasien' => $request->namaPasien,
+                    'tanggalLahir' => $request->tanggalLahir,
+                    'alamatPasien' => $request->alamatPasien,
+                    'nomorHandphone' => $request->nomorHandphone,
+                    'keluhan' => $request->keluhan,
+                    'keperluan' => $request->keperluan,
+                ]);
+                
+            // Perbarui tabel datatambahan
+            DB::table('infoanak')
+                ->where('pasien_id', $id)
+                ->update([
+                    'nama_anak' => $request->namaPasien,
+                    'tanggal_lahir' => $request->tanggalLahir
+                ]);
+
+            return redirect()->route('datapasien')->with('success', 'Data pasien berhasil diperbarui');
+            
+        } catch (\Exception $e) {
+
+            dd('Error:', $e->getMessage(), $request->all(), $id);
+
+            \Log::error('Update Datapasien Error: ' . $e->getMessage());
+
+            return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memperbarui data: ' . $e->getMessage());
+        }
     }
+
+
+
+
+
     public function delete($id)
     {
         // Ambil data dari tabel registrasi berdasarkan ID
