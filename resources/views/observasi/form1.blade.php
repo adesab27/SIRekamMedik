@@ -208,9 +208,9 @@
                                         <label for="usiaAyah">Usia Ibu</label>
                                         <input 
                                             class="form-control" 
-                                            id="usiaAyah" 
-                                            name="usia_ayah" 
-                                            placeholder="Masukkan Usia Ayah" 
+                                            id="usiaIbu" 
+                                            name="usia_ibu" 
+                                            placeholder="Masukkan Usia Ibu" 
                                             type="text" 
                                             pattern="^-?\d*$" 
                                             min="0" 
