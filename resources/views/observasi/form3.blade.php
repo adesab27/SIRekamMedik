@@ -3,15 +3,17 @@
         <div class="mb-3 row">
             <div class="col-md-6">
                 <label class="form-label" for="usiaIbu">Usia Ibu Ketika Hamil</label>
-                <input class="form-control" id="usiaIbu" name="usia_ibu" type="number" placeholder="Tahun" required min="0" />
+                <input class="form-control" id="usiaIbu" name="usia_ibu" type="number" placeholder="Tahun" required
+                    min="0" />
                 <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
             </div>
             <div class="col-md-6">
                 <label class="form-label" for="beratBadanIbu">Berat Badan Ibu Ketika Hamil</label>
-                <input class="form-control" id="beratBadanIbu" name="berat_badan_ibu" type="number" placeholder="kg" required min="0" step="0.01" />
+                <input class="form-control" id="beratBadanIbu" name="berat_badan_ibu" type="number" placeholder="kg"
+                    required min="0" step="0.01" />
                 <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
             </div>
-        </div>  
+        </div>
 
         <div class="mb-3">
             <label class="form-label" for="hasilPemeriksaan">Hasil Pemeriksaan Medis (Jika Ada)</label>
@@ -42,32 +44,33 @@
         <div class="mb-3">
             <label class="form-label">Kondisi Lahir</label>
             <div class="row">
-            <div class="col-md-3">
-                <label class="form-label" for="beratBadanLahir">Berat Badan</label>
-                <input class="form-control" id="beratBadanLahir" name="berat_badan_lahir" type="number" 
-                    placeholder="kg" required min="0" step="1" />
-                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                <div class="col-md-3">
+                    <label class="form-label" for="beratBadanLahir">Berat Badan</label>
+                    <input class="form-control" id="beratBadanLahir" name="berat_badan_lahir" type="text"
+                        placeholder="kg" required inputmode="decimal" />
+                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <label class="form-label" for="panjangBadanLahir">Panjang Badan</label>
+                    <input class="form-control" id="panjangBadanLahir" name="panjang_badan_lahir" type="number"
+                        placeholder="cm" required min="0" step="1" />
+                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label" for="lingkarKepalaLahir">Lingkar Kepala</label>
+                    <input class="form-control" id="lingkarKepalaLahir" name="lingkar_kepala_lahir" type="number"
+                        placeholder="cm" required min="0" step="1" />
+                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label" for="skorAPGAR">Skor APGAR</label>
+                    <input class="form-control" id="skorAPGAR" name="skor_apgar" type="text" />
+                </div>
             </div>
-            
-            <div class="col-md-3">
-                <label class="form-label" for="panjangBadanLahir">Panjang Badan</label>
-                <input class="form-control" id="panjangBadanLahir" name="panjang_badan_lahir" type="number" 
-                    placeholder="cm" required min="0" step="1" />
-                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-            </div>
-            
-            <div class="col-md-3">
-                <label class="form-label" for="lingkarKepalaLahir">Lingkar Kepala</label>
-                <input class="form-control" id="lingkarKepalaLahir" name="lingkar_kepala_lahir" type="number" 
-                    placeholder="cm" required min="0" step="1" />
-                <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-            </div>
-            
-            <div class="col-md-3">
-                <label class="form-label" for="skorAPGAR">Skor APGAR</label>
-                <input class="form-control" id="skorAPGAR" name="skor_apgar" type="text"/>
-            </div>
-        </div>
 
         </div>
         <div class="mb-3">
@@ -92,7 +95,8 @@
                     (Tulis lama kehamilan apabila memilih Pre-mature atau Post-Mature)
                 </span>
             </label>
-            <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan_form3" rows="3" required></textarea>
+            <textarea class="form-control" id="catatanTambahan" name="catatan_tambahan_form3" rows="3"
+                required></textarea>
         </div>
         <div class="text-end d-flex justify-content-end gap-2 mt-4">
             <button class="btn btn-secondary me-2" type="button" onclick="stepper.previous()">Sebelumnya</button>
