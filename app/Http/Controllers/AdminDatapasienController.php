@@ -13,11 +13,14 @@ class AdminDatapasienController extends Controller
     {
         if (Auth::check()) {
             $data = DB::table('registrasi')->get();
+            // $data = DB::table('registrasi')->orderBy('created_at', 'desc')->get();
+
             $cekdata = DB::table('registrasi')
                 ->join('infoanak', 'registrasi.id', '=', 'infoanak.pasien_id')
                 ->get();
             //dd($cekdata);
             $username = Auth::user()->name;
+            
             return view('datapasien', compact('data', 'username', 'cekdata'));
         } else {
             return redirect()->route('indexLogin')->with('error', 'Silakan Login');

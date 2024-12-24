@@ -27,20 +27,24 @@ class AdminRegistrasiController extends Controller
     {
         $request->validate([
             'namaPasien' => 'required|string|max:255',
+            'nomorPasien' => 'required|unique:registrasi,nomorPasien',
             'tanggalLahir' => 'required|date',
             'nomorHandphone' => 'required|string|max:15',
             'alamatPasien' => 'required|string|max:255',
             'keluhan' => 'nullable|string',
             'keperluan' => 'nullable|string',
+            'nama_terapis' => 'nullable|string',
         ]);
 
         $add = DB::table('registrasi')->insert([
             'namaPasien' => $request->namaPasien,
+            'nomorPasien' => $request->nomorPasien,
             'tanggalLahir' => $request->tanggalLahir,
             'nomorHandphone' => $request->nomorHandphone,
             'alamatPasien' => $request->alamatPasien,
             'keluhan' => $request->keluhan,
             'keperluan' => $request->keperluan,
+            'nama_terapis' => $request->nama_terapis,
         ]);
 
         // Pastikan menggunakan nama rute yang benar
@@ -48,4 +52,6 @@ class AdminRegistrasiController extends Controller
             ? redirect()->route('indexRegistrasi')->with('success', 'Data pasien berhasil ditambahkan!')
             : redirect()->route('indexRegistrasi')->with('failed', 'Data pasien gagal ditambahkan!');
     }
+    
+
 }

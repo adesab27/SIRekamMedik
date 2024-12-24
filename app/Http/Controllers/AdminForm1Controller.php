@@ -18,7 +18,12 @@ class AdminForm1Controller extends Controller
         if (Auth::check()) {
             $username = Auth::user()->name;
             $data = DB::table('registrasi')->where('id', $id)->first();
+            // **Memeriksa apakah $form3 sudah ada, jika tidak maka diinisialisasi sebagai array kosong**
             $form3 = DB::table('masterdata_checklist')->where('form', 3)->get();
+            if (empty($form3)) {
+                $form3 = [];
+            }
+
             $form4 = DB::table('masterdata_checklist')->where('form', 4)->get();
             $form5 = DB::table('masterdata_checklist')->where('form', 5)->get();
 
@@ -41,11 +46,9 @@ class AdminForm1Controller extends Controller
                 'umurAnak' => $umurAnak // Kirim hasil usia ke view
             ]);
         } else {
-            return redirect()->route('indexLogin')->with('error', 'Silahkan Login');
+            return redirect()->route('indexLogin')->with('error', 'Silahkan Login ');
         }
     }
-
-
     public function store(Request $request) {
         // Menyimpan data ke database
         try {
@@ -146,13 +149,109 @@ class AdminForm1Controller extends Controller
                     'catatan_tambahan' => $request->catatan_tambahan_form5,
                     'pasien_id' => $request->pasien_id,
                 ]);
-            
-        });
-            
+            });
 
-        return redirect()->route('datapasien')->with('success', 'Data berhasil disimpan.');
-    } catch (\Exception $e) {
-        // dd($e->getMessage());
+            return redirect()->route('datapasien')->with('success', 'Data berhasil disimpan.');
+        } catch (\Exception $e) {
+            // Tangkap error dan kembalikan pesan ke pengguna
+            return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
-}
+
+    public function editFormStepper($id, $step = 1)
+    {
+        if (Auth::check()) {
+            $username = Auth::user()->name;
+    
+            // Ambil data berdasarkan step
+            $infoAnak = InfoAnak::where('pasien_id', $id)->first();
+            $dataTambahan = DataTambahan::where('pasien_id', $id)->first();
+            $riwHamilLahir = RiwHamilLahir::where('pasien_id', $id)->first();
+            $riwSehatPerkembangan = RiwSehatPerkembangan::where('pasien_id', $id)->first();
+            $riwPolaKebiasaan = RiwPolaKebiasaan::where('pasien_id', $id)->first();
+    
+            // Validasi jika data utama tidak ditemukan
+            if (!$infoAnak) {
+                return redirect()->route('datapasien')->with('error', 'Data anak tidak ditemukan.');
+            }
+    
+            // Hitung umur anak jika diperlukan
+            $umurAnak = '';
+            if ($infoAnak && $infoAnak->tanggal_lahir) {
+                $tanggalLahir = new \DateTime($infoAnak->tanggal_lahir);
+                $sekarang = new \DateTime();
+                $interval = $sekarang->diff($tanggalLahir);
+                $umurAnak = $interval->y . ' tahun ' . $interval->m . ' bulan';
+            }
+    
+            // Tentukan view yang akan digunakan berdasarkan step
+            $view = 'observasi.editform' . $step; // Misal: editform1, editform2, editform3, dll.
+    
+            // Tambahkan pengambilan variabel form3 jika step adalah 3
+            $form3 = [];
+            if ($step == 3) {
+                $form3 = DB::table('masterdata_checklist')->where('form', 3)->get();
+            }
+    
+            // Kirim data ke view
+            return view($view, [
+                'data' => $infoAnak, // Alias $data agar view tidak perlu diubah
+                'infoAnak' => $infoAnak,
+                'dataTambahan' => $dataTambahan,
+                'riwHamilLahir' => $riwHamilLahir,
+                'riwSehatPerkembangan' => $riwSehatPerkembangan,
+                'riwPolaKebiasaan' => $riwPolaKebiasaan,
+                'username' => $username,
+                'umurAnak' => $umurAnak,
+                'pasien_id' => $id,
+                'step' => $step, // Menyertakan step saat ini untuk navigasi
+                'form3' => $form3 // Tambahkan $form3 ke view
+            ]);
+        } else {
+            return redirect()->route('indexLogin')->with('error', 'Silahkan Login');
+        }
+    }
+    
+
+    public function updateFormStepper(Request $request, $id, $step)
+    {
+        try {
+            DB::transaction(function () use ($request, $id, $step) {
+                if ($step == 1) {
+                    InfoAnak::where('pasien_id', $id)->update([
+                        'nama_anak' => $request->nama_anak,
+                        'tempat_lahir' => $request->tempat_lahir,
+                        // Tambahkan fields lain sesuai form step 1
+                    ]);
+                }
+
+                if ($step == 2) {
+                    RiwHamilLahir::where('pasien_id', $id)->update([
+                        'usia_ibu' => $request->usia_ibu,
+                        // Tambahkan fields lain sesuai form step 2
+                    ]);
+                }
+
+                if ($step == 3) {
+                    RiwSehatPerkembangan::where('pasien_id', $id)->update([
+                        'penyakit_serius' => $request->penyakit_serius,
+                        // Tambahkan fields lain sesuai form step 3
+                    ]);
+                }
+
+                if ($step == 4) {
+                    RiwPolaKebiasaan::where('pasien_id', $id)->update([
+                        'gangguan_pola_tidur' => $request->gangguan_pola_tidur,
+                        // Tambahkan fields lain sesuai form step 4
+                    ]);
+                }
+            });
+
+            $nextStep = $step + 1;
+            return redirect()->route('editFormStepper', ['id' => $id, 'step' => $nextStep])
+                ->with('success', 'Data berhasil disimpan. Lanjut ke langkah berikutnya.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
 }

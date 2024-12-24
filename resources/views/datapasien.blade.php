@@ -29,11 +29,13 @@
           <tr>
             <th class="text-start">No</th>
             <th class="text-start">Nama Pasien</th>
+            <th class="text-start">Nomor Pasien</th>
             <th class="text-start">Tanggal Lahir</th>
             <th class="text-start">Alamat</th>
             <th class="text-start">No. Telp</th>
             <th class="text-start">Keluhan</th>
             <th class="text-start">Keperluan</th>
+            <th class="text-start">Terapis</th>
             <th class="text-start">Aksi</th>
             <th class="text-start">Print PDF</th>
           </tr>
@@ -44,15 +46,17 @@
         <tr data-index="{{ $index }}">
         <td>{{ $loop->iteration }}</td>
         <td>{{ $d->namaPasien }}</td>
+        <td class="text-center">{{ $d->nomorPasien }}</td>
         <td>{{ $d->tanggalLahir }}</td>
         <td>{{ $d->alamatPasien }}</td>
         <td class="text-start">{{ $d->nomorHandphone }}</td>
         <td>{{ $d->keluhan }}</td>
         <td>{{ $d->keperluan }}</td>
+        <td>{{ $d->nama_terapis }}</td>
         <td>
           <div class="d-flex justify-content-start align-items-center gap-2">
             <!-- Ikon Edit -->
-            <a href="{{ route('editDatapasien', $d->id) }}" class="text-primary">
+            <a href="{{ route('editFormStepper', $d->id) }}" class="text-primary">
               <i class="fas fa-edit"></i>
             </a>
 

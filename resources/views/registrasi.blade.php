@@ -31,6 +31,14 @@
                 <small id="nameError" class="text-danger" style="display: none;">Hanya huruf yang diizinkan!</small>
             </div>
             <div class="mb-3">
+                <label for="nomorPasien" class="form-label">Nomor Pasien</label>
+                <input name="nomorPasien" class="form-control" id="nomorPasien" placeholder="Nomor Pasien" type="tel" required 
+                    oninput="validatePhoneNumber(event); checkExistingNomorPasien(event)" />
+                <small id="phoneError" class="text-danger" style="display: none;">Hanya angka yang diizinkan!</small>
+                <small id="nomorPasienError" class="text-danger" style="display: none;">Nomor pasien sudah terdaftar!</small>
+            </div>
+
+            <div class="mb-3">
                 <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
                 <input name="tanggalLahir" class="form-control" id="tanggalLahir" type="date" required
                     max="{{ date('Y-m-d') }}" />
@@ -54,8 +62,19 @@
             </div>
             <div class="mb-3">
                 <label for="keperluan" class="form-label">Keperluan</label>
-                <textarea name="keperluan" class="form-control" id="keperluan"
-                    placeholder="Jelaskan Keperluan yang dibutuhkan..." rows="3" ></textarea>
+                <select class="form-control" id="keperluan" name="keperluan" required>
+                    <option value="" disabled selected>Keperluan</option>
+                    <option value="Terapi Okupasi">Terapi Okupasi</option>
+                    <option value="Terapi Wicara">Terapi Wicara</option>
+                    <option value="Fisioterapi">Fisioterapi</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="nama_terapis" class="form-label">Terapis</label>
+                <input name="nama_terapis" class="form-control" id="nama_terapis"
+                    placeholder="Nama Terapis" type="text" 
+                    required oninput="validateName(event)" style="text-transform: capitalize;" />
+                <small id="nameError" class="text-danger" style="display: none;">Hanya huruf yang diizinkan!</small>
             </div>
             <div class="text-end">
                 <button class="btn btn-primary mb-3" type="submit">Simpan Data</button>
@@ -104,6 +123,51 @@
                 errorMessage.style.display = 'none';
             }
         }
+    </script>
+    <script>
+        // Fungsi untuk memastikan hanya angka yang dimasukkan pada input nomor telepon
+function validatePhoneNumber(event) {
+    const input = event.target; // Mendapatkan elemen input
+    const errorMessage = document.getElementById("phoneError");
+
+    // Menghapus karakter non-angka
+    input.value = input.value.replace(/[^0-9]/g, '');
+
+    // Menampilkan pesan kesalahan jika input tidak hanya angka
+    if (/[^0-9]/.test(input.value)) {
+        errorMessage.style.display = 'block';
+    } else {
+        errorMessage.style.display = 'none';
+    }
+}
+
+// Fungsi untuk mengecek apakah nomor pasien sudah terdaftar
+function checkExistingNomorPasien(event) {
+    const nomorPasien = event.target.value;
+    const errorMessage = document.getElementById("nomorPasienError");
+
+    // Cek jika nomor pasien kosong
+    if (!nomorPasien) {
+        errorMessage.style.display = 'none';
+        return;
+    }
+
+    // Lakukan pengecekan ke server jika nomor pasien sudah ada
+    fetch(`/check-nomor-pasien/${nomorPasien}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = "Nomor pasien sudah terdaftar!";
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
