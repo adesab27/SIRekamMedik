@@ -30,13 +30,6 @@
                     required oninput="validateName(event)" style="text-transform: capitalize;" />
                 <small id="nameError" class="text-danger" style="display: none;">Hanya huruf yang diizinkan!</small>
             </div>
-            <div class="mb-3">
-                <label for="nomorPasien" class="form-label">Nomor Pasien</label>
-                <input name="nomorPasien" class="form-control" id="nomorPasien" placeholder="Nomor Pasien" type="tel" required 
-                    oninput="validatePhoneNumber(event); checkExistingNomorPasien(event)" />
-                <small id="phoneError" class="text-danger" style="display: none;">Hanya angka yang diizinkan!</small>
-                <small id="nomorPasienError" class="text-danger" style="display: none;">Nomor pasien sudah terdaftar!</small>
-            </div>
 
             <div class="mb-3">
                 <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>

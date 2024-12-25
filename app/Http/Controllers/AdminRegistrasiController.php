@@ -25,9 +25,9 @@ class AdminRegistrasiController extends Controller
 
     public function create(Request $request)
     {
+        // Validate inputs
         $request->validate([
             'namaPasien' => 'required|string|max:255',
-            'nomorPasien' => 'required|unique:registrasi,nomorPasien',
             'tanggalLahir' => 'required|date',
             'nomorHandphone' => 'required|string|max:15',
             'alamatPasien' => 'required|string|max:255',
@@ -35,10 +35,18 @@ class AdminRegistrasiController extends Controller
             'keperluan' => 'nullable|string',
             'nama_terapis' => 'nullable|string',
         ]);
-
+    
+        // Generate Nomor Pasien automatically
+        // Get the last patient number from the database
+        $lastPatient = DB::table('registrasi')->latest('nomorPasien')->first();
+        
+        // Generate the next patient number by incrementing the last one
+        $nextPatientNumber = $lastPatient ? str_pad((int)substr($lastPatient->nomorPasien, -5) + 1, 5, '0', STR_PAD_LEFT) : '00001';
+    
+        // Insert the new data
         $add = DB::table('registrasi')->insert([
             'namaPasien' => $request->namaPasien,
-            'nomorPasien' => $request->nomorPasien,
+            'nomorPasien' => $nextPatientNumber,
             'tanggalLahir' => $request->tanggalLahir,
             'nomorHandphone' => $request->nomorHandphone,
             'alamatPasien' => $request->alamatPasien,
@@ -46,12 +54,13 @@ class AdminRegistrasiController extends Controller
             'keperluan' => $request->keperluan,
             'nama_terapis' => $request->nama_terapis,
         ]);
-
-        // Pastikan menggunakan nama rute yang benar
+    
+        // Return response based on success/failure
         return $add
             ? redirect()->route('indexRegistrasi')->with('success', 'Data pasien berhasil ditambahkan!')
             : redirect()->route('indexRegistrasi')->with('failed', 'Data pasien gagal ditambahkan!');
     }
+    
     
 
 }

@@ -27,7 +27,8 @@
       <table class="table table-striped" id="dataPasienTable">
         <thead>
           <tr>
-            <th class="text-start">No</th>
+            <!-- <th class="text-start">No</th> -->
+            <th class="text-start">Tanggal Registrasi</th>
             <th class="text-start">Nama Pasien</th>
             <th class="text-start">Nomor Pasien</th>
             <th class="text-start">Tanggal Lahir</th>
@@ -44,7 +45,8 @@
           <?php $cek = 0; ?>
           @foreach ($data as $index => $d)
         <tr data-index="{{ $index }}">
-        <td>{{ $loop->iteration }}</td>
+        <!-- <td>{{ $loop->iteration }}</td> -->
+        <td>{{ $d->created_at }}</td>
         <td>{{ $d->namaPasien }}</td>
         <td class="text-center">{{ $d->nomorPasien }}</td>
         <td>{{ $d->tanggalLahir }}</td>
@@ -103,6 +105,8 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+
 
   <script>
     @if(session('success'));
@@ -115,15 +119,29 @@
     alert("{{ session('failed') }}");
   @endif
   </script>
-  <script>
-    $(function () {
-      $("#dataPasienTable").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-      });
+<script>
+  $(function () {
+    $("#dataPasienTable").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "order": [[0, 'desc']],
+      "columnDefs": [
+        {
+          "targets": 0, // Kolom pertama yang berisi tanggal
+          "render": function (data, type, row) {
+            if (type === 'display' || type === 'filter') {
+              // Menggunakan moment.js untuk format tanggal
+              return moment(data).format('YYYY-MM-DD'); // Format hanya tanggal
+            }
+            return data;
+          }
+        }
+      ]
     });
-  </script>
+  });
+</script>
+
 </body>
 
 </html>

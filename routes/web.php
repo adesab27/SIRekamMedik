@@ -15,7 +15,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Registrasi
 Route::get('/registrasi', [AdminRegistrasiController::class, 'index'])->name('indexRegistrasi');
 Route::get('/registrasi/tambah', [AdminRegistrasiController::class, 'add'])->name('addregistrasibaru');
-Route::post('/registrasi', [AdminRegistrasiController::class, 'create'])->name('registrasi.create');
+// Route::post('/registrasi', [AdminRegistrasiController::class, 'create'])->name('registrasi.create');
+Route::post('/registrasi/create', [AdminRegistrasiController::class, 'create'])->name('registrasi.create');
+
 
 // Data Pasien
 Route::get('/datapasien', [AdminDatapasienController::class, 'index'])->name('datapasien');
