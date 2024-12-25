@@ -72,9 +72,7 @@
             </form>
 
             <!-- Ikon Form 1 -->
-            @if (isset($cekdata[$cek]) ? $cekdata[$cek]->pasien_id == $d->id : '')
-              <?php $cek++; ?>
-            @else
+            @if ($cekdata->where('pasien_id', $d->id)->isEmpty())
               <a href="{{ route('form1', $d->id) }}" class="text-success">
                 <i class="fas fa-file-alt"></i>
               </a>
