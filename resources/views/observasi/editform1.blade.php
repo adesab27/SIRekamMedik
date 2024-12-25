@@ -301,6 +301,8 @@
                                     required>{{ old('alamat_lengkap', $data->alamat_lengkap ?? '') }}</textarea>
                                         </div>
 
+                                        </div>
+
                                     <div class="text-end">
                                         <button type="button" class="btn btn-primary" onclick="nextStep()">Selanjutnya</button>
                                     </div>
