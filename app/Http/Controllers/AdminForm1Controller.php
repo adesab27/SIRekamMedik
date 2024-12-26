@@ -212,113 +212,112 @@ class AdminForm1Controller extends Controller
         }
     }
 
-    public function updateFormStepper(Request $request, $id, $step)
+    public function updateFormStepper(Request $request, $id)
     {
         try {
-            DB::transaction(function () use ($request, $step) {
-                $pasienId = $request->pasien_id;  
-            
-                if ($step == 1) {
-                    InfoAnak::updateOrCreate(
-                        ['pasien_id' => $pasienId],
-                        [
-                            'nama_anak' => $request->nama_anak,
-                            'tempat_lahir' => $request->tempat_lahir,
-                            'nama_panggilan' => $request->nama_panggilan,
-                            'tanggal_lahir' => $request->tanggal_lahir,
-                            'jenis_kelamin' => $request->jenis_kelamin,
-                            'umur_anak' => $request->umur_anak,
-                            'nama_ayah' => $request->nama_ayah,
-                            'nama_ibu' => $request->nama_ibu,
-                            'usia_ayah' => $request->usia_ayah,
-                            'usia_ibu' => $request->usia_ibu,
-                            'agama_ayah' => $request->agama_ayah,
-                            'agama_ibu' => $request->agama_ibu,
-                            'pekerjaan_ayah' => $request->pekerjaan_ayah,
-                            'pekerjaan_ibu' => $request->pekerjaan_ibu,
-                            'alamat_lengkap' => $request->alamat_lengkap,
-                        ]
-                    );
-                } elseif ($step == 2) {
-                    DataTambahan::updateOrCreate(
-                        ['pasien_id' => $pasienId],
-                        [
-                            'diagnosaOleh' => $request->diagnosaOleh,
-                            'diagnosaUsia' => $request->diagnosaUsia,
-                            'diagnosaDiberikan' => $request->diagnosaDiberikan,
-                            'namaSaudara' => $request->namaSaudara,
-                            'usiaSaudara' => $request->usiaSaudara,
-                            'jenisKelaminSaudara' => $request->jenisKelaminSaudara,
-                            'specialNeedSaudara' => $request->specialNeedSaudara,
-                            'namaSekolah' => $request->namaSekolah,
-                            'kelas' => $request->kelas,
-                            'namaGuru' => $request->namaGuru,
-                            'telpGuru' => $request->telpGuru,
-                            'jenisTerapi' => $request->jenisTerapi,
-                            'namaTerapis' => $request->namaTerapis,
-                            'durasiTerapi' => $request->durasiTerapi,
-                            'telpTerapis' => $request->telpTerapis,
-                        ]
-                    );
-                } elseif ($step == 3) {
-                    riwhamillahir::updateOrCreate(
-                        ['pasien_id' => $pasienId],
-                        [
-                            'usia_ibu' => $request->usia_ibu,
-                            'berat_badan_ibu' => $request->berat_badan_ibu,
-                            'diagnosaDiberikan' => $request->diagnosaDiberikan,
-                            'hasil_pemeriksaan' => $request->hasil_pemeriksaan,
-                            'keluhan_keguguran' => $request->keluhan_keguguran ? 1 : 0,
-                            'keluhan_stress' => $request->keluhan_stress ? 1 : 0,
-                            'keluhan_obat' => $request->keluhan_obat ? 1 : 0,
-                            'proses_persalinan' => $request->proses_persalinan,
-                            'berat_badan_lahir' => $request->berat_badan_lahir,
-                            'panjang_badan_lahir' => $request->panjang_badan_lahir,
-                            'lingkar_kepala_lahir' => $request->lingkar_kepala_lahir,
-                            'skor_apgar' => $request->skor_apgar,
-                            'komplikasi_kelahiran' => $request->komplikasi_kelahiran ? 1 : 0,
-                            'menangis_lahir' => $request->menangis_lahir ? 1 : 0,
-                            'perawatan_khusus' => $request->perawatan_khusus ? 1 : 0,
-                            'catatan_tambahan' => $request->catatan_tambahan_form3,
-                        ]
-                    );
-                } elseif ($step == 4) {
-                    riwsehatperkembangan::updateOrCreate(
-                        ['pasien_id' => $pasienId],
-                        [
-                            'penyakit_serius' => $request->penyakit_serius ? 1 : 0,
-                            'benturan_kepala' => $request->benturan_kepala ? 1 : 0,
-                            'dirawat_rs' => $request->dirawat_rs ? 1 : 0,
-                            'pengobatan_jangka_panjang' => $request->pengobatan_jangka_panjang ? 1 : 0,
-                            'riwayat_kejang' => $request->riwayat_kejang ? 1 : 0,
-                            'masalah_perkembangan' => $request->masalah_perkembangan ? 1 : 0,
-                            'tengkurap' => $request->tengkurap,
-                            'duduk' => $request->duduk,
-                            'merangkak' => $request->merangkak,
-                            'berdiri' => $request->berdiri,
-                            'berjalan' => $request->berjalan,
-                            'catatan_tambahan' => $request->catatan_tambahan_form4,
-                        ]
-                    );
-                } elseif ($step == 5) {
-                    riwpolakebiasaan::updateOrCreate(
-                        ['pasien_id' => $pasienId],
-                        [
-                            'pola_tidur' => $request->pola_tidur,
-                            'pola_makan' => $request->pola_makan,
-                            'pola_kebiasaan' => $request->pola_kebiasaan,
-                            'perilaku' => $request->perilaku,
-                            'catatan_tambahan' => $request->catatan_tambahan_form5,
-                        ]
-                    );
-                }
+            DB::transaction(function () use ($request, $id) {
+                $pasienId = $request->pasien_id;
+    
+                // Step 1 - InfoAnak
+                InfoAnak::create([
+                    'pasien_id' => $pasienId,
+                    'nama_anak' => $request->nama_anak,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'nama_panggilan' => $request->nama_panggilan,
+                    'tanggal_lahir' => $request->tanggal_lahir,
+                    'jenis_kelamin' => $request->jenis_kelamin,
+                    'umur_anak' => $request->umur_anak,
+                    'nama_ayah' => $request->nama_ayah,
+                    'nama_ibu' => $request->nama_ibu,
+                    'usia_ayah' => $request->usia_ayah,
+                    'usia_ibu' => $request->usia_ibu,
+                    'agama_ayah' => $request->agama_ayah,
+                    'agama_ibu' => $request->agama_ibu,
+                    'pekerjaan_ayah' => $request->pekerjaan_ayah,
+                    'pekerjaan_ibu' => $request->pekerjaan_ibu,
+                    'alamat_lengkap' => $request->alamat_lengkap,
+                ]);
+    
+                // Step 2 - DataTambahan
+                DataTambahan::create([
+                    'pasien_id' => $pasienId,
+                    'diagnosaOleh' => $request->diagnosaOleh,
+                    'diagnosaUsia' => $request->diagnosaUsia,
+                    'diagnosaDiberikan' => $request->diagnosaDiberikan,
+                    'namaSaudara' => $request->namaSaudara,
+                    'usiaSaudara' => $request->usiaSaudara,
+                    'jenisKelaminSaudara' => $request->jenisKelaminSaudara,
+                    'specialNeedSaudara' => $request->specialNeedSaudara,
+                    'namaSekolah' => $request->namaSekolah,
+                    'kelas' => $request->kelas,
+                    'namaGuru' => $request->namaGuru,
+                    'telpGuru' => $request->telpGuru,
+                    'jenisTerapi' => $request->jenisTerapi,
+                    'namaTerapis' => $request->namaTerapis,
+                    'durasiTerapi' => $request->durasiTerapi,
+                    'telpTerapis' => $request->telpTerapis,
+                ]);
+    
+                // Step 3 - riwhamillahir
+                riwhamillahir::create([
+                    'pasien_id' => $pasienId,
+                    'usia_ibu' => $request->usia_ibu,
+                    'berat_badan_ibu' => $request->berat_badan_ibu,
+                    'diagnosaDiberikan' => $request->diagnosaDiberikan,
+                    'hasil_pemeriksaan' => $request->hasil_pemeriksaan,
+                    'keluhan_keguguran' => $request->keluhan_keguguran ? 1 : 0,
+                    'keluhan_stress' => $request->keluhan_stress ? 1 : 0,
+                    'keluhan_obat' => $request->keluhan_obat ? 1 : 0,
+                    'proses_persalinan' => $request->proses_persalinan,
+                    'berat_badan_lahir' => $request->berat_badan_lahir,
+                    'panjang_badan_lahir' => $request->panjang_badan_lahir,
+                    'lingkar_kepala_lahir' => $request->lingkar_kepala_lahir,
+                    'skor_apgar' => $request->skor_apgar,
+                    'komplikasi_kelahiran' => $request->komplikasi_kelahiran ? 1 : 0,
+                    'menangis_lahir' => $request->menangis_lahir ? 1 : 0,
+                    'perawatan_khusus' => $request->perawatan_khusus ? 1 : 0,
+                    'catatan_tambahan' => $request->catatan_tambahan_form3,
+                ]);
+    
+                // Step 4 - riwsehatperkembangan
+                riwsehatperkembangan::create([
+                    'pasien_id' => $pasienId,
+                    'penyakit_serius' => $request->penyakit_serius ? 1 : 0,
+                    'benturan_kepala' => $request->benturan_kepala ? 1 : 0,
+                    'dirawat_rs' => $request->dirawat_rs ? 1 : 0,
+                    'pengobatan_jangka_panjang' => $request->pengobatan_jangka_panjang ? 1 : 0,
+                    'riwayat_kejang' => $request->riwayat_kejang ? 1 : 0,
+                    'masalah_perkembangan' => $request->masalah_perkembangan ? 1 : 0,
+                    'tengkurap' => $request->tengkurap,
+                    'duduk' => $request->duduk,
+                    'merangkak' => $request->merangkak,
+                    'berdiri' => $request->berdiri,
+                    'berjalan' => $request->berjalan,
+                    'bubbling' => $request->bubbling,
+                    'kata_pertama' => $request->kata_pertama,
+                    'mengulang_kata' => $request->mengulang_kata,
+                    'kalimat_pertama' => $request->kalimat_pertama,
+                    'catatan_tambahan' => $request->catatan_tambahan_form4,
+                ]);
+    
+                // Step 5 - riwpolakebiasaan
+                riwpolakebiasaan::create([
+                    'pasien_id' => $pasienId,
+                    'gangguan_pola_tidur' => $request->gangguan_pola_tidur,
+                    'terbangun_malam' => $request->terbangun_malam,
+                    'pola_makan' => $request->pola_makan,
+                    'pola_kebiasaan' => $request->pola_kebiasaan,
+                    'perilaku' => $request->perilaku,
+                    'catatan_tambahan' => $request->catatan_tambahan_form5,
+                ]);
             });
-            
     
             return redirect()->route('datapasien')->with('success', 'Data berhasil disimpan.');
         } catch (\Exception $e) {
-            return redirect()->route('editFormStepper', [$id, $step])->with('error', 'Terjadi kesalahan saat menyimpan data!');
-            
+            return redirect()->route('editFormStepper', [$id])->with('error', 'Terjadi kesalahan saat menyimpan data! ' . $e->getMessage());
         }
     }
+    
+    
+    
 }
