@@ -52,7 +52,6 @@
             <form class="was-validated" action="{{ route('updateFormStepper', ['id' => $data['pasien_id'], 'step' => 1]) }}" method="POST" novalidate>
                 @csrf
                 <input type="hidden" name="pasien_id" value="{{ $data['pasien_id'] }}">
-
                     <div id="dataanak-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
                         <div class="form-section">
                             <h5>Data Anak</h5>
@@ -324,58 +323,57 @@
         var stepper = new Stepper(document.querySelector('.bs-stepper'));
 
         function nextStep() {
-    const currentStep = stepper._currentIndex;
-    const currentContent = document.querySelectorAll('.bs-stepper-content .content')[currentStep];
-    const inputs = currentContent.querySelectorAll('input, select, textarea');
-    let isValid = true;
+        const currentStep = stepper._currentIndex;
+        const currentContent = document.querySelectorAll('.bs-stepper-content .content')[currentStep];
+        const inputs = currentContent.querySelectorAll('input, select, textarea');
+        let isValid = true;
 
-    inputs.forEach(function(input) {
-        // Debugging: log setiap input
-        console.log('Validating input:', input);
-        
-        // Validasi jika input required dan kosong
-        if (input.required && input.value.trim() === '') {
-            isValid = false;
-            input.classList.add('is-invalid');
-        } else if (!input.checkValidity()) {
-            isValid = false;
-            input.classList.add('is-invalid');
+        inputs.forEach(function(input) {
+            // Debugging: log setiap input
+            console.log('Validating input:', input);
+            
+            // Validasi jika input required dan kosong
+            if (input.required && input.value.trim() === '') {
+                isValid = false;
+                input.classList.add('is-invalid');
+            } else if (!input.checkValidity()) {
+                isValid = false;
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+
+        // Jika form valid, lanjutkan ke langkah berikutnya
+        if (isValid) {
+            stepper.next();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-            input.classList.remove('is-invalid');
+            alert('Silakan lengkapi semua data dengan benar sebelum melanjutkan.');
+        }
+    }
+        document.querySelector("form").addEventListener("submit", function(event) {
+        let isValid = true;
+        const inputs = document.querySelectorAll("input, select, textarea");
+
+        inputs.forEach(function(input) {
+            if (input.required && input.value.trim() === "") {
+                isValid = false;
+                input.classList.add("is-invalid");
+            } else if (!input.checkValidity()) {
+                isValid = false;
+                input.classList.add("is-invalid");
+            } else {
+                input.classList.remove("is-invalid");
+            }
+        });
+
+        if (!isValid) {
+            event.preventDefault(); // Jangan kirim form jika validasi gagal
+            alert("Harap lengkapi semua data sebelum mengirim.");
         }
     });
 
-    // Jika form valid, lanjutkan ke langkah berikutnya
-    if (isValid) {
-        stepper.next();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-        alert('Silakan lengkapi semua data dengan benar sebelum melanjutkan.');
-    }
-}
-document.querySelector("form").addEventListener("submit", function(event) {
-            var isValid = true;
-            var inputs = document.querySelectorAll(".form-control");
-
-            inputs.forEach(function(input) {
-                if (input.tagName === "SELECT" && input.value === "") {
-                    isValid = false;
-                    input.classList.add("is-invalid");
-                } else if (input.required && input.value.trim() === "") {
-                    isValid = false;
-                    input.classList.add("is-invalid");
-                } else if (!input.checkValidity()) {
-                    isValid = false;
-                    input.classList.add("is-invalid");
-                } else {
-                    input.classList.remove("is-invalid");
-                }
-            });
-
-            if (!isValid) {
-                event.preventDefault(); // Jangan kirim form jika validasi gagal
-            }
-        });
 
 
     </script>
