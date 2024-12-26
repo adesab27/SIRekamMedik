@@ -11,7 +11,7 @@
           <input class="form-control @error('diagnosaOleh') is-invalid @enderror" name="diagnosaOleh" id="diagnosaOleh"
             placeholder="Nama dokter atau ahli" type="text" required pattern="[A-Za-z\s\-.]+"
             title="Hanya diperbolehkan huruf, spasi, tanda hubung (-), dan titik (.)"
-            value="{{ old('diagnosaOleh', $data->diagnosaOleh ?? '') }}" />
+            value="{{ old('diagnosaOleh', $data['dataTambahan']->diagnosaOleh ?? '') }}" />
           @error('diagnosaOleh')
         <div class="invalid-feedback">{{ $message }}</div>
       @enderror
@@ -20,7 +20,7 @@
         <div class="col-md-6 form-group">
           <label for="diagnosaUsia">Diusia berapa diagnosa diberikan</label>
           <input class="form-control" name="diagnosaUsia" id="diagnosaUsia" placeholder="Tanggal atau umur" type="text"
-            required value="{{ old('diagnosaUsia', $data->diagnosaUsia ?? '') }}" />
+            required value="{{ old('diagnosaUsia', $data['dataTambahan']->diagnosaUsia ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -29,7 +29,7 @@
           <label for="diagnosaDiberikan">Diagnosa yang diberikan:</label>
           <textarea class="form-control" name="diagnosaDiberikan" id="diagnosaDiberikan"
             placeholder="Masukkan Diagnosa yang diberikan" rows="3"
-            required>{{ old('diagnosaDiberikan', $data->diagnosaDiberikan ?? '') }}</textarea>
+            required>{{ old('diagnosaDiberikan', $data['dataTambahan']->diagnosaDiberikan ?? '') }}</textarea>
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -45,7 +45,7 @@
           <label for="namaSaudara">Nama</label>
           <input class="form-control" name="namaSaudara" id="namaSaudara" placeholder="Nama saudara" type="text"
             required pattern="[A-Za-z\s\-]+" title="Hanya diperbolehkan huruf, spasi, dan tanda hubung (-)."
-            value="{{ old('namaSaudara', $data->namaSaudara ?? '') }}" />
+            value="{{ old('namaSaudara', $data['dataTambahan']->namaSaudara ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -54,7 +54,7 @@
           <label for="usiaSaudara">Usia</label>
           <input class="form-control" name="usiaSaudara" id="usiaSaudara" placeholder="Usia" type="text" required
             pattern="^-?\d*$" title="Harap masukkan angka atau tanda minus."
-            value="{{ old('usiaSaudara', $data->usiaSaudara ?? '') }}" />
+            value="{{ old('usiaSaudara', $data['dataTambahan']->usiaSaudara ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -63,16 +63,16 @@
           <label for="jenisKelaminSaudara">Jenis Kelamin</label>
           <select class="form-control" name="jenisKelaminSaudara" id="jenisKelaminSaudara" required>
             <option value="" disabled selected>Pilih Jenis Kelamin</option>
-            <option value="Laki-laki" {{ old('jenisKelaminSaudara', $data->jenisKelaminSaudara ?? '') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-            <option value="Perempuan" {{ old('jenisKelaminSaudara', $data->jenisKelaminSaudara ?? '') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-            <option value="Tidak ada" {{ old('jenisKelaminSaudara', $data->jenisKelaminSaudara ?? '') == 'Tidak ada' ? 'selected' : '' }}>Tidak ada</option>
+            <option value="Laki-laki" {{ old('jenisKelaminSaudara', $data['dataTambahan']->jenisKelaminSaudara ?? '') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+            <option value="Perempuan" {{ old('jenisKelaminSaudara', $data['dataTambahan']->jenisKelaminSaudara ?? '') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+            <option value="Tidak ada" {{ old('jenisKelaminSaudara', $data['dataTambahan']->jenisKelaminSaudara ?? '') == 'Tidak ada' ? 'selected' : '' }}>Tidak ada</option>
           </select>
         </div>
         <div class="col-md-3 form-group">
           <label for="specialNeedSaudara">Special Need</label>
           <input class="form-control" name="specialNeedSaudara" id="specialNeedSaudara" placeholder="Special Need"
             type="text" required pattern="[A-Za-z\s\-]*" title="Hanya diperbolehkan huruf, spasi, dan tanda hubung (-)."
-            value="{{ old('specialNeedSaudara', $data->specialNeedSaudara ?? '') }}" />
+            value="{{ old('specialNeedSaudara', $data['dataTambahan']->specialNeedSaudara ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -87,18 +87,18 @@
         <div class="col-md-6 form-group">
           <label for="namaSekolah">Nama sekolah</label>
           <input class="form-control" name="namaSekolah" id="namaSekolah" placeholder="Nama sekolah" type="text"
-            required value="{{ old('namaSekolah', $data->namaSekolah ?? '') }}" />
+            required value="{{ old('namaSekolah', $data['dataTambahan']->namaSekolah ?? '') }}" />
         </div>
         <div class="col-md-6 form-group">
           <label for="kelas">Kelas</label>
           <input class="form-control" name="kelas" id="kelas" placeholder="Kelas" type="text" required
-            value="{{ old('kelas', $data->kelas ?? '') }}" />
+            value="{{ old('kelas', $data['dataTambahan']->kelas ?? '') }}" />
         </div>
         <div class="col-md-6 form-group">
           <label for="namaGuru">Nama Guru</label>
           <input class="form-control" name="namaGuru" id="namaGuru" placeholder="Nama Guru" type="text" required
             pattern="[A-Za-z\s\-]+" title="Hanya diperbolehkan huruf, spasi, dan tanda hubung (-)."
-            value="{{ old('namaGuru', $data->namaGuru ?? '') }}" />
+            value="{{ old('namaGuru', $data['dataTambahan']->namaGuru ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -107,7 +107,7 @@
           <label for="telpGuru">Telp</label>
           <input class="form-control" name="telpGuru" id="telpGuru" placeholder="Telp" type="text" required
             pattern="^-?\d*$" title="Harap masukkan angka atau tanda minus."
-            value="{{ old('telpGuru', $data->telpGuru ?? '') }}" />
+            value="{{ old('telpGuru', $data['dataTambahan']->telpGuru ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan hanya angka.
           </div>
@@ -123,7 +123,7 @@
           <label for="jenisTerapi">Jenis Terapi</label>
           <input class="form-control" name="jenisTerapi" id="jenisTerapi" placeholder="Jenis Terapi" type="text"
             required pattern="[A-Za-z\s\-]*" title="Hanya diperbolehkan huruf, spasi, dan tanda hubung (-)."
-            value="{{ old('jenisTerapi', $data->jenisTerapi ?? '') }}" />
+            value="{{ old('jenisTerapi', $data['dataTambahan']->jenisTerapi ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -132,7 +132,7 @@
           <label for="namaTerapis">Nama Terapis / Klinik</label>
           <input class="form-control" name="namaTerapis" id="namaTerapis" placeholder="Nama Terapis / klinik"
             type="text" required pattern="[A-Za-z\s\-]*" title="Hanya diperbolehkan huruf, spasi, dan tanda hubung (-)."
-            value="{{ old('namaTerapis', $data->namaTerapis ?? '') }}" />
+            value="{{ old('namaTerapis', $data['dataTambahan']->namaTerapis ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>
@@ -140,13 +140,13 @@
         <div class="col-md-6 form-group">
           <label for="durasiTerapi">Durasi</label>
           <input class="form-control" name="durasiTerapi" id="durasiTerapi" placeholder="Durasi" type="text" required
-            value="{{ old('durasiTerapi', $data->durasiTerapi ?? '') }}" />
+            value="{{ old('durasiTerapi', $data['dataTambahan']->durasiTerapi ?? '') }}" />
         </div>
         <div class="col-md-6 form-group">
           <label for="telpTerapis">Telp</label>
           <input class="form-control" name="telpTerapis" id="telpTerapis" placeholder="Telp" type="text" required
             pattern="^-?\d*$" title="Harap masukkan angka atau tanda minus."
-            value="{{ old('telpTerapis', $data->telpTerapis ?? '') }}" />
+            value="{{ old('telpTerapis', $data['dataTambahan']->telpTerapis ?? '') }}" />
           <div class="invalid-feedback">
             Harap masukkan data yang sesuai
           </div>

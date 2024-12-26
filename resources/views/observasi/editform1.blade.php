@@ -49,8 +49,10 @@
                 </div>
             </div>
             <div class="bs-stepper-content">
-                <form class="was-validated" action="{{ route('form1.store') }}" method="POST" novalidate>
-                    @csrf
+            <form class="was-validated" action="{{ route('updateFormStepper', ['id' => $data['pasien_id'], 'step' => 1]) }}" method="POST" novalidate>
+                @csrf
+                <input type="hidden" name="pasien_id" value="{{ $data['pasien_id'] }}">
+
                     <div id="dataanak-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
                         <div class="form-section">
                             <h5>Data Anak</h5>
@@ -64,12 +66,12 @@
                                         name="nama_anak" 
                                         placeholder="Masukkan Nama" 
                                         type="text" 
-                                        value="{{ old('nama_anak', $data->nama_anak ?? '') }}" 
+                                        value="{{ old('nama_anak', $data['infoAnak']->nama_anak ?? '') }}" 
                                         required 
                                         pattern="[A-Za-z\s]+" 
                                         title="Hanya boleh huruf dan spasi" />
                                     @error('nama_anak')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -82,16 +84,16 @@
                                         name="tempat_lahir" 
                                         placeholder="Masukkan Tempat Lahir" 
                                         type="text" 
-                                        value="{{ old('tempat_lahir', $data->tempat_lahir ?? '') }}" 
+                                        value="{{ old('tempat_lahir', $data['infoAnak']->tempat_lahir ?? '') }}" 
                                         required 
                                         pattern="[A-Za-z\s]+" 
                                         title="Hanya boleh huruf dan spasi" />
                                     @error('tempat_lahir')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
-                                <!-- Panggilan anak -->
+                                <!-- Panggilan Anak -->
                                 <div class="col-md-6 form-group">
                                     <label for="namaPanggilan">Panggilan Anak</label>
                                     <input 
@@ -100,14 +102,15 @@
                                         name="nama_panggilan" 
                                         placeholder="Masukkan Nama" 
                                         type="text" 
-                                        value="{{ old('nama_panggilan', $data->nama_panggilan ?? '') }}" 
+                                        value="{{ old('nama_panggilan', $data['infoAnak']->nama_panggilan ?? '') }}" 
                                         required 
                                         pattern="[A-Za-z\s]+" 
                                         title="Hanya boleh huruf dan spasi" />
                                     @error('nama_panggilan')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+
                                 <!-- Tanggal Lahir -->
                                 <div class="col-md-6 form-group">
                                     <label for="tanggalLahir">Tanggal Lahir</label>
@@ -116,10 +119,10 @@
                                         id="tanggalLahir" 
                                         name="tanggal_lahir" 
                                         type="date" 
-                                        value="{{ old('tanggal_lahir', $data->tanggal_lahir ?? '') }}" 
+                                        value="{{ old('tanggal_lahir', $data['infoAnak']->tanggal_lahir ?? '') }}" 
                                         required />
                                     @error('tanggal_lahir')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
@@ -131,15 +134,16 @@
                                         id="jenisKelamin" 
                                         name="jenis_kelamin" 
                                         required>
-                                        <option value="" disabled {{ old('jenis_kelamin', $data->jenis_kelamin ?? '') == '' ? 'selected' : '' }}>Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki" {{ old('jenis_kelamin', $data->jenis_kelamin ?? '') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                                        <option value="Perempuan" {{ old('jenis_kelamin', $data->jenis_kelamin ?? '') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                        <option value="" disabled {{ old('jenis_kelamin', $data['infoAnak']->jenis_kelamin ?? '') == '' ? 'selected' : '' }}>Pilih Jenis Kelamin</option>
+                                        <option value="Laki-laki" {{ old('jenis_kelamin', $data['infoAnak']->jenis_kelamin ?? '') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                        <option value="Perempuan" {{ old('jenis_kelamin', $data['infoAnak']->jenis_kelamin ?? '') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                     </select>
                                     @error('jenis_kelamin')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
 
+                                <!-- Umur Anak (Readonly) -->
                                 <div class="col-md-6 form-group">
                                     <label for="umurAnak">Umur Anak</label>
                                     <input 
@@ -147,150 +151,148 @@
                                         id="umurAnak" 
                                         name="umur_anak" 
                                         type="text" 
-                                        value="{{ $umurAnak ?? '' }}" 
+                                        value="{{ old('umur_anak', $umurAnak ?? '') }}" 
                                         readonly />
                                 </div>
                             </div>
 
                             <div class="row">
                                 <h5>Data Orang Tua</h5>
-                                <!-- Data Ayah -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="namaAyah">Nama Ayah</label>
-                                        <input 
-                                            class="form-control" 
-                                            id="namaAyah" 
-                                            name="nama_ayah" 
-                                            placeholder="Masukkan Nama Ayah" 
-                                            type="text" 
-                                            value="{{ old('nama_ayah', $data->nama_ayah) }}" 
-                                            required 
-                                            pattern="[A-Za-z\s]+" 
-                                            title="Hanya boleh huruf dan spasi" 
-                                            oninput="validateInput(this)" />
-                                        <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="usiaAyah">Usia Ayah</label>
-                                        <input 
-                                            class="form-control" 
-                                            id="usiaAyah" 
-                                            name="usia_ayah" 
-                                            placeholder="Masukkan Usia Ayah" 
-                                            type="number" 
-                                            value="{{ old('usia_ayah', $data->usia_ayah ??'') }}" 
-                                            min="0" 
-                                            max="120" 
-                                            required />
-                                        <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="pekerjaanAyah">Pekerjaan Ayah</label>
-                                        <input 
-                                            class="form-control" 
-                                            id="pekerjaanAyah" 
-                                            name="pekerjaan_ayah" 
-                                            placeholder="Masukkan Pekerjaan Ayah" 
-                                            type="text" 
-                                            value="{{ old('pekerjaan_ayah', $data->pekerjaan_ayah) }}" 
-                                            required 
-                                            pattern="[A-Za-z\s]+" 
-                                            title="Hanya boleh huruf dan spasi" 
-                                            oninput="validateInput(this)" />
-                                        <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="agamaAyah">Agama Ayah</label>
-                                        <select 
-                                            class="form-control" 
-                                            id="agamaAyah" 
-                                            name="agama_ayah" 
-                                            required>
-                                            <option value="" disabled {{ $data->agama_ayah ? '' : 'selected' }}>Pilih Agama</option>
-                                            <option value="Islam" {{ $data->agama_ayah == 'Islam' ? 'selected' : '' }}>Islam</option>
-                                            <option value="Kristen Protestan" {{ $data->agama_ayah == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
-                                            <option value="Katolik" {{ $data->agama_ayah == 'Katolik' ? 'selected' : '' }}>Katolik</option>
-                                            <option value="Hindu" {{ $data->agama_ayah == 'Hindu' ? 'selected' : '' }}>Hindu</option>
-                                            <option value="Buddha" {{ $data->agama_ayah == 'Buddha' ? 'selected' : '' }}>Buddha</option>
-                                            <option value="Konghucu" {{ $data->agama_ayah == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
-                                        </select>
-                                        <div class="invalid-feedback">Silakan pilih agama.</div>
-                                    </div>
+                                <!-- Nama Ayah -->
+                                <div class="col-md-6 form-group">
+                                    <label for="namaAyah">Nama Ayah</label>
+                                    <input 
+                                        class="form-control" 
+                                        id="namaAyah" 
+                                        name="nama_ayah" 
+                                        placeholder="Masukkan Nama Ayah" 
+                                        type="text" 
+                                        value="{{ old('nama_ayah', $data['infoAnak']->nama_ayah) }}" 
+                                        required 
+                                        pattern="[A-Za-z\s]+" 
+                                        title="Hanya boleh huruf dan spasi" />
+                                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
                                 </div>
 
-                                <!-- Data Ibu -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="namaIbu">Nama Ibu</label>
-                                        <input 
-                                            class="form-control" 
-                                            id="namaIbu" 
-                                            name="nama_ibu" 
-                                            placeholder="Masukkan Nama Ibu" 
-                                            type="text" 
-                                            value="{{ old('nama_ibu', $data->nama_ibu) }}" 
-                                            required 
-                                            pattern="[A-Za-z\s]+" 
-                                            title="Hanya boleh huruf dan spasi" 
-                                            oninput="validateInput(this)" />
-                                        <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="usiaIbu">Usia Ibu</label>
-                                        <input 
-                                            class="form-control" 
-                                            id="usiaIbu" 
-                                            name="usia_ibu" 
-                                            placeholder="Masukkan Usia Ibu" 
-                                            type="number" 
-                                            value="{{ old('usia_ibu', $data->usia_ibu ?? '') }}" 
-                                            min="0" 
-                                            max="120" 
-                                            required />
-                                        <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="pekerjaanIbu">Pekerjaan Ibu</label>
-                                        <input 
-                                            class="form-control" 
-                                            id="pekerjaanIbu" 
-                                            name="pekerjaan_ibu" 
-                                            placeholder="Masukkan Pekerjaan Ibu" 
-                                            type="text" 
-                                            value="{{ old('pekerjaan_ibu', $data->pekerjaan_ibu) }}" 
-                                            required 
-                                            pattern="[A-Za-z\s]+" 
-                                            title="Hanya boleh huruf dan spasi" 
-                                            oninput="validateInput(this)" />
-                                        <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="agamaIbu">Agama Ibu</label>
-                                        <select 
-                                            class="form-control" 
-                                            id="agamaIbu" 
-                                            name="agama_ibu" 
-                                            required>
-                                            <option value="" disabled {{ $data->agama_ibu ? '' : 'selected' }}>Pilih Agama</option>
-                                            <option value="Islam" {{ $data->agama_ibu == 'Islam' ? 'selected' : '' }}>Islam</option>
-                                            <option value="Kristen Protestan" {{ $data->agama_ibu == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
-                                            <option value="Katolik" {{ $data->agama_ibu == 'Katolik' ? 'selected' : '' }}>Katolik</option>
-                                            <option value="Hindu" {{ $data->agama_ibu == 'Hindu' ? 'selected' : '' }}>Hindu</option>
-                                            <option value="Buddha" {{ $data->agama_ibu == 'Buddha' ? 'selected' : '' }}>Buddha</option>
-                                            <option value="Konghucu" {{ $data->agama_ibu == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
-                                        </select>
-                                        <div class="invalid-feedback">Silakan pilih agama.</div>
-                                    </div>
+                                <!-- Usia Ayah -->
+                                <div class="col-md-6 form-group">
+                                    <label for="usiaAyah">Usia Ayah</label>
+                                    <input 
+                                        class="form-control" 
+                                        id="usiaAyah" 
+                                        name="usia_ayah" 
+                                        placeholder="Masukkan Usia Ayah" 
+                                        type="number" 
+                                        value="{{ old('usia_ayah', $data['infoAnak']->usia_ayah ?? '') }}" 
+                                        min="0" 
+                                        max="120" 
+                                        required />
+                                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
                                 </div>
 
-                                <!-- Kolom Alamat -->
+                                <!-- Pekerjaan Ayah -->
+                                <div class="col-md-6 form-group">
+                                    <label for="pekerjaanAyah">Pekerjaan Ayah</label>
+                                    <input 
+                                        class="form-control" 
+                                        id="pekerjaanAyah" 
+                                        name="pekerjaan_ayah" 
+                                        placeholder="Masukkan Pekerjaan Ayah" 
+                                        type="text" 
+                                        value="{{ old('pekerjaan_ayah', $data['infoAnak']->pekerjaan_ayah) }}" 
+                                        required 
+                                        pattern="[A-Za-z\s]+" 
+                                        title="Hanya boleh huruf dan spasi" />
+                                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                                </div>
+
+                                <!-- Agama Ayah -->
+                                <div class="col-md-6 form-group">
+                                    <label for="agamaAyah">Agama Ayah</label>
+                                    <select 
+                                        class="form-control" 
+                                        id="agamaAyah" 
+                                        name="agama_ayah" 
+                                        required>
+                                        <option value="" disabled {{ $data['infoAnak']->agama_ayah ? '' : 'selected' }}>Pilih Agama</option>
+                                        <option value="Islam" {{ $data['infoAnak']->agama_ayah == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                        <option value="Kristen Protestan" {{ $data['infoAnak']->agama_ayah == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+                                        <option value="Katolik" {{ $data['infoAnak']->agama_ayah == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                                        <option value="Hindu" {{ $data['infoAnak']->agama_ayah == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                        <option value="Buddha" {{ $data['infoAnak']->agama_ayah == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                        <option value="Konghucu" {{ $data['infoAnak']->agama_ayah == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                                    </select>
+                                    <div class="invalid-feedback">Silakan pilih agama.</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Nama Ibu -->
+                                <div class="col-md-6 form-group">
+                                    <label for="namaIbu">Nama Ibu</label>
+                                    <input 
+                                        class="form-control" 
+                                        id="namaIbu" 
+                                        name="nama_ibu" 
+                                        placeholder="Masukkan Nama Ibu" 
+                                        type="text" 
+                                        value="{{ old('nama_ibu', $data['infoAnak']->nama_ibu) }}" 
+                                        required 
+                                        pattern="[A-Za-z\s]+" 
+                                        title="Hanya boleh huruf dan spasi" />
+                                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                                </div>
+
+                                <!-- Usia Ibu -->
+                                <div class="col-md-6 form-group">
+                                    <label for="usiaIbu">Usia Ibu</label>
+                                    <input 
+                                        class="form-control" 
+                                        id="usiaIbu" 
+                                        name="usia_ibu" 
+                                        placeholder="Masukkan Usia Ibu" 
+                                        type="number" 
+                                        value="{{ old('usia_ibu', $data['infoAnak']->usia_ibu ?? '') }}" 
+                                        min="0" 
+                                        max="120" 
+                                        required />
+                                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                                </div>
+
+                                <!-- Pekerjaan Ibu -->
+                                <div class="col-md-6 form-group">
+                                    <label for="pekerjaanIbu">Pekerjaan Ibu</label>
+                                    <input 
+                                        class="form-control" 
+                                        id="pekerjaanIbu" 
+                                        name="pekerjaan_ibu" 
+                                        placeholder="Masukkan Pekerjaan Ibu" 
+                                        type="text" 
+                                        value="{{ old('pekerjaan_ibu', $data['infoAnak']->pekerjaan_ibu) }}" 
+                                        required 
+                                        pattern="[A-Za-z\s]+" 
+                                        title="Hanya boleh huruf dan spasi" />
+                                    <div class="invalid-feedback">Harap masukkan data yang sesuai</div>
+                                </div>
+
+                                <!-- Agama Ibu -->
+                                <div class="col-md-6 form-group">
+                                    <label for="agamaIbu">Agama Ibu</label>
+                                    <select 
+                                        class="form-control" 
+                                        id="agamaIbu" 
+                                        name="agama_ibu" 
+                                        required>
+                                        <option value="" disabled {{ $data['infoAnak']->agama_ibu ? '' : 'selected' }}>Pilih Agama</option>
+                                        <option value="Islam" {{ $data['infoAnak']->agama_ibu == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                        <option value="Kristen Protestan" {{ $data['infoAnak']->agama_ibu == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+                                        <option value="Katolik" {{ $data['infoAnak']->agama_ibu == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                                        <option value="Hindu" {{ $data['infoAnak']->agama_ibu == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                        <option value="Buddha" {{ $data['infoAnak']->agama_ibu == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                        <option value="Konghucu" {{ $data['infoAnak']->agama_ibu == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                                    </select>
+                                    <div class="invalid-feedback">Silakan pilih agama.</div>
+                                </div>
                                 <!-- Alamat Lengkap -->
                                 <textarea 
                                     class="form-control" 
@@ -298,7 +300,7 @@
                                     name="alamat_lengkap" 
                                     placeholder="Masukkan Alamat Lengkap" 
                                     rows="3" 
-                                    required>{{ old('alamat_lengkap', $data->alamat_lengkap ?? '') }}</textarea>
+                                    required>{{ old('alamat_lengkap', $data['infoAnak']->alamat_lengkap ?? '') }}</textarea>
                                         </div>
 
                                         </div>
@@ -377,6 +379,36 @@ document.querySelector("form").addEventListener("submit", function(event) {
 
 
     </script>
+    <script>
+    // Fungsi untuk menghitung usia berdasarkan tanggal lahir
+    function hitungUsia() {
+        // Ambil nilai tanggal lahir dari input
+        var tanggalLahir = document.getElementById('tanggalLahir').value;
+        
+        if (tanggalLahir) {
+            var lahir = new Date(tanggalLahir);
+            var sekarang = new Date();
+            var umur = sekarang.getFullYear() - lahir.getFullYear();
+            var bulan = sekarang.getMonth() - lahir.getMonth();
+            if (bulan < 0 || (bulan === 0 && sekarang.getDate() < lahir.getDate())) {
+                umur--;
+            }
+
+            // Perbarui umur anak di input readonly
+            var umurAnakInput = document.getElementById('umurAnak');
+            umurAnakInput.value = umur + ' tahun ' + Math.abs(bulan) + ' bulan';
+        }
+    }
+
+    // Event listener untuk mendeteksi perubahan tanggal lahir
+    document.getElementById('tanggalLahir').addEventListener('change', hitungUsia);
+
+    // Jika ada tanggal lahir yang sudah terisi sebelumnya, hitung usia pada saat halaman dimuat
+    window.onload = function() {
+        hitungUsia();
+    };
+</script>
+
 </body>
 
 </html>

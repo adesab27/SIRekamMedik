@@ -35,9 +35,13 @@ Route::get('/observasi/form1/{id}', [AdminForm1Controller::class, 'index'])->nam
 Route::post('/observasi/form1', [AdminForm1Controller::class, 'store'])->name('form1.store');
 
 // Edit Form Stepper
-Route::get('/observasi/editform1/edit/{id}/step/{step?}', [AdminForm1Controller::class, 'editFormStepper'])
-    ->where(['step' => '[1-4]']) // Validasi nilai step
-    ->name('editFormStepper');
-Route::post('/observasi/editform1/update/{id}/step/{step}', [AdminForm1Controller::class, 'updateFormStepper'])
-    ->where(['step' => '[1-4]']) // Validasi nilai step
-    ->name('updateFormStepper');
+// Route::get('/edit/{id}/step/{step?}', [AdminForm1Controller::class, 'editFormStepper'])
+//     ->where(['step' => '[1-4]']) // Validasi nilai step
+//     ->name('editFormStepper');
+// Route::post('/observasi/editform1/update/{id}/step/{step}', [AdminForm1Controller::class, 'updateFormStepper'])
+//     ->where(['step' => '[1-4]']) // Validasi nilai step
+//     ->name('updateFormStepper');
+    
+    Route::post('/observasi/editform1/{id}/{step}', [AdminForm1Controller::class, 'updateFormStepper'])->name('editFormStepper');
+    Route::post('/observasi/updateform1/{id}/{step}', [AdminForm1Controller::class, 'updateFormStepper'])->name('updateFormStepper');
+

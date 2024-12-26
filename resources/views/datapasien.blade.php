@@ -58,9 +58,18 @@
         <td>
           <div class="d-flex justify-content-start align-items-center gap-2">
             <!-- Ikon Edit -->
-            <a href="{{ route('editFormStepper', $d->id) }}" class="text-primary">
-              <i class="fas fa-edit"></i>
-            </a>
+            @php
+              $formFilled = !$cekdata->where('pasien_id', $d->id)->isEmpty();
+            @endphp
+            @if ($formFilled)
+              <a href="{{ route('editFormStepper', $d->id) }}" class="text-primary">
+                <i class="fas fa-edit"></i>
+              </a>
+            @else
+              <span class="text-muted">
+                <i class="fas fa-edit"></i>
+              </span>
+            @endif
 
             <!-- Ikon Delete -->
             <form id="delete-form-{{ $d->id }}" style="display: inline;">
