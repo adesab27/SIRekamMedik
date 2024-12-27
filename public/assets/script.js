@@ -66,3 +66,4 @@ function deleteData(event, id) {
         });
     }
 }
+

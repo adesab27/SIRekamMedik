@@ -12,7 +12,9 @@ class AdminDatapasienController extends Controller
     public function index($id = null)
     {
         if (Auth::check()) {
+            // dd(Auth::check());
             $data = DB::table('registrasi')->get();
+            // dd($data);
             $cekdata = DB::table('registrasi')
                 ->join('infoanak', 'registrasi.id', '=', 'infoanak.pasien_id')
                 ->get();

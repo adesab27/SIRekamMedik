@@ -111,17 +111,14 @@
         </div>
         <div class="modal-body">
         <select id="printDataDropdown" class="form-select">
-    <option value="">Pilih data pasien</option>
-    @foreach ($observations as $observation)
-        <option value="{{ $observation->id }}">
-            {{ \Carbon\Carbon::parse($observation->created_at)->format('Y-m-d H:i') }}
-        </option>
-    @endforeach
-</select>
-
-
+            <option value="">Pilih data pasien</option>
+            @foreach ($observations as $observation)
+                <option value="{{ $observation->id }}">
+                    {{ \Carbon\Carbon::parse($observation->created_at)->format('Y-m-d H:i') }}
+                </option>
+            @endforeach
+        </select>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
           <button type="button" class="btn btn-primary" onclick="printSelectedData()">Cetak</button>
@@ -180,43 +177,43 @@
 <script>
 let selectedId = null;
 
+// Fungsi untuk mengambil dan menampilkan data observasi
 function setPrintData(id) {
     selectedId = id; // Simpan pasien_id
     const dropdown = document.getElementById('printDataDropdown');
     dropdown.innerHTML = '<option value="">Memuat data...</option>';
 
-    // Ambil data observasi berdasarkan pasien_id
+    // Fetch data observasi berdasarkan pasien_id
     fetch(`/datapasien/observasi/${id}`, {
-    headers: {
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-    }
-})
-.then(response => {
-    if (!response.ok) throw new Error('Network response was not ok');
-    return response.json();
-})
-.then(data => {
-    const dropdown = document.getElementById('printDataDropdown');
-    dropdown.innerHTML = '<option value="">Pilih data pasien</option>';
-    
-    // Periksa apakah data kosong
-    if (data.length === 0) {
-        dropdown.innerHTML = '<option value="">Tidak ada data observasi</option>';
-    } else {
-        // Tambahkan setiap observasi ke dropdown
-        data.forEach(item => {
-            const formattedDate = moment(item.created_at).format('YYYY-MM-DD HH:mm');
-            dropdown.innerHTML += `<option value="${item.id}">${formattedDate} - ${item.namaPasien}</option>`;
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        }
+    })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            dropdown.innerHTML = '<option value="">Pilih data pasien</option>';
+
+            // Periksa apakah data kosong
+            if (data.length === 0) {
+                dropdown.innerHTML = '<option value="">Tidak ada data observasi</option>';
+            } else {
+                // Tambahkan setiap observasi ke dropdown
+                data.forEach(item => {
+                    const formattedDate = moment(item.created_at).format('YYYY-MM-DD HH:mm');
+                    dropdown.innerHTML += `<option value="${item.id}">${formattedDate} - ${item.namaPasien}</option>`;
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            dropdown.innerHTML = '<option value="">Gagal memuat data</option>';
         });
-    }
-})
-.catch(error => {
-    console.error('Error fetching data:', error);
-    dropdown.innerHTML = '<option value="">Gagal memuat data</option>';
-});
+}
 
-
-
+// Fungsi untuk mencetak data berdasarkan pilihan dropdown
 function printSelectedData() {
     const selectedFormId = document.getElementById('printDataDropdown').value;
     if (selectedFormId) {
