@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,7 +41,6 @@ class AdminDatapasienController extends Controller
     
     public function getObservationsByPasienId($id)
     {
-        // Ambil data observasi berdasarkan pasien_id dengan join ke tabel registrasi
         $observations = DB::table('infoanak')
         ->join('registrasi', 'infoanak.pasien_id', '=', 'registrasi.id')  // Join dengan registrasi
         ->where('infoanak.pasien_id', $id)  // Filter berdasarkan pasien_id
@@ -49,10 +48,6 @@ class AdminDatapasienController extends Controller
         ->select('infoanak.id', 'infoanak.created_at', 'registrasi.namaPasien')  // Pilih kolom yang diinginkan
         ->get();
 
-    // Debug: Cek apakah ada data yang diambil
-    \Log::info('Observations for pasien_id ' . $id . ': ', $observations->toArray());
-
-    // Pastikan data ada sebelum mengembalikannya
     if ($observations->isEmpty()) {
         return response()->json(['message' => 'Tidak ada data observasi'], 404);
     }
@@ -60,28 +55,38 @@ class AdminDatapasienController extends Controller
     return response()->json($observations);
     }
     
-    
-    
 
-public function export_pdf($id, $id_form)
-{
-    try {
-        // Ambil data berdasarkan id_form
-        $observation = DB::table('infoanak')
-            ->where('pasien_id', $id)
-            ->where('id', $id_form)
-            ->first();
-
-        if (!$observation) {
-            return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
+    public function export_pdf($id, $id_form)
+    {
+        try {
+            // Ambil data berdasarkan pasien_id dan id_form, dengan join tabel-tabel terkait
+            $observation = DB::table('infoanak')
+                ->join('datatambahan', 'infoanak.pasien_id', '=', 'datatambahan.pasien_id')
+                ->join('riwhamillahir', 'infoanak.pasien_id', '=', 'riwhamillahir.pasien_id')
+                ->join('riwsehatperkembangan', 'infoanak.pasien_id', '=', 'riwsehatperkembangan.pasien_id')
+                ->join('riwpolakebiasaan', 'infoanak.pasien_id', '=', 'riwpolakebiasaan.pasien_id')
+                ->where('infoanak.pasien_id', $id)
+                ->where('infoanak.id', $id_form)
+                ->select(
+                    'infoanak.*', 
+                    'datatambahan.*', 
+                    'riwhamillahir.*', 
+                    'riwsehatperkembangan.*', 
+                    'riwpolakebiasaan.*'
+                )
+                ->first();
+    
+            if (!$observation) {
+                return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
+            }
+    
+            // Pass data ke view untuk PDF
+            return view('cetak-hasil', compact('observation'));
+        } catch (\Throwable $th) {
+            // Menampilkan detail error untuk membantu debugging
+            \Log::error('Error during export_pdf: ' . $th->getMessage());
+            return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memproses data! ' . $th->getMessage());
         }
-
-        // Pass data ke view untuk PDF
-        return view('cetak-hasil', compact('observation'));
-    } catch (\Throwable $th) {
-        return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memproses data!');
     }
-}
-
-
+    
 }

@@ -44,7 +44,7 @@
                     <p class="m-2">Nama Anak</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->nama_anak}}</p>
+                    <p class="m-2">{{$observation->nama_anak}}</p>
                 </td>
 
             </tr>
@@ -53,7 +53,7 @@
                     <p class="m-2">Tempat Lahir</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->tempat_lahir}}</p>
+                    <p class="m-2">{{$observation->tempat_lahir}}</p>
                 </td>
 
             </tr>
@@ -62,7 +62,7 @@
                     <p class="m-2">Nama Panggilan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->nama_panggilan}}</p>
+                    <p class="m-2">{{$observation->nama_panggilan}}</p>
                 </td>
             </tr>
             <tr>
@@ -70,7 +70,7 @@
                     <p class="m-2">Tanggal Lahir</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->tanggal_lahir}}</p>
+                    <p class="m-2">{{$observation->tanggal_lahir}}</p>
                 </td>
             </tr>
             <tr>
@@ -78,7 +78,7 @@
                     <p class="m-2">Jenis Kelamin</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->jenis_kelamin}}</p>
+                    <p class="m-2">{{$observation->jenis_kelamin}}</p>
                 </td>
             </tr>
             <tr>
@@ -86,7 +86,7 @@
                     <p class="m-2">Umur Anak</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->umur_anak}}</p>
+                    <p class="m-2">{{$observation->umur_anak}}</p>
                 </td>
             </tr>
         </table>
@@ -105,7 +105,7 @@
                     <p class="m-2">Nama Ayah</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->nama_ayah}}</p>
+                    <p class="m-2">{{$observation->nama_ayah}}</p>
                 </td>
             </tr>
             <tr>
@@ -113,7 +113,7 @@
                     <p class="m-2">Nama Ibu</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->nama_ibu}}</p>
+                    <p class="m-2">{{$observation->nama_ibu}}</p>
                 </td>
             </tr>
             <tr>
@@ -121,7 +121,7 @@
                     <p class="m-2">Usia Ayah</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->usia_ayah}} Tahun</p>
+                    <p class="m-2">{{$observation->usia_ayah}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -129,7 +129,7 @@
                     <p class="m-2">Usia Ibu</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->usia_ibu}} Tahun</p>
+                    <p class="m-2">{{$observation->usia_ibu}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -137,7 +137,7 @@
                     <p class="m-2">Agama Ayah</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->agama_ayah}}</p>
+                    <p class="m-2">{{$observation->agama_ayah}}</p>
                 </td>
             </tr>
             <tr>
@@ -145,7 +145,7 @@
                     <p class="m-2">Agama Ibu</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->agama_ibu}}</p>
+                    <p class="m-2">{{$observation->agama_ibu}}</p>
                 </td>
             </tr>
             <tr>
@@ -153,7 +153,7 @@
                     <p class="m-2">Pekerjaan Ayah</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->pekerjaan_ayah}}</p>
+                    <p class="m-2">{{$observation->pekerjaan_ayah}}</p>
                 </td>
             </tr>
             <tr>
@@ -161,7 +161,7 @@
                     <p class="m-2">Pekerjaan Ibu</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->pekerjaan_ibu}}</p>
+                    <p class="m-2">{{$observation->pekerjaan_ibu}}</p>
                 </td>
             </tr>
             <tr>
@@ -169,7 +169,7 @@
                     <p class="m-2">Alamat Lengkap</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$infoanak->alamat_lengkap}}</p>
+                    <p class="m-2">{{$observation->alamat_lengkap}}</p>
                 </td>
             </tr>
         </table>
@@ -188,7 +188,7 @@
                     <p class="m-2">Diagnosa diberikan oleh</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->diagnosaOleh}}</p>
+                    <p class="m-2">{{$observation->diagnosaOleh}}</p>
                 </td>
             </tr>
             <tr>
@@ -196,7 +196,7 @@
                     <p class="m-2">Diusia berapa diagnosa diberikan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->diagnosaUsia}}</p>
+                    <p class="m-2">{{$observation->diagnosaUsia}}</p>
                 </td>
             </tr>
             <tr>
@@ -204,7 +204,7 @@
                     <p class="m-2">Diagnosa yang diberikan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->diagnosaDiberikan}}</p>
+                    <p class="m-2">{{$observation->diagnosaDiberikan}}</p>
                 </td>
             </tr>
             <tr>
@@ -212,7 +212,7 @@
                     <p class="m-2">Nama Saudara Kandung</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->namaSaudara}}</p>
+                    <p class="m-2">{{$observation->namaSaudara}}</p>
                 </td>
             </tr>
             <tr>
@@ -220,7 +220,7 @@
                     <p class="m-2">Usia Saudara Kandung</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->usiaSaudara}} Tahun</p>
+                    <p class="m-2">{{$observation->usiaSaudara}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -228,7 +228,7 @@
                     <p class="m-2">Jenis Kelamin Saudara Kandung</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->jenisKelaminSaudara}}</p>
+                    <p class="m-2">{{$observation->jenisKelaminSaudara}}</p>
                 </td>
             </tr>
             <tr>
@@ -236,7 +236,7 @@
                     <p class="m-2">Special Need Saudara Kandung</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->specialNeedSaudara}}</p>
+                    <p class="m-2">{{$observation->specialNeedSaudara}}</p>
                 </td>
             </tr>
             <tr>
@@ -244,7 +244,7 @@
                     <p class="m-2">Nama sekolah</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->namaSekolah}}</p>
+                    <p class="m-2">{{$observation->namaSekolah}}</p>
                 </td>
             </tr>
             <tr>
@@ -252,7 +252,7 @@
                     <p class="m-2">Kelas</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->kelas}}</p>
+                    <p class="m-2">{{$observation->kelas}}</p>
                 </td>
             </tr>
             <tr>
@@ -260,7 +260,7 @@
                     <p class="m-2">Nama Guru</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->namaGuru}}</p>
+                    <p class="m-2">{{$observation->namaGuru}}</p>
                 </td>
             </tr>
             <tr>
@@ -268,7 +268,7 @@
                     <p class="m-2">Telp</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->telpGuru}}</p>
+                    <p class="m-2">{{$observation->telpGuru}}</p>
                 </td>
             </tr>
             <tr>
@@ -276,7 +276,7 @@
                     <p class="m-2">Jenis Terapi</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->jenisTerapi}}</p>
+                    <p class="m-2">{{$observation->jenisTerapi}}</p>
                 </td>
             </tr>
             <tr>
@@ -284,7 +284,7 @@
                     <p class="m-2">Nama Terapis / klinik</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->namaTerapis}}</p>
+                    <p class="m-2">{{$observation->namaTerapis}}</p>
                 </td>
             </tr>
             <tr>
@@ -292,7 +292,7 @@
                     <p class="m-2">Durasi</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->durasiTerapi}}</p>
+                    <p class="m-2">{{$observation->durasiTerapi}}</p>
                 </td>
             </tr>
             <tr>
@@ -300,7 +300,7 @@
                     <p class="m-2">Telp</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$datatambahan->telpTerapis}}</p>
+                    <p class="m-2">{{$observation->telpTerapis}}</p>
                 </td>
             </tr>
         </table>
@@ -319,7 +319,7 @@
                     <p class="m-2">Usia Ibu Ketika Hamil</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->usia_ibu}} Tahun</p>
+                    <p class="m-2">{{$observation->usia_ibu}} Tahun</p>
                 </td>
             </tr>
             <tr>
@@ -327,7 +327,7 @@
                     <p class="m-2">Berat Badan Ibu Ketika Hamil</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->berat_badan_ibu}} Kg</p>
+                    <p class="m-2">{{$observation->berat_badan_ibu}} Kg</p>
                 </td>
             </tr>
             <tr>
@@ -335,7 +335,7 @@
                     <p class="m-2">Hasil Pemeriksaan TORSCH (Jika Ada)</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->hasil_pemeriksaan}}</p>
+                    <p class="m-2">{{$observation->hasil_pemeriksaan}}</p>
                 </td>
             </tr>
             <tr>
@@ -343,9 +343,9 @@
                     <p class="m-2">Keluhan Saat Hamil</p>
                 </td>
                 <td style="width: 50%;">
-                    {!!$riwhamillahir->keluhan_keguguran == 0 ? '' : 'Pernah Mengalami Keguguran <br>'!!}
-                    {!!$riwhamillahir->keluhan_stress == 0 ? '' : 'Mengalami stress psikologis, sakit atau komplikasi <br>'!!}
-                    {!!$riwhamillahir->keluhan_obat == 0 ? '' : 'Mengkonsumsi obat-obatan selama kehamilan <br>'!!}
+                    {!!$observation->keluhan_keguguran == 0 ? '' : 'Pernah Mengalami Keguguran <br>'!!}
+                    {!!$observation->keluhan_stress == 0 ? '' : 'Mengalami stress psikologis, sakit atau komplikasi <br>'!!}
+                    {!!$observation->keluhan_obat == 0 ? '' : 'Mengkonsumsi obat-obatan selama kehamilan <br>'!!}
                 </td>
             </tr>
             <tr>
@@ -353,23 +353,15 @@
                     <p class="m-2">Proses Persalinan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->proses_persalinan}}</p>
+                    <p class="m-2">{{$observation->proses_persalinan}}</p>
                 </td>
             </tr>
-            <!-- <tr>
-                <td style="width: 20%;">
-                    <p class="m-2">Lama Kehamilan (dalam minggu)</p>
-                </td>
-                <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->lama_kehamilan}}</p>
-                </td>
-            </tr> -->
             <tr>
                 <td style="width: 20%;">
                     <p class="m-2">Berat Badan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->berat_badan_lahir}} Kg</p>
+                    <p class="m-2">{{$observation->berat_badan_lahir}} Kg</p>
                 </td>
             </tr>
             <tr>
@@ -377,7 +369,7 @@
                     <p class="m-2">Panjang Badan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->panjang_badan_lahir}} Cm</p>
+                    <p class="m-2">{{$observation->panjang_badan_lahir}} Cm</p>
                 </td>
             </tr>
             <tr>
@@ -385,7 +377,7 @@
                     <p class="m-2">Lingkar Kepala</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->lingkar_kepala_lahir}} Cm</p>
+                    <p class="m-2">{{$observation->lingkar_kepala_lahir}} Cm</p>
                 </td>
             </tr>
             <tr>
@@ -393,7 +385,7 @@
                     <p class="m-2">Skor APGAR</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->skor_apgar}}</p>
+                    <p class="m-2">{{$observation->skor_apgar}}</p>
                 </td>
             </tr>
             <tr>
@@ -401,9 +393,9 @@
                     <p class="m-2">Kondisi Lahir</p>
                 </td>
                 <td style="width: 50%;">
-                    {!!$riwhamillahir->komplikasi_kelahiran == 0 ? '' : 'Komplikasi / Kesulitan selama proses kelahiran <br>'!!}
-                    {!!$riwhamillahir->menangis_lahir == 0 ? '' : 'Langsung menangis ketika lahir <br>'!!}
-                    {!!$riwhamillahir->perawatan_khusus == 0 ? '' : 'Memerlukan perawatan khusus setelah masa kelahiran <br>'!!}
+                    {!!$observation->komplikasi_kelahiran == 0 ? '' : 'Komplikasi / Kesulitan selama proses kelahiran <br>'!!}
+                    {!!$observation->menangis_lahir == 0 ? '' : 'Langsung menangis ketika lahir <br>'!!}
+                    {!!$observation->perawatan_khusus == 0 ? '' : 'Memerlukan perawatan khusus setelah masa kelahiran <br>'!!}
                 </td>
             </tr>
             <tr>
@@ -411,7 +403,7 @@
                     <p class="m-2">Catatan Tambahan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwhamillahir->catatan_tambahan}}</p>
+                    <p class="m-2">{{$observation->catatan_tambahan}}</p>
                 </td>
             </tr>
         </table>
@@ -436,21 +428,21 @@
                     <p class="m-2">Status Kesehatan Anak</p>
                 </td>
                 <td style="width: 50%;">
-                    {!!$riwsehatperkembangan->penyakit_serius == 0 ? '' : 'Penyakit Serius <br>'!!}
-                    {!!$riwsehatperkembangan->benturan_kepala == 0 ? '' : 'Benturan Di kepala <br>'!!}
-                    {!!$riwsehatperkembangan->dirawat_rs == 0 ? '' : 'Dirawat di RS <br>'!!}
-                    {!!$riwsehatperkembangan->pengobatan_jangka_panjang == 0 ? '' : 'Pernah atau sedang mendapat pengobatan jangka panjang <br>'!!}
-                    {!!$riwsehatperkembangan->riwayat_kejang == 0 ? '' : 'Memiliki riwayat kejang <br>'!!}
-                    {!!$riwsehatperkembangan->riwayat_flu == 0 ? '' : 'Memiliki riwayat Flu <br>'!!}
-                    {!!$riwsehatperkembangan->riwayat_pneumonia == 0 ? '' : 'Memiliki riwayat pneumonia <br>'!!}
-                    {!!$riwsehatperkembangan->masalah_perkembangan == 0 ? '' : 'Masalah perkembangan pada pada usia 0 - 2 tahun <br>'!!}
-                    {!!$riwsehatperkembangan->riwayat_alergi == 0 ? '' : 'Riwayat alergi <br>'!!}
-                    {!!$riwsehatperkembangan->infeksi_telinga == 0 ? '' : 'Infeksi telinga <br>'!!}
-                    {!!$riwsehatperkembangan->diet_suplemen == 0 ? '' : 'Melakukan diet / suplemen tertentu <br>'!!}
-                    {!!$riwsehatperkembangan->menggunakan_kacamata == 0 ? '' : 'Menggunakan kacamata <br>'!!}
-                    {!!$riwsehatperkembangan->riwayat_asma == 0 ? '' : 'Memiliki riwayat Asma <br>'!!}
-                    {!!$riwsehatperkembangan->riwayat_sinusitis == 0 ? '' : 'Memiliki riwayat sinusitis <br>'!!}
-                    {!!$riwsehatperkembangan->tes_pendengaran_penglihatan == 0 ? '' : 'Melakukan tes (pendengaran / penglihatan) <br>'!!}
+                    {!!$observation->penyakit_serius == 0 ? '' : 'Penyakit Serius <br>'!!}
+                    {!!$observation->benturan_kepala == 0 ? '' : 'Benturan Di kepala <br>'!!}
+                    {!!$observation->dirawat_rs == 0 ? '' : 'Dirawat di RS <br>'!!}
+                    {!!$observation->pengobatan_jangka_panjang == 0 ? '' : 'Pernah atau sedang mendapat pengobatan jangka panjang <br>'!!}
+                    {!!$observation->riwayat_kejang == 0 ? '' : 'Memiliki riwayat kejang <br>'!!}
+                    {!!$observation->riwayat_flu == 0 ? '' : 'Memiliki riwayat Flu <br>'!!}
+                    {!!$observation->riwayat_pneumonia == 0 ? '' : 'Memiliki riwayat pneumonia <br>'!!}
+                    {!!$observation->masalah_perkembangan == 0 ? '' : 'Masalah perkembangan pada pada usia 0 - 2 tahun <br>'!!}
+                    {!!$observation->riwayat_alergi == 0 ? '' : 'Riwayat alergi <br>'!!}
+                    {!!$observation->infeksi_telinga == 0 ? '' : 'Infeksi telinga <br>'!!}
+                    {!!$observation->diet_suplemen == 0 ? '' : 'Melakukan diet / suplemen tertentu <br>'!!}
+                    {!!$observation->menggunakan_kacamata == 0 ? '' : 'Menggunakan kacamata <br>'!!}
+                    {!!$observation->riwayat_asma == 0 ? '' : 'Memiliki riwayat Asma <br>'!!}
+                    {!!$observation->riwayat_sinusitis == 0 ? '' : 'Memiliki riwayat sinusitis <br>'!!}
+                    {!!$observation->tes_pendengaran_penglihatan == 0 ? '' : 'Melakukan tes (pendengaran / penglihatan) <br>'!!}
                 </td>
             </tr>
         </table>
@@ -474,7 +466,7 @@
                     <p class="m-2">Tengkurap</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->tengkurap}} Bulan</p>
+                    <p class="m-2">{{$observation->tengkurap}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -482,7 +474,7 @@
                     <p class="m-2">Duduk</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->duduk}} Bulan</p>
+                    <p class="m-2">{{$observation->duduk}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -490,7 +482,7 @@
                     <p class="m-2">Merangkak</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->merangkak}} Bulan</p>
+                    <p class="m-2">{{$observation->merangkak}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -498,7 +490,7 @@
                     <p class="m-2">Berdiri</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->berdiri}} Bulan</p>
+                    <p class="m-2">{{$observation->berdiri}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -506,7 +498,7 @@
                     <p class="m-2">Berjalan</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->berjalan}} Bulan</p>
+                    <p class="m-2">{{$observation->berjalan}} Bulan</p>
                 </td>
             </tr>
         </table>
@@ -525,7 +517,7 @@
                     <p class="m-2">Bubbling</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->bubbling}} Bulan</p>
+                    <p class="m-2">{{$observation->bubbling}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -533,7 +525,7 @@
                     <p class="m-2">Kata Pertama</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->kata_pertama}} Bulan</p>
+                    <p class="m-2">{{$observation->kata_pertama}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -541,7 +533,7 @@
                     <p class="m-2">Mengulang kata</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->mengulang_kata}} Bulan</p>
+                    <p class="m-2">{{$observation->mengulang_kata}} Bulan</p>
                 </td>
             </tr>
             <tr>
@@ -549,7 +541,7 @@
                     <p class="m-2">Kalimat pertama</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->kalimat_pertama}} Bulan</p>
+                    <p class="m-2">{{$observation->kalimat_pertama}} Bulan</p>
                 </td>
             </tr>
         </table>
@@ -560,7 +552,7 @@
                     </p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwsehatperkembangan->catatan_tambahan}}</p>
+                    <p class="m-2">{{$observation->catatan_tambahan}}</p>
                 </td>
             </tr>
         </table>
@@ -579,7 +571,7 @@
                     <p class="m-2">Apakah anak memiliki gangguan pola tidur? Jam berapa anak tidur malam?</p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwpolakebiasaan->gangguan_pola_tidur}}</p>
+                    <p class="m-2">{{$observation->gangguan_pola_tidur}}</p>
                 </td>
             </tr>
             <tr>
@@ -588,7 +580,7 @@
                     </p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwpolakebiasaan->terbangun_malam}}</p>
+                    <p class="m-2">{{$observation->terbangun_malam}}</p>
                 </td>
             </tr>
             <tr>
@@ -597,10 +589,10 @@
                     <p class="m-2">Kebiasaan yang dimiliki anak</p>
                 </td>
                 <td style="width: 50%;">
-                    {!!$riwpolakebiasaan->kemampuan_sedot_kuat == 0 ? '' : 'Kemampuan sedot yang kuat di masa bayi <br>'!!}
-                    {!!$riwpolakebiasaan->riwayat_reflux == 0 ? '' : 'Memiliki riwayat sering muntah, tersedak (reflux) <br>'!!}
-                    {!!$riwpolakebiasaan->masalah_nafsu_makan == 0 ? '' : 'Memiliki riwayat masalah nafsu makan atau sulit menaikkan Berat badan <br>'!!}
-                    {!!$riwpolakebiasaan->menghindari_pemilihan_makanan == 0 ? '' : 'Memiliki kecenderungan menghindari / memilih makanan berdasarkan karakteristik tertentu <br>'!!}
+                    {!!$observation->kemampuan_sedot_kuat == 0 ? '' : 'Kemampuan sedot yang kuat di masa bayi <br>'!!}
+                    {!!$observation->riwayat_reflux == 0 ? '' : 'Memiliki riwayat sering muntah, tersedak (reflux) <br>'!!}
+                    {!!$observation->masalah_nafsu_makan == 0 ? '' : 'Memiliki riwayat masalah nafsu makan atau sulit menaikkan Berat badan <br>'!!}
+                    {!!$observation->menghindari_pemilihan_makanan == 0 ? '' : 'Memiliki kecenderungan menghindari / memilih makanan berdasarkan karakteristik tertentu <br>'!!}
                 </td>
             </tr>
             <tr>
@@ -608,7 +600,7 @@
                     <p class="m-2">Catatan Tambahan </p>
                 </td>
                 <td style="width: 50%;">
-                    <p class="m-2">{{$riwpolakebiasaan->catatan_tambahan}}</p>
+                    <p class="m-2">{{$observation->catatan_tambahan}}</p>
                 </td>
             </tr>
         </table>
