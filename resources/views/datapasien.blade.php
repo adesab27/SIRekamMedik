@@ -90,8 +90,11 @@
         </td>
 
         <td>
-          <a href="{{ route('export_pdf', $d->id) }}" class="icon-link">
-          <i class="fas fa-info-circle"></i></a>
+        <a href="#" class="icon-link" data-bs-toggle="modal" data-bs-target="#printModal"
+          onclick="setPrintData({{ $d->id }})">
+          <i class="fas fa-info-circle"></i>
+        </a>
+
         </td>
         </tr>
       @endforeach
@@ -99,9 +102,33 @@
       </table>
     </div>
   </div>
+  <div class="modal fade" id="printModal" tabindex="-1" aria-labelledby="printModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="printModalLabel">Print Data Pasien</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <select id="printDataDropdown" class="form-select">
+    <option value="">Pilih data pasien</option>
+    @foreach ($observations as $observation)
+        <option value="{{ $observation->id }}">
+            {{ \Carbon\Carbon::parse($observation->created_at)->format('Y-m-d H:i') }}
+        </option>
+    @endforeach
+</select>
 
 
+        </div>
 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-primary" onclick="printSelectedData()">Cetak</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -126,7 +153,9 @@
     alert("{{ session('failed') }}");
   @endif
   </script>
+
 <script>
+
   $(function () {
     $("#dataPasienTable").DataTable({
       "responsive": true,
@@ -148,7 +177,57 @@
     });
   });
 </script>
+<script>
+let selectedId = null;
 
+function setPrintData(id) {
+    selectedId = id; // Simpan pasien_id
+    const dropdown = document.getElementById('printDataDropdown');
+    dropdown.innerHTML = '<option value="">Memuat data...</option>';
+
+    // Ambil data observasi berdasarkan pasien_id
+    fetch(`/datapasien/observasi/${id}`, {
+    headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+    }
+})
+.then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+})
+.then(data => {
+    const dropdown = document.getElementById('printDataDropdown');
+    dropdown.innerHTML = '<option value="">Pilih data pasien</option>';
+    
+    // Periksa apakah data kosong
+    if (data.length === 0) {
+        dropdown.innerHTML = '<option value="">Tidak ada data observasi</option>';
+    } else {
+        // Tambahkan setiap observasi ke dropdown
+        data.forEach(item => {
+            const formattedDate = moment(item.created_at).format('YYYY-MM-DD HH:mm');
+            dropdown.innerHTML += `<option value="${item.id}">${formattedDate} - ${item.namaPasien}</option>`;
+        });
+    }
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+    dropdown.innerHTML = '<option value="">Gagal memuat data</option>';
+});
+
+
+
+function printSelectedData() {
+    const selectedFormId = document.getElementById('printDataDropdown').value;
+    if (selectedFormId) {
+        // Arahkan ke endpoint untuk cetak PDF
+        window.location.href = `/export_pdf/${selectedId}/${selectedFormId}`;
+    } else {
+        alert('Silakan pilih data pasien terlebih dahulu!');
+    }
+}
+
+  </script>
 </body>
 
 </html>

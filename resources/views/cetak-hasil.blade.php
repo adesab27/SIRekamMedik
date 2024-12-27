@@ -28,6 +28,7 @@
 <body>
     <div class="container">
         <h1 class="text-center">Laporan Hasil Observasi</h1>
+        <p>Tanggal Dibuat: {{ $observation->created_at }}</p>
         <table style="width: 100%;">
             <tbody>
                 <tr>

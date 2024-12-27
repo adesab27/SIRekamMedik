@@ -9,117 +9,77 @@ use Illuminate\Support\Facades\DB;
 
 class AdminDatapasienController extends Controller
 {
-    public function index()
+    public function index($id = null)
     {
         if (Auth::check()) {
             $data = DB::table('registrasi')->get();
-            // $data = DB::table('registrasi')->orderBy('created_at', 'desc')->get();
-
             $cekdata = DB::table('registrasi')
                 ->join('infoanak', 'registrasi.id', '=', 'infoanak.pasien_id')
                 ->get();
-            //dd($cekdata);
-            $username = Auth::user()->name;
             
-            return view('datapasien', compact('data', 'username', 'cekdata'));
+            $username = Auth::user()->name;
+    
+            // Pastikan mengambil hanya observasi untuk pasien tertentu
+            if ($id) {
+                $observations = DB::table('infoanak')
+                    ->where('pasien_id', $id)  // Filter berdasarkan pasien_id yang diteruskan
+                    ->select('id', 'created_at')
+                    ->get();
+            } else {
+                $observations = [];  // Jika id tidak ada, tidak ada data observasi
+            }
+    
+            return view('datapasien', compact('data', 'cekdata', 'username', 'observations'));
         } else {
             return redirect()->route('indexLogin')->with('error', 'Silakan Login');
         }
     }
+    
 
-    public function editDatapasien($id)
+    
+    public function getObservationsByPasienId($id)
     {
-        $pasien = DB::table('registrasi')->where('id', $id)->first();
-        return view('editdata', compact('pasien'));
+        // Ambil data observasi berdasarkan pasien_id dengan join ke tabel registrasi
+        $observations = DB::table('infoanak')
+        ->join('registrasi', 'infoanak.pasien_id', '=', 'registrasi.id')  // Join dengan registrasi
+        ->where('infoanak.pasien_id', $id)  // Filter berdasarkan pasien_id
+        ->orderBy('infoanak.created_at', 'desc')  // Urutkan berdasarkan tanggal observasi
+        ->select('infoanak.id', 'infoanak.created_at', 'registrasi.namaPasien')  // Pilih kolom yang diinginkan
+        ->get();
+
+    // Debug: Cek apakah ada data yang diambil
+    \Log::info('Observations for pasien_id ' . $id . ': ', $observations->toArray());
+
+    // Pastikan data ada sebelum mengembalikannya
+    if ($observations->isEmpty()) {
+        return response()->json(['message' => 'Tidak ada data observasi'], 404);
     }
 
-    public function updateDatapasien(Request $request, $id)
-    
-    {
-        // dd($request->all());
-        try {
-            // Perbarui data di tabel registrasi
-            DB::table('registrasi')
-                ->where('id', $id)
-                ->update([
-                    'namaPasien' => $request->namaPasien,
-                    'tanggalLahir' => $request->tanggalLahir,
-                    'alamatPasien' => $request->alamatPasien,
-                    'nomorHandphone' => $request->nomorHandphone,
-                    'keluhan' => $request->keluhan,
-                    'keperluan' => $request->keperluan,
-                ]);
-                
-            // Perbarui tabel datatambahan
-            DB::table('infoanak')
-                ->where('pasien_id', $id)
-                ->update([
-                    'nama_anak' => $request->namaPasien,
-                    'tanggal_lahir' => $request->tanggalLahir
-                ]);
-
-            return redirect()->route('datapasien')->with('success', 'Data pasien berhasil diperbarui');
-            
-        } catch (\Exception $e) {
-
-            dd('Error:', $e->getMessage(), $request->all(), $id);
-
-            \Log::error('Update Datapasien Error: ' . $e->getMessage());
-
-            return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memperbarui data: ' . $e->getMessage());
-        }
-    }
-
-
-
-
-
-    public function delete($id)
-    {
-        // Ambil data dari tabel registrasi berdasarkan ID
-        $ambildata = DB::table('registrasi')->where('id', $id)->first();
-    
-        // Jika data tidak ditemukan, kembalikan respons JSON dengan status 404
-        if (!$ambildata) {
-            return response()->json(['message' => 'Data tidak ditemukan!'], 404);
-        }
-    
-        // Hapus data dari tabel registrasi
-        DB::table('registrasi')->where('id', $id)->delete();
-    
-        // Kembalikan respons JSON dengan status 200
-        return response()->json(['message' => 'Data berhasil dihapus!'], 200);
+    return response()->json($observations);
     }
     
+    
+    
 
-    public function export_pdf($id)
-    {
-        try {
-            $infoanak = DB::table('infoanak')
-                ->where('pasien_id', $id)->first();
-            if ($infoanak == null) {
-                return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
-            }
-            $datatambahan = DB::table('datatambahan')
-                ->where('pasien_id', $id)->first();
-            $riwhamillahir = DB::table('riwhamillahir')
-                ->where('pasien_id', $id)->first();
-            $riwsehatperkembangan = DB::table('riwsehatperkembangan')
-                ->where('pasien_id', $id)->first();
-            $riwpolakebiasaan = DB::table('riwpolakebiasaan')
-                ->where('pasien_id', $id)->first();
+public function export_pdf($id, $id_form)
+{
+    try {
+        // Ambil data berdasarkan id_form
+        $observation = DB::table('infoanak')
+            ->where('pasien_id', $id)
+            ->where('id', $id_form)
+            ->first();
 
-            $pdf = app('dompdf.wrapper');
-            $pdf->loadview('cetak-hasil', [
-                'infoanak' => $infoanak,
-                'datatambahan' => $datatambahan,
-                'riwhamillahir' => $riwhamillahir,
-                'riwsehatperkembangan' => $riwsehatperkembangan,
-                'riwpolakebiasaan' => $riwpolakebiasaan
-            ]);
-            return $pdf->download('laporan_observasi-'.$infoanak->nama_anak.'.pdf');
-        } catch (\Throwable $th) {
+        if (!$observation) {
             return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
         }
+
+        // Pass data ke view untuk PDF
+        return view('cetak-hasil', compact('observation'));
+    } catch (\Throwable $th) {
+        return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memproses data!');
     }
+}
+
+
 }
