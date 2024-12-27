@@ -217,12 +217,16 @@ function setPrintData(id) {
 function printSelectedData() {
     const selectedFormId = document.getElementById('printDataDropdown').value;
     if (selectedFormId) {
-        // Arahkan ke endpoint untuk cetak PDF
-        window.location.href = `/export_pdf/${selectedId}/${selectedFormId}`;
+        // Fetch the patient id from the modal (from the 'setPrintData' function)
+        const patientId = selectedId; // This will be set when the user clicks on the print icon
+        
+        // Redirect to the PDF export route with the patient id and the observation id
+        window.location.href = `/export_pdf/${patientId}/${selectedFormId}`;
     } else {
         alert('Silakan pilih data pasien terlebih dahulu!');
     }
 }
+
 
   </script>
 </body>

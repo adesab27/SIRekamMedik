@@ -25,7 +25,7 @@ Route::get('/datapasien', [AdminDatapasienController::class, 'index'])->name('da
 Route::delete('/datapasien/delete/{id}', [AdminDatapasienController::class, 'delete'])->name('deleteDatapasien');
 Route::get('/datapasien/observasi/{id}', [AdminDatapasienController::class, 'getObservationsByPasienId']);
 
-Route::get('/export_pdf/{id}/{id_form}', [AdminDatapasienController::class, 'exportPdf'])->name('export_pdf');
+Route::get('/export_pdf/{id}/{id_form}', [AdminDatapasienController::class, 'export_pdf'])->name('export_pdf');
 
 Route::get('/check-nomor-pasien/{nomorPasien}', [AdminRegistrasiController::class, 'checkNomorPasien']);
 
@@ -35,5 +35,5 @@ Route::get('/laporanpasien', [AdminLaporanController::class, 'index'])->name('la
 // Form Observasi
 Route::get('/observasi/form1/{id}', [AdminForm1Controller::class, 'index'])->name('form1');
 Route::post('/observasi/form1', [AdminForm1Controller::class, 'store'])->name('form1.store');
-Route::post('/observasi/editform1/{id}/{step}', [AdminForm1Controller::class, 'updateFormStepper'])->name('editFormStepper');
+Route::get('/observasi/editform1/{id}/{step}', [AdminForm1Controller::class, 'editFormStepper'])->name('editFormStepper');
 Route::post('/observasi/updateform1/{id}/{step}', [AdminForm1Controller::class, 'updateFormStepper'])->name('updateFormStepper');

@@ -59,14 +59,14 @@ class AdminDatapasienController extends Controller
     public function export_pdf($id, $id_form)
     {
         try {
-            // Ambil data berdasarkan pasien_id dan id_form, dengan join tabel-tabel terkait
+            // Fetch observation data by patient id and observation id (id_form)
             $observation = DB::table('infoanak')
                 ->join('datatambahan', 'infoanak.pasien_id', '=', 'datatambahan.pasien_id')
                 ->join('riwhamillahir', 'infoanak.pasien_id', '=', 'riwhamillahir.pasien_id')
                 ->join('riwsehatperkembangan', 'infoanak.pasien_id', '=', 'riwsehatperkembangan.pasien_id')
                 ->join('riwpolakebiasaan', 'infoanak.pasien_id', '=', 'riwpolakebiasaan.pasien_id')
-                ->where('infoanak.pasien_id', $id)
-                ->where('infoanak.id', $id_form)
+                ->where('infoanak.pasien_id', $id)  // Filter by patient id
+                ->where('infoanak.id', $id_form)   // Filter by observation id
                 ->select(
                     'infoanak.*', 
                     'datatambahan.*', 
@@ -74,19 +74,21 @@ class AdminDatapasienController extends Controller
                     'riwsehatperkembangan.*', 
                     'riwpolakebiasaan.*'
                 )
-                ->first();
+                ->first(); // Only one observation should match
     
+            // If no data is found, redirect back with an error message
             if (!$observation) {
                 return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
             }
     
-            // Pass data ke view untuk PDF
+            // Pass data to the view for PDF rendering
             return view('cetak-hasil', compact('observation'));
         } catch (\Throwable $th) {
-            // Menampilkan detail error untuk membantu debugging
+            // Log and display the error for debugging
             \Log::error('Error during export_pdf: ' . $th->getMessage());
             return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memproses data! ' . $th->getMessage());
         }
     }
+    
     
 }
