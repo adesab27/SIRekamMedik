@@ -62,9 +62,9 @@
               $formFilled = !$cekdata->where('pasien_id', $d->id)->isEmpty();
             @endphp
             @if ($formFilled)
-              <a href="{{ route('editFormStepper', $d->id) }}" class="text-primary">
+            <a href="{{ route('editFormStepper', ['id' => $d->id, 'step' => 1]) }}" class="text-primary">
                 <i class="fas fa-edit"></i>
-              </a>
+            </a>
             @else
               <span class="text-muted">
                 <i class="fas fa-edit"></i>
