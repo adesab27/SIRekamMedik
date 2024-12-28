@@ -101,7 +101,7 @@ class AdminDatapasienController extends Controller
             return $pdf->download($fileName);
         } catch (\Throwable $th) {
             // Log and display the error for debugging
-            \Log::error('Error during export_pdf: ' . $th->getMessage());
+            // \Log::error('Error during export_pdf: ' . $th->getMessage());
             return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memproses data! ' . $th->getMessage());
         }
     }
