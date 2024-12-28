@@ -61,12 +61,24 @@ class AdminDatapasienController extends Controller
         try {
             // Fetch observation data by patient id and observation id (id_form)
             $observation = DB::table('infoanak')
-                ->join('datatambahan', 'infoanak.pasien_id', '=', 'datatambahan.pasien_id')
-                ->join('riwhamillahir', 'infoanak.pasien_id', '=', 'riwhamillahir.pasien_id')
-                ->join('riwsehatperkembangan', 'infoanak.pasien_id', '=', 'riwsehatperkembangan.pasien_id')
-                ->join('riwpolakebiasaan', 'infoanak.pasien_id', '=', 'riwpolakebiasaan.pasien_id')
-                ->where('infoanak.pasien_id', $id)  // Filter by patient id
-                ->where('infoanak.id', $id_form)   // Filter by observation id
+                ->join('datatambahan', function ($join) {
+                    $join->on('datatambahan.pasien_id', '=', 'infoanak.pasien_id')
+                         ->on('datatambahan.created_at', '=', 'infoanak.created_at'); // Sinkronisasi created_at
+                })
+                ->join('riwhamillahir', function ($join) {
+                    $join->on('riwhamillahir.pasien_id', '=', 'infoanak.pasien_id')
+                         ->on('riwhamillahir.created_at', '=', 'infoanak.created_at'); // Sinkronisasi created_at
+                })
+                ->join('riwsehatperkembangan', function ($join) {
+                    $join->on('riwsehatperkembangan.pasien_id', '=', 'infoanak.pasien_id')
+                         ->on('riwsehatperkembangan.created_at', '=', 'infoanak.created_at'); // Sinkronisasi created_at
+                })
+                ->join('riwpolakebiasaan', function ($join) {
+                    $join->on('riwpolakebiasaan.pasien_id', '=', 'infoanak.pasien_id')
+                         ->on('riwpolakebiasaan.created_at', '=', 'infoanak.created_at'); // Sinkronisasi created_at
+                })
+                ->where('infoanak.pasien_id', $id) // Filter berdasarkan pasien_id
+                ->where('infoanak.id', $id_form) // Filter berdasarkan observasi id
                 ->select(
                     'infoanak.*', 
                     'datatambahan.*', 
@@ -74,7 +86,7 @@ class AdminDatapasienController extends Controller
                     'riwsehatperkembangan.*', 
                     'riwpolakebiasaan.*'
                 )
-                ->first(); // Only one observation should match
+                ->first(); // Hanya satu observasi yang diambil
     
             // If no data is found, redirect back with an error message
             if (!$observation) {
@@ -89,6 +101,7 @@ class AdminDatapasienController extends Controller
             return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memproses data! ' . $th->getMessage());
         }
     }
+    
     
     
 }
