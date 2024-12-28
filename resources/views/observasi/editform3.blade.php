@@ -24,7 +24,7 @@
             <label class="form-label">Keluhan Saat Hamil (Checklist)</label>
             @foreach ($data['form3'] as $f)
                 <div class="form-check">
-                    <input class="form-check-input" id="keluhan{{$f->id}}" name="{{$f->name}}" type="checkbox"
+                    <input class="form-check-input" id="keluhan{{$f->id}}" name="{{ $f->name }}" type="checkbox"
                         value="1" {{ old($f->name, isset($data['riwhamillahir']->{$f->name}) && $data['riwhamillahir']->{$f->name} ? 'checked' : '') }} />
                     <label class="form-check-label" for="keluhan{{$f->id}}">{{ $f->value }}</label>
                 </div>
