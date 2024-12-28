@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,8 +54,6 @@ class AdminDatapasienController extends Controller
 
     return response()->json($observations);
     }
-    
-
     public function export_pdf($id, $id_form)
     {
         try {
@@ -93,15 +91,18 @@ class AdminDatapasienController extends Controller
                 return redirect()->route('datapasien')->with('failed', 'Data tidak ditemukan!');
             }
     
-            // Pass data to the view for PDF rendering
-            return view('cetak-hasil', compact('observation'));
+            // Render the view into PDF
+            $pdf = Pdf::loadView('cetak-hasil', compact('observation'));
+    
+            // Generate file name
+            $fileName = 'hasil-observasi-' . str_replace(' ', '-', strtolower($observation->nama_anak)) . '.pdf';
+    
+            // Return the PDF as a downloadable response
+            return $pdf->download($fileName);
         } catch (\Throwable $th) {
             // Log and display the error for debugging
             \Log::error('Error during export_pdf: ' . $th->getMessage());
             return redirect()->route('datapasien')->with('failed', 'Terjadi kesalahan saat memproses data! ' . $th->getMessage());
         }
     }
-    
-    
-    
 }
