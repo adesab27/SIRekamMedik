@@ -45,6 +45,7 @@
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>Keperluan</th>
+                        <th>Nama Terapis</th>
                         <th>Tanggal Registrasi</th>
                     </tr>
                 </thead>
@@ -54,6 +55,7 @@
                             <td>{{ $registrasi->namaPasien }}</td>
                             <td>{{ $registrasi->alamatPasien }}</td>
                             <td>{{ $registrasi->keperluan }}</td>
+                            <td>{{ $registrasi->nama_terapis }}</td>
                             <td>{{ $registrasi->created_at->format('Y-m-d') }}</td>
                         </tr>
                     @endforeach
@@ -72,11 +74,36 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable();
+  <script>
+    $(document).ready(function () {
+        var table = $('#dataTable').DataTable({
+            order: [[4, 'desc']] // Kolom ke-5 (Tanggal Registrasi), diurutkan secara descending
         });
-    </script>
+
+        // Custom filter untuk rentang tanggal
+        $.fn.dataTable.ext.search.push(
+            function (settings, data, dataIndex) {
+                var min = $('#minDate').val();
+                var max = $('#maxDate').val();
+                var date = data[4]; // Kolom ke-5 (Tanggal Registrasi)
+
+                if ((min === "" && max === "") ||
+                    (min === "" && date <= max) ||
+                    (min <= date && max === "") ||
+                    (min <= date && date <= max)) {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        // Event listener untuk tombol filter
+        $('#applyFilter').on('click', function () {
+            table.draw();
+        });
+    });
+</script>
+
 
     <script>
         $(document).ready(function () {
