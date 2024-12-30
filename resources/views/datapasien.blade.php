@@ -72,12 +72,12 @@
             @endif
 
             <!-- Ikon Delete -->
-            <form id="delete-form-{{ $d->id }}" style="display: inline;">
-              @csrf
-              @method('DELETE')
-              <a href="#" onclick="deleteData(event, {{ $d->id }})" class="text-danger" title="Delete">
-                <i class="fas fa-trash-alt"></i>
-              </a>
+            <form id="delete-form-{{ $d->id }}" method="POST" action="{{ route('deleteDatapasien', $d->id) }}" style="display: inline;">
+                @csrf
+                @method('DELETE')
+                <a href="#" onclick="deleteData(event, {{ $d->id }})" class="text-danger" title="Delete">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
             </form>
 
             <!-- Ikon Form 1 -->
@@ -173,6 +173,16 @@
       ]
     });
   });
+</script>
+<script>
+  function deleteData(event, id) {
+    event.preventDefault();
+
+    if (confirm('Apakah Anda yakin ingin menghapus data pasien ini?')) {
+        document.getElementById(`delete-form-${id}`).submit();
+    }
+}
+
 </script>
 <script>
 let selectedId = null;

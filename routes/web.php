@@ -20,13 +20,9 @@ Route::post('/registrasi/create', [AdminRegistrasiController::class, 'create'])-
 
 // Data Pasien
 Route::get('/datapasien', [AdminDatapasienController::class, 'index'])->name('datapasien');
-// Route::get('/datapasien/edit/{id}', [AdminDatapasienController::class, 'editDatapasien'])->name('editDatapasien');
-// Route::post('/datapasien/update/{id}', [AdminDatapasienController::class, 'updateDatapasien'])->name('updateDatapasien');
 Route::delete('/datapasien/delete/{id}', [AdminDatapasienController::class, 'delete'])->name('deleteDatapasien');
 Route::get('/datapasien/observasi/{id}', [AdminDatapasienController::class, 'getObservationsByPasienId']);
-
 Route::get('/export_pdf/{id}/{id_form}', [AdminDatapasienController::class, 'export_pdf'])->name('export_pdf');
-
 Route::get('/check-nomor-pasien/{nomorPasien}', [AdminRegistrasiController::class, 'checkNomorPasien']);
 
 // Laporan

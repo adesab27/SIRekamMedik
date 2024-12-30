@@ -36,6 +36,24 @@ class AdminDatapasienController extends Controller
         }
     }
     
+    public function delete($id)
+{
+    try {
+        // Hapus data dari tabel registrasi
+        $deleted = DB::table('registrasi')->where('id', $id)->delete();
+
+        // Periksa apakah data berhasil dihapus
+        if ($deleted) {
+            return redirect()->route('datapasien')->with('success', 'Data pasien berhasil dihapus!');
+        } else {
+            return redirect()->route('datapasien')->with('error', 'Data pasien tidak ditemukan!');
+        }
+    } catch (\Exception $e) {
+        // Tangani jika terjadi kesalahan
+        return redirect()->route('datapasien')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    }
+}
+
 
     
     public function getObservationsByPasienId($id)
